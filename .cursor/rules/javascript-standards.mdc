@@ -1,0 +1,52 @@
+---
+description: JavaScript patterns for theme assets
+globs: wp-content/themes/custom-theme/assets/js/**/*.js
+alwaysApply: false
+---
+
+# JavaScript Standards
+
+## Structure
+
+Single `DOMContentLoaded` entry calling `init*` functions. No jQuery. No bundler.
+
+```javascript
+document.addEventListener("DOMContentLoaded", function () {
+  initMobileMenu();
+  initHotwPolaroidSwiper();
+  // ...
+});
+```
+
+## Defensive initialization
+
+Every init must check root selector exists and return early:
+
+```javascript
+function initHotwPolaroidSwiper() {
+  var root = document.querySelector(".hotw-polaroid-swiper");
+  if (!root || typeof Swiper === "undefined") return;
+  // ...
+}
+```
+
+## Libraries
+
+- **Swiper** — carousels; guard with `typeof Swiper === "undefined"`
+- **Bootstrap 5** — modals (`shown.bs.modal`, `hidden.bs.modal`)
+
+## Responsive Swiper pattern
+
+Use `matchMedia("(max-width: 991.98px)")` with `change` listener to create/destroy instances.
+
+## Naming
+
+- Init functions: `initHotw{Feature}()` or `init{Feature}()` matching existing style
+- Toggle classes: `.is-open`, `--is-active`
+- ARIA: update `aria-expanded`, `aria-selected`, `hidden` attribute
+
+## Do not add
+
+- `console.log` in production code
+- Global state without namespace
+- Dependencies not enqueued in `functions.php`

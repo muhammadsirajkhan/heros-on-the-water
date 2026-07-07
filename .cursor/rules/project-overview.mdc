@@ -1,0 +1,45 @@
+---
+description: Heroes on the Water theme architecture and naming conventions
+alwaysApply: true
+---
+
+# Project Overview — Heroes on the Water
+
+WordPress theme at `wp-content/themes/custom-theme`. Section-based, static-first architecture.
+
+## Naming (mandatory)
+
+| Item | Value |
+|------|-------|
+| Theme name | Heroes on the Water |
+| PHP prefix | `hotw_*` |
+| Constant | `HOTW_THEME_VER` |
+| Text domain | `heros-on-the-water` |
+| Package | `Heros_On_The_Water` |
+| CSS prefix | `.hotw-*` |
+| CSS variables | `--hotw-*` |
+| Body classes | `hotw-home`, `hotw-whats-on` |
+
+## Architecture
+
+```
+functions.php → inc/post-type-event.php, inc/whats-on-events.php
+header.php / footer.php → page-template/header.php, page-template/footer.php
+Page templates → get_template_part('template-parts/...') or require (What's On only)
+```
+
+## Key paths
+
+- `template-parts/home/` — home sections (hero, purpose, wood, vibe, faq, cta, gallery)
+- `template-parts/story/` — pizza slider, events-live, extras-live
+- `template-parts/menu/` — classic, signature
+- `template-parts/whats-on/` — calendar, upcoming (loaded via `require`)
+- `assets/css/` — variables → common → style + responsive
+- `assets/js/main.js` — mobile nav, Swiper, What's On tabs
+
+## Do not introduce
+
+- New architecture patterns unless explicitly requested
+- Inline styles in PHP templates
+- New `@media` blocks in `common.css`
+- jQuery or build tooling without approval

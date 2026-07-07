@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 /**
  * Gallery section.
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 if (!defined('ABSPATH')) {
@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 $gallery_src = static function ($n) {
-    return oven_gallery_image_url((int) $n);
+    return hotw_gallery_image_url((int) $n);
 };
 
 $slots = array(
@@ -38,22 +38,22 @@ $content = $gallery['content'];
 $facebook = $gallery['facebook'];
 $image_1 = $gallery['image_1'];
 ?>
-<section class="oven-section oven-section--white position-relative overflow-hidden" id="gallery">
-    <div class="container oven-gallery-wrap">
-        <header class="oven-gallery-head row justify-content-between  g-4 mb-4 mb-lg-5">
+<section class="hotw-section hotw-section--white position-relative overflow-hidden" id="gallery">
+    <div class="container hotw-gallery-wrap">
+        <header class="hotw-gallery-head row justify-content-between  g-4 mb-4 mb-lg-5">
             <div class="col-lg-5">
-                <p class="oven-kicker">
+                <p class="hotw-kicker">
                     <?php echo $sub_title; ?>
                 </p>
-                <h2 class="oven-title oven-gallery-head__title">
+                <h2 class="hotw-title hotw-gallery-head__title">
                     <?php echo $title; ?>
                 </h2>
             </div>
-            <div class="col-lg-5 oven-gallery-head__aside">
-                <div class="oven-prose oven-gallery-head__copy mb-3 mb-lg-4">
+            <div class="col-lg-5 hotw-gallery-head__aside">
+                <div class="hotw-prose hotw-gallery-head__copy mb-3 mb-lg-4">
                     <?php echo $content; ?>
                 </div>
-                <a class="blob-button oven-btn-facebook" href="<?php echo $facebook['url']; ?>"
+                <a class="blob-button hotw-btn-facebook" href="<?php echo $facebook['url']; ?>"
                     rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
                         width="18" height="18">
@@ -66,7 +66,7 @@ $image_1 = $gallery['image_1'];
         </header>
     </div>
     <div class="container-fluid position-relative">
-        <div class="oven-gallery-deco" aria-hidden="true"><?php esc_html_e('Our Gallery', 'the-black-door-oven'); ?>
+        <div class="hotw-gallery-deco" aria-hidden="true"><?php esc_html_e('Our Gallery', 'heros-on-the-water'); ?>
         </div>
 
         <div class="items-gallery">
@@ -109,12 +109,12 @@ $image_1 = $gallery['image_1'];
         </div>
 
 
-        <!-- <div class="oven-gallery-mosaic py-2 py-lg-4" role="list">
+        <!-- <div class="hotw-gallery-mosaic py-2 py-lg-4" role="list">
             <?php foreach ($slots as $slot): ?>
-                <div class="oven-gallery-item <?php echo esc_attr($slot['class']); ?>" role="listitem">
+                <div class="hotw-gallery-item <?php echo esc_attr($slot['class']); ?>" role="listitem">
                     <img
                         src="<?php echo esc_url($gallery_src($slot['n'])); ?>"
-                        alt="<?php echo esc_attr(sprintf(__('Gallery photo %d', 'the-black-door-oven'), (int) $slot['n'])); ?>"
+                        alt="<?php echo esc_attr(sprintf(__('Gallery photo %d', 'heros-on-the-water'), (int) $slot['n'])); ?>"
                         width="<?php echo (int) $slot['w']; ?>"
                         height="<?php echo (int) $slot['h']; ?>"
                         loading="lazy"
@@ -123,13 +123,13 @@ $image_1 = $gallery['image_1'];
             <?php endforeach; ?>
         </div> -->
 
-        <!-- <div class="swiper oven-gallery-swiper oven-gallery-swiper-root py-4" aria-label="<?php esc_attr_e('Gallery', 'the-black-door-oven'); ?>">
+        <!-- <div class="swiper hotw-gallery-swiper hotw-gallery-swiper-root py-4" aria-label="<?php esc_attr_e('Gallery', 'heros-on-the-water'); ?>">
             <div class="swiper-wrapper">
                 <?php foreach ($slots as $slot): ?>
                     <div class="swiper-slide">
                         <img
                             src="<?php echo esc_url($gallery_src($slot['n'])); ?>"
-                            alt="<?php echo esc_attr(sprintf(__('Gallery photo %d', 'the-black-door-oven'), (int) $slot['n'])); ?>"
+                            alt="<?php echo esc_attr(sprintf(__('Gallery photo %d', 'heros-on-the-water'), (int) $slot['n'])); ?>"
                             width="<?php echo (int) $slot['w']; ?>"
                             height="<?php echo (int) $slot['h']; ?>"
                             loading="lazy"

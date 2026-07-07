@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 /**
  * WordPress entry: delegates to shared partial.
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 if (!defined('ABSPATH')) {

@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 /**
  * What's On page — CPT slug and ACF/meta key (change here to match your ACF/CPT UI).
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 if (!defined('ABSPATH')) {
@@ -14,8 +14,8 @@ if (!defined('ABSPATH')) {
  *
  * @return string
  */
-function oven_whats_on_post_type() {
-    return apply_filters('oven_whats_on_post_type', 'event');
+function hotw_whats_on_post_type() {
+    return apply_filters('hotw_whats_on_post_type', 'event');
 }
 
 /**
@@ -23,6 +23,6 @@ function oven_whats_on_post_type() {
  *
  * @return string
  */
-function oven_whats_on_event_date_meta_key() {
-    return apply_filters('oven_whats_on_event_date_meta_key', 'event_date');
+function hotw_whats_on_event_date_meta_key() {
+    return apply_filters('hotw_whats_on_event_date_meta_key', 'event_date');
 }

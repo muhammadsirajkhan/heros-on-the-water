@@ -1,0 +1,53 @@
+---
+description: CSS architecture and styling conventions
+globs: wp-content/themes/custom-theme/**/*.css
+alwaysApply: false
+---
+
+# CSS Standards
+
+## Layer order (do not change enqueue order)
+
+1. `variables.css` — design tokens only
+2. `common.css` — `.hotw-*` components and layout
+3. `style.css` — page-specific overrides
+4. `responsive.css` — breakpoint tweaks
+
+## Tokens
+
+Edit colors, fonts, spacing in `variables.css` only:
+
+```css
+:root {
+  --hotw-forest: #1e392a;
+  --hotw-orange: #ff6600;
+  --font-display: 'Bebas Neue', sans-serif;
+}
+```
+
+Never hard-code hex in new component rules when a token exists.
+
+## Component naming
+
+BEM with `hotw-` prefix:
+
+```css
+.hotw-hero { }
+.hotw-hero__title { }
+.hotw-section--cream { }
+```
+
+## Responsive rules
+
+**New breakpoint rules:** only inside existing `@media` blocks in `responsive.css`:
+`1799px`, `1599px`, `1366px`, `1299px`, `1199px`, `991px`, `767px`, `599px`, `399px`.
+
+Do **not** add new `@media` blocks to `common.css`.
+
+## Prose / WYSIWYG
+
+Wrap ACF rich text in `.hotw-prose` and style descendants globally.
+
+## CF7 styling
+
+Use `html_class="hotw-cf7"` on Contact Form 7 shortcodes.

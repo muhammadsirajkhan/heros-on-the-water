@@ -1,15 +1,15 @@
-<?php
+﻿<?php
 /**
  * FAQ accordion section.
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-$faq_id = 'ovenFaq';
+$faq_id = 'hotwFaq';
 ?>
 
 
@@ -20,56 +20,56 @@ $title = $faq['title'];
 $items = $faq['items'];
 ?>
 <style>
-    .oven-faq .accordion-item:has(.accordion-button) {
+    .hotw-faq .accordion-item:has(.accordion-button) {
         background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/fifth-1.png');
         background-size: 100% 100%;
 
     }
 
-    .oven-faq .accordion-item:has(.accordion-button:not(.collapsed)) {
+    .hotw-faq .accordion-item:has(.accordion-button:not(.collapsed)) {
         background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/fifth-2.png');
         background-size: 100% 100%;
 
     }
 
-    .oven-faq__icon
+    .hotw-faq__icon
     {
         background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/fifth-6.png');
         background-size: 100% 100%;
     }
 
-    .oven-faq .accordion-button:not(.collapsed) .oven-faq__icon{
+    .hotw-faq .accordion-button:not(.collapsed) .hotw-faq__icon{
         background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/fifth-7.png');
         background-size: 100% 100%;
     }
 </style>
-<span class="oven-faq__border d-block">
+<span class="hotw-faq__border d-block">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fifth-5.png" alt="" class="img-fluid">
 </span>
 
-<section class="oven-section oven-section--cream" id="faq">
+<section class="hotw-section hotw-section--cream" id="faq">
     <div class="container">
         <header class="text-center mb-5">
-            <p class="oven-kicker"><?php echo $sub_title; ?></p>
-            <h2 class="oven-title"><?php echo $title; ?></h2>
+            <p class="hotw-kicker"><?php echo $sub_title; ?></p>
+            <h2 class="hotw-title"><?php echo $title; ?></h2>
         </header>
 
         <div class="row justify-content-center">
             <div class="col-lg-9">
-                <div class="accordion oven-faq" id="<?php echo esc_attr($faq_id); ?>">
+                <div class="accordion hotw-faq" id="<?php echo esc_attr($faq_id); ?>">
                     <?php
                     // $items = array(
                     //     array(
-                    //         'q' => __('Do you take reservations?', 'the-black-door-oven'),
-                    //         'a' => __('Yes — evenings fill quickly on weekends. Call ahead or message us on social and we will hold a table when we can.', 'the-black-door-oven'),
+                    //         'q' => __('Do you take reservations?', 'heros-on-the-water'),
+                    //         'a' => __('Yes — evenings fill quickly on weekends. Call ahead or message us on social and we will hold a table when we can.', 'heros-on-the-water'),
                     //     ),
                     //     array(
-                    //         'q' => __('Is there vegetarian or vegan pizza?', 'the-black-door-oven'),
-                    //         'a' => __('We keep seasonal vegetarian pies on the board and can prepare vegan options with advance notice.', 'the-black-door-oven'),
+                    //         'q' => __('Is there vegetarian or vegan pizza?', 'heros-on-the-water'),
+                    //         'a' => __('We keep seasonal vegetarian pies on the board and can prepare vegan options with advance notice.', 'heros-on-the-water'),
                     //     ),
                     //     array(
-                    //         'q' => __('Do you offer takeout?', 'the-black-door-oven'),
-                    //         'a' => __('Absolutely. Order at the counter or use the link on this site during service hours.', 'the-black-door-oven'),
+                    //         'q' => __('Do you offer takeout?', 'heros-on-the-water'),
+                    //         'a' => __('Absolutely. Order at the counter or use the link on this site during service hours.', 'heros-on-the-water'),
                     //     ),
                     // );
                     foreach ($items as $i => $row):
@@ -83,7 +83,7 @@ $items = $faq['items'];
                                     aria-expanded="<?php echo $is_first ? 'true' : 'false'; ?>"
                                     aria-controls="<?php echo esc_attr($collapse_id); ?>">
                                     <?php echo esc_html($row['q']); ?>
-                                    <span class="oven-faq__icon" aria-hidden="true"></span>
+                                    <span class="hotw-faq__icon" aria-hidden="true"></span>
                                 </button>
                             </h3>
                             <div id="<?php echo esc_attr($collapse_id); ?>"
@@ -100,6 +100,6 @@ $items = $faq['items'];
         </div>
     </div>
 </section>
-<span class="oven-faq__border d-block">
+<span class="hotw-faq__border d-block">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fifth-4.png" alt="" class="img-fluid">
 </span>

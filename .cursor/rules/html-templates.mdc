@@ -1,0 +1,40 @@
+---
+description: HTML template structure and markup conventions
+globs: wp-content/themes/custom-theme/{template-parts,page-template}/**/*
+alwaysApply: false
+---
+
+# HTML Template Standards
+
+## Main content contract
+
+Page templates open `<main id="primary">` after `get_header()`.
+`page-template/footer.php` closes `</main>` — never close main in page templates.
+
+## Section files
+
+- Location: `template-parts/{area}/section-{name}.php`
+- File header comment describing purpose and expected `$args`
+- Use semantic HTML5: `<section>`, `<nav>`, `<article>`, `<header>`, `<footer>`
+
+## Class naming
+
+All layout/component classes use `.hotw-*` prefix. Bootstrap grid utilities allowed.
+
+## Accessibility
+
+- Mobile nav: `aria-expanded`, `aria-controls`
+- What's On tabs: `role="tablist"`, `aria-selected`, `hidden` on panels
+- Images: meaningful `alt` or `alt=""` for decorative
+- Skip link in header template
+
+## Template part args keys
+
+Common override wrapper keys:
+- `hero_defaults`, `wood_defaults`, `events_live_defaults`
+- `menu_classic_defaults`, `menu_signature_defaults`
+- `contact_defaults`, `cf7_shortcode`
+
+## No inline styles
+
+Use CSS classes in `common.css` or `style.css`. Exception: none in new code.

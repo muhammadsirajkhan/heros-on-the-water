@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 /**
  * What's On — queries and date helpers for the calendar and upcoming list.
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 if (!defined('ABSPATH')) {
@@ -18,7 +18,7 @@ require_once __DIR__ . '/whats-on-config.php';
  * @param int|null $prefer_year  When the string has no year (e.g. ACF "F j"), use this year first (e.g. post year).
  * @return string Eight-digit Ymd or empty string if invalid.
  */
-function oven_whats_on_normalize_event_date($raw, $prefer_year = null) {
+function hotw_whats_on_normalize_event_date($raw, $prefer_year = null) {
     if ($raw instanceof DateTimeInterface) {
         return $raw->format('Ymd');
     }
@@ -84,9 +84,9 @@ function oven_whats_on_normalize_event_date($raw, $prefer_year = null) {
  * @param int $post_id Post ID.
  * @return string
  */
-function oven_whats_on_get_event_date_for_post($post_id) {
+function hotw_whats_on_get_event_date_for_post($post_id) {
     $post_id = (int) $post_id;
-    $key = oven_whats_on_event_date_meta_key();
+    $key = hotw_whats_on_event_date_meta_key();
     $raw = get_post_meta($post_id, $key, true);
     if (($raw === '' || $raw === null || $raw === false) && function_exists('get_field')) {
         $raw = get_field($key, $post_id);
@@ -105,7 +105,7 @@ function oven_whats_on_get_event_date_for_post($post_id) {
     if ($post && $post->post_date) {
         $prefer_year = (int) substr($post->post_date, 0, 4);
     }
-    return oven_whats_on_normalize_event_date($raw, $prefer_year);
+    return hotw_whats_on_normalize_event_date($raw, $prefer_year);
 }
 
 /**
@@ -116,7 +116,7 @@ function oven_whats_on_get_event_date_for_post($post_id) {
  * @param int $post_id Post ID.
  * @return string Human-readable fragment or empty.
  */
-function oven_whats_on_get_event_time_label($post_id) {
+function hotw_whats_on_get_event_time_label($post_id) {
     $post_id = (int) $post_id;
     $start = '';
     $end = '';
@@ -142,15 +142,15 @@ function oven_whats_on_get_event_time_label($post_id) {
 }
 
 /**
- * All published events that have a usable event date (meta or ACF via oven_whats_on_get_event_date_for_post).
+ * All published events that have a usable event date (meta or ACF via hotw_whats_on_get_event_date_for_post).
  *
  * We avoid relying on a SQL meta EXISTS clause alone: some ACF setups still resolve the date through
  * get_field() even when the initial meta_query would not match as expected.
  *
  * @return WP_Post[]
  */
-function oven_whats_on_get_published_events_having_date_meta() {
-    $pt = oven_whats_on_post_type();
+function hotw_whats_on_get_published_events_having_date_meta() {
+    $pt = hotw_whats_on_post_type();
     if (!post_type_exists($pt)) {
         return array();
     }
@@ -171,7 +171,7 @@ function oven_whats_on_get_published_events_having_date_meta() {
         if (!$post instanceof WP_Post) {
             continue;
         }
-        if (oven_whats_on_get_event_date_for_post($post->ID) !== '') {
+        if (hotw_whats_on_get_event_date_for_post($post->ID) !== '') {
             $out[] = $post;
         }
     }
@@ -184,12 +184,12 @@ function oven_whats_on_get_published_events_having_date_meta() {
  * @param WP_Post[] $posts Posts.
  * @return void
  */
-function oven_whats_on_sort_posts_by_event_date(array &$posts) {
+function hotw_whats_on_sort_posts_by_event_date(array &$posts) {
     usort(
         $posts,
         static function ($a, $b) {
-            $da = oven_whats_on_get_event_date_for_post($a->ID);
-            $db = oven_whats_on_get_event_date_for_post($b->ID);
+            $da = hotw_whats_on_get_event_date_for_post($a->ID);
+            $db = hotw_whats_on_get_event_date_for_post($b->ID);
             return strcmp($da, $db);
         }
     );
@@ -202,20 +202,20 @@ function oven_whats_on_sort_posts_by_event_date(array &$posts) {
  * @param string $end_ymd   Inclusive end Ymd.
  * @return WP_Post[]
  */
-function oven_whats_on_get_events_for_range($start_ymd, $end_ymd) {
-    $posts = oven_whats_on_get_published_events_having_date_meta();
+function hotw_whats_on_get_events_for_range($start_ymd, $end_ymd) {
+    $posts = hotw_whats_on_get_published_events_having_date_meta();
     $out = array();
     foreach ($posts as $post) {
         if (!$post instanceof WP_Post) {
             continue;
         }
-        $ymd = oven_whats_on_get_event_date_for_post($post->ID);
+        $ymd = hotw_whats_on_get_event_date_for_post($post->ID);
         if ($ymd === '' || $ymd < (string) $start_ymd || $ymd > (string) $end_ymd) {
             continue;
         }
         $out[] = $post;
     }
-    oven_whats_on_sort_posts_by_event_date($out);
+    hotw_whats_on_sort_posts_by_event_date($out);
     return $out;
 }
 
@@ -224,22 +224,22 @@ function oven_whats_on_get_events_for_range($start_ymd, $end_ymd) {
  *
  * @return WP_Post[]
  */
-function oven_whats_on_get_upcoming_events() {
-    $posts = oven_whats_on_get_published_events_having_date_meta();
+function hotw_whats_on_get_upcoming_events() {
+    $posts = hotw_whats_on_get_published_events_having_date_meta();
     $today = wp_date('Ymd');
     $out = array();
     foreach ($posts as $post) {
         if (!$post instanceof WP_Post) {
             continue;
         }
-        $ymd = oven_whats_on_get_event_date_for_post($post->ID);
+        $ymd = hotw_whats_on_get_event_date_for_post($post->ID);
         if ($ymd === '' || $ymd < $today) {
             continue;
         }
         $out[] = $post;
     }
-    oven_whats_on_sort_posts_by_event_date($out);
-    $limit = (int) apply_filters('oven_whats_on_upcoming_limit', -1);
+    hotw_whats_on_sort_posts_by_event_date($out);
+    $limit = (int) apply_filters('hotw_whats_on_upcoming_limit', -1);
     if ($limit > 0 && count($out) > $limit) {
         $out = array_slice($out, 0, $limit);
     }
@@ -252,13 +252,13 @@ function oven_whats_on_get_upcoming_events() {
  * @param WP_Post[] $posts Posts from range query.
  * @return array<string, WP_Post[]>
  */
-function oven_whats_on_build_day_map(array $posts) {
+function hotw_whats_on_build_day_map(array $posts) {
     $map = array();
     foreach ($posts as $post) {
         if (!$post instanceof WP_Post) {
             continue;
         }
-        $ymd = oven_whats_on_get_event_date_for_post($post->ID);
+        $ymd = hotw_whats_on_get_event_date_for_post($post->ID);
         if ($ymd === '') {
             continue;
         }

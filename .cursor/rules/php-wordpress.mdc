@@ -1,0 +1,65 @@
+---
+description: PHP and WordPress conventions for the custom theme
+globs: wp-content/themes/custom-theme/**/*.php
+alwaysApply: false
+---
+
+# PHP & WordPress Standards
+
+## Function naming
+
+All theme functions use `hotw_*` prefix. Constants: `HOTW_THEME_VER`.
+
+```php
+// ✅ GOOD
+function hotw_enqueue_assets() { ... }
+add_action('wp_enqueue_scripts', 'hotw_enqueue_assets');
+
+// ❌ BAD
+function enqueue_assets() { ... }
+```
+
+## File organization
+
+- Bootstrap and hooks: `functions.php`
+- CPTs: `inc/post-type-{name}.php`
+- Query/helpers: `inc/whats-on-*.php`
+- Shared HTML shells: `page-template/`
+- Sections: `template-parts/{area}/section-{name}.php`
+
+## Template loading
+
+```php
+// Standard sections
+get_template_part('template-parts/home/section', 'hero', $args);
+
+// What's On only — shared parent variables
+require get_template_directory() . '/template-parts/whats-on/section-calendar.php';
+```
+
+## Section $args pattern
+
+```php
+$defaults = array('title' => __('Default', 'heros-on-the-water'));
+$args = isset($args) && is_array($args) ? wp_parse_args($args, $defaults) : $defaults;
+```
+
+## Security
+
+- `ABSPATH` guard at top of every PHP file
+- `esc_html()`, `esc_url()`, `esc_attr()` for output
+- `wp_kses_post()` only for intentional HTML from ACF
+- `do_shortcode()` for CF7 — document with phpcs ignore when needed
+
+## Hooks
+
+- Enqueue: `wp_enqueue_scripts`
+- Theme setup: `after_setup_theme`
+- CPT: `init` + `after_switch_theme` for rewrite flush
+- ACF options: `acf/init`
+
+## Filters (What's On)
+
+- `hotw_whats_on_post_type` (default: `event`)
+- `hotw_whats_on_event_date_meta_key` (default: `event_date`)
+- `hotw_whats_on_upcoming_limit` (default: `-1`)

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "codebase-memory": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "C:\\Users\\Siraj Khan\\AppData\\Local\\Programs\\codebase-memory-mcp\\codebase-memory-mcp.exe"
+      ]
+    }
+  }
+}

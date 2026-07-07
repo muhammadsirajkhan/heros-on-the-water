@@ -1,0 +1,61 @@
+---
+description: ACF field usage patterns in template parts
+globs: wp-content/themes/custom-theme/template-parts/**/*
+alwaysApply: false
+---
+
+# ACF Integration
+
+ACF Pro required. Use `get_field()` only — no `have_rows()` or `the_field()`.
+
+## Options page
+
+Global fields via `get_field('field_name', 'option')`:
+
+```php
+$phone = get_field('phone', 'option');
+```
+
+Registered in `functions.php` on `acf/init`.
+
+## Shared home content (post ID 10)
+
+FAQ, CTA, and Gallery sections load from a fixed post ID (environment-specific):
+
+```php
+$faq = get_field('faq', 10);
+$cta = get_field('cta', 10);
+$gallery = get_field('gallery', 10);
+```
+
+Update ID when front page changes on new installs.
+
+## Section field groups
+
+| Section | ACF group | Key fields |
+|---------|-----------|------------|
+| Hero | `hero` | image, sub_title, title, content |
+| Purpose | `about` | image, image_bg, sub_title, title, content |
+| Wood | `sub_banner` / `sub_banner_copy` | image, titles, content |
+| Vibe | `good_times` | image, youtube_video, items repeater |
+| Pizza | `pizza` | items repeater |
+
+## Event CPT fields
+
+- `event_date` — return format `Ymd` recommended
+- `event_start_time`, `event_end_time` — time pickers
+- Legacy: `event_time`, `event_end`
+
+Queried via `hotw_whats_on_get_event_date_for_post()` in `inc/whats-on-events.php`.
+
+## Output escaping
+
+```php
+echo esc_html($title);
+echo esc_url($link);
+echo wp_kses_post($content); // when HTML is intentional
+```
+
+## No acf-json sync yet
+
+Field groups are configured in WP admin. Export to `acf-json/` when ready for version control.

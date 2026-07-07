@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 /**
  * Default page template.
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 defined('ABSPATH') || exit;
@@ -17,9 +17,9 @@ get_header();
         ?>
         <article <?php post_class(); ?> id="page-<?php the_ID(); ?>">
             <header class="mb-4">
-                <h1 class="oven-title"><?php the_title(); ?></h1>
+                <h1 class="hotw-title"><?php the_title(); ?></h1>
             </header>
-            <div class="entry-content oven-prose">
+            <div class="entry-content hotw-prose">
                 <?php the_content(); ?>
             </div>
         </article>

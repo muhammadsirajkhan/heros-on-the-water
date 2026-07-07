@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
   initMobileMenu();
-  initOvenPolaroidSwiper();
-  initOvenGallerySwiper();
-  initOvenWhatsOnViewToggle();
-  initOvenVibeYoutubeModal();
-  initOvenStoryPizzaSwiper();
+  initHotwPolaroidSwiper();
+  initHotwGallerySwiper();
+  initHotwWhatsOnViewToggle();
+  initHotwVibeYoutubeModal();
+  initHotwStoryPizzaSwiper();
 });
 
 /**
@@ -71,8 +71,8 @@ function initMobileMenu() {
 /**
  * Polaroid strip: Swiper only on small viewports.
  */
-function initOvenPolaroidSwiper() {
-  const root = document.querySelector(".oven-polaroid-swiper-root");
+function initHotwPolaroidSwiper() {
+  const root = document.querySelector(".hotw-polaroid-swiper-root");
   if (!root || typeof Swiper === "undefined") {
     return;
   }
@@ -106,8 +106,8 @@ function initOvenPolaroidSwiper() {
 /**
  * Gallery: Swiper only on small viewports; desktop uses CSS grid.
  */
-function initOvenGallerySwiper() {
-  const root = document.querySelector(".oven-gallery-swiper-root");
+function initHotwGallerySwiper() {
+  const root = document.querySelector(".hotw-gallery-swiper-root");
   if (!root || typeof Swiper === "undefined") {
     return;
   }
@@ -140,14 +140,14 @@ function initOvenGallerySwiper() {
 /**
  * What's On: switch between calendar and upcoming panels.
  */
-function initOvenWhatsOnViewToggle() {
-  const root = document.querySelector(".oven-whats-on-toggle");
+function initHotwWhatsOnViewToggle() {
+  const root = document.querySelector(".hotw-whats-on-toggle");
   if (!root) {
     return;
   }
 
-  const btnUpcoming = document.getElementById("oven-whats-on-tab-upcoming");
-  const btnCalendar = document.getElementById("oven-whats-on-tab-calendar");
+  const btnUpcoming = document.getElementById("hotw-whats-on-tab-upcoming");
+  const btnCalendar = document.getElementById("hotw-whats-on-tab-calendar");
   const panelUpcoming = document.getElementById("whats-on-panel-upcoming");
   const panelCalendar = document.getElementById("whats-on-panel-calendar");
 
@@ -158,8 +158,8 @@ function initOvenWhatsOnViewToggle() {
   const showCalendar = () => {
     panelCalendar.hidden = false;
     panelUpcoming.hidden = true;
-    btnCalendar.classList.add("oven-whats-on-toggle__btn--is-active");
-    btnUpcoming.classList.remove("oven-whats-on-toggle__btn--is-active");
+    btnCalendar.classList.add("hotw-whats-on-toggle__btn--is-active");
+    btnUpcoming.classList.remove("hotw-whats-on-toggle__btn--is-active");
     btnCalendar.setAttribute("aria-selected", "true");
     btnUpcoming.setAttribute("aria-selected", "false");
   };
@@ -167,8 +167,8 @@ function initOvenWhatsOnViewToggle() {
   const showUpcoming = () => {
     panelUpcoming.hidden = false;
     panelCalendar.hidden = true;
-    btnUpcoming.classList.add("oven-whats-on-toggle__btn--is-active");
-    btnCalendar.classList.remove("oven-whats-on-toggle__btn--is-active");
+    btnUpcoming.classList.add("hotw-whats-on-toggle__btn--is-active");
+    btnCalendar.classList.remove("hotw-whats-on-toggle__btn--is-active");
     btnUpcoming.setAttribute("aria-selected", "true");
     btnCalendar.setAttribute("aria-selected", "false");
   };
@@ -180,9 +180,9 @@ function initOvenWhatsOnViewToggle() {
 /**
  * Vibe section: load YouTube embed with autoplay when modal opens; clear src on close to stop playback.
  */
-function initOvenVibeYoutubeModal() {
-  const modalEl = document.getElementById("ovenVibeYoutubeModal");
-  const iframe = document.getElementById("ovenVibeYoutubeIframe");
+function initHotwVibeYoutubeModal() {
+  const modalEl = document.getElementById("hotwVibeYoutubeModal");
+  const iframe = document.getElementById("hotwVibeYoutubeIframe");
   if (!modalEl || !iframe) {
     return;
   }
@@ -209,8 +209,8 @@ function initOvenVibeYoutubeModal() {
 /**
  * Story page: pizza highlights carousel (always Swiper when markup present).
  */
-function initOvenStoryPizzaSwiper() {
-  const root = document.querySelector(".oven-story-pizza-swiper-root");
+function initHotwStoryPizzaSwiper() {
+  const root = document.querySelector(".hotw-story-pizza-swiper-root");
   if (!root || typeof Swiper === "undefined") {
     return;
   }

@@ -1,4 +1,4 @@
-@media only screen and (min-width: 100px) and (max-width: 1799px) {
+﻿@media only screen and (min-width: 100px) and (max-width: 1799px) {
     :root {
         /* Font sizes */
         --font-size-xs: 12px;
@@ -33,7 +33,7 @@
         --header-height: 80px;
     }
 
-    .oven-gallery-deco {
+    .hotw-gallery-deco {
         font-size: clamp(3.5rem, 16vw, 12rem);
     }
 
@@ -46,15 +46,15 @@
         font-size: 85px;
     }
 
-    .oven-hero .oven-prose p {
+    .hotw-hero .hotw-prose p {
         margin-top: -70px;
-    }.oven-kicker {
+    }.hotw-kicker {
   
     font-size: 32px;}
 
-.page-template-story-page .oven-hero .oven-title strong{
+.page-template-story-page .hotw-hero .hotw-title strong{
     max-width: 560px;
-}.oven-menu-sig-card__frame {
+}.hotw-menu-sig-card__frame {
 
     margin-bottom: 40px;
 }
@@ -105,24 +105,24 @@
         --header-height: 70px;
     }
 
-    .oven-hero {
+    .hotw-hero {
         min-height: 70vh;
     }
 
-    .oven-gallery-mosaic {
+    .hotw-gallery-mosaic {
         grid-template-rows: repeat(6, minmax(64px, 9vh));
     }
 
-    .oven-hero .oven-prose p {
+    .hotw-hero .hotw-prose p {
         margin-top: -60px;
         max-width: 290px;
-    }.oven-team-photo img {
+    }.hotw-team-photo img {
     max-width: 1196px;
-}.oven-checklist li {
+}.hotw-checklist li {
     font-size: 16px;
 }.cta-wap header p {
     font-size: 16px;
-}.oven-story-live__title strong {
+}.hotw-story-live__title strong {
     font-size: 47px;
     /* color: #012f27; */
 }
@@ -173,16 +173,16 @@
         --header-height: 70px;
     }
 
-    .oven-polaroid--4 {
+    .hotw-polaroid--4 {
         right: -2%;
-    }.oven-team-photo img {
+    }.hotw-team-photo img {
     max-width: 1096px;
-}.oven-kicker {
+}.hotw-kicker {
         font-size: 28px;
-    }.oven-checklist li {
+    }.hotw-checklist li {
     margin-left: 25px;
 }
-    .page-template-story-page .oven-hero .oven-title strong{
+    .page-template-story-page .hotw-hero .hotw-title strong{
     max-width: 540px;
 }
 }
@@ -200,44 +200,44 @@
         --font-size-7xl: 60px;
     }
 
-    .oven-gallery-mosaic {
+    .hotw-gallery-mosaic {
         grid-template-rows: repeat(6, minmax(56px, 8vh));
         gap: var(--spacing-sm);
-    }h2.oven-title {
+    }h2.hotw-title {
     letter-spacing: -3px;
 }
 }
 @media only screen and (min-width: 100px) and (max-width: 1199px) {
     .event-right {
     padding-top: 0px;
-}.oven-story-event-card--featured, .oven-story-event-card {
+}.hotw-story-event-card--featured, .hotw-story-event-card {
 
     padding: var(--spacing-xl) var(--spacing-lg);
-}.oven-story-event-card--compact {
+}.hotw-story-event-card--compact {
 
     background-size: 100% 100%;
-}.oven-story-event-card__body{
+}.hotw-story-event-card__body{
         text-align: center;
-}.oven-story-event-card__time{
+}.hotw-story-event-card__time{
         justify-content: center;
 }
-    .oven-story-live__title strong {
+    .hotw-story-live__title strong {
         font-size: 32px;
         /* color: #012f27; */
     }
-    .oven-home .oven-hero, .page-template-story-page .oven-hero, .page-template-menu-page .oven-hero {
+    .hotw-home .hotw-hero, .page-template-story-page .hotw-hero, .page-template-menu-page .hotw-hero {
         aspect-ratio: unset;
         padding-top: 150px;
     }
-    .oven-hero .oven-prose p {
+    .hotw-hero .hotw-prose p {
     margin: 0;
     max-width: 100%;
-}a.oven-header__brand img {
+}a.hotw-header__brand img {
     max-width: 120px;
 
 }
 
-.oven-hero .oven-title strong, .oven-section header .oven-title strong {
+.hotw-hero .hotw-title strong, .hotw-section header .hotw-title strong {
     margin: 0;
     text-align: left;
 }.about-bg {
@@ -259,44 +259,44 @@
         --font-size-2xl: 20px;
     }
 
-    .oven-hero {
+    .hotw-hero {
         min-height: auto;
         padding-top: var(--spacing-4xl);
         padding-bottom: calc(var(--spacing-5xl) + 28px);
     }
 
-    .oven-hero__overlay {
+    .hotw-hero__overlay {
         background: linear-gradient(180deg, rgba(10, 18, 14, 0.9) 0%, rgba(10, 18, 14, 0.65) 100%);
     }
 
-    .oven-polaroid-grid {
+    .hotw-polaroid-grid {
         display: none !important;
     }
 
-    .oven-polaroid-swiper,
-    .oven-polaroid-swiper.swiper {
+    .hotw-polaroid-swiper,
+    .hotw-polaroid-swiper.swiper {
         display: block;
     }
 
-    .oven-gallery-mosaic {
+    .hotw-gallery-mosaic {
         display: none !important;
     }
 
-    .oven-gallery-swiper,
-    .oven-gallery-swiper.swiper {
+    .hotw-gallery-swiper,
+    .hotw-gallery-swiper.swiper {
         display: block;
     }
 
-    .oven-wood .oven-prose,
-    .oven-wood .oven-title--white {
+    .hotw-wood .hotw-prose,
+    .hotw-wood .hotw-title--white {
         text-align: center;
     }
 
-    .oven-wood-img {
+    .hotw-wood-img {
         margin-bottom: var(--spacing-xl);
     }
 
-    .oven-vibe-thumb {
+    .hotw-vibe-thumb {
         position: relative;
         left: auto;
         bottom: auto;
@@ -305,30 +305,30 @@
         margin: -2rem auto 0;
     }
 
-    .oven-section {
+    .hotw-section {
         padding-top: var(--spacing-4xl);
         padding-bottom: var(--spacing-4xl);
     }
 
-    .oven-whats-on-toggle {
+    .hotw-whats-on-toggle {
         display: flex;
         width: 100%;
         max-width: 440px;
     }
 
-    .oven-whats-on-toggle__btn {
+    .hotw-whats-on-toggle__btn {
         flex: 1 1 50%;
         text-align: center;
         padding-left: var(--spacing-sm);
         padding-right: var(--spacing-sm);
     }
 
-    .oven-whats-on-calendar {
+    .hotw-whats-on-calendar {
         flex-direction: column;
         padding: var(--spacing-lg) var(--spacing-md);
     }
 
-    .oven-whats-on-calendar__divider {
+    .hotw-whats-on-calendar__divider {
         width: 100%;
         height: 0;
         margin: var(--spacing-lg) 0;
@@ -344,10 +344,10 @@
     background-size: cover;
     background-position: 20% 100%;
     padding: 25px;
-}.oven-menu-signature__lede {
+}.hotw-menu-signature__lede {
    
     font-size: 14px;
-}.oven-story_button-wrap {
+}.hotw-story_button-wrap {
     flex-direction: column;
 }
 
@@ -384,70 +384,70 @@
         --font-size-xl: 18px;
     }
 
-    .oven-cta-banner__ribbon {
+    .hotw-cta-banner__ribbon {
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
-.oven-faq .accordion-button {
+.hotw-faq .accordion-button {
     padding: 20px 25px;
     padding-right: 50px;
 }
 
-.oven-faq__icon, .oven-faq .accordion-button:not(.collapsed) .oven-faq__icon {
+.hotw-faq__icon, .hotw-faq .accordion-button:not(.collapsed) .hotw-faq__icon {
     width: 34px;
     height: 34px;
 }
 
-.oven-faq .accordion-body {
+.hotw-faq .accordion-body {
     padding: 20px 25px;
     padding-top: 0;
     padding-right: 50px;
 }
-    .oven-faq .accordion-button {
+    .hotw-faq .accordion-button {
         font-size: var(--font-size-base);
         padding-right: 3rem;
     }
 
-    .oven-footer__bottom .oven-social-link {
+    .hotw-footer__bottom .hotw-social-link {
         font-size: var(--font-size-xs);
     }
 
-    .oven-whats-on-calendar__month-title {
+    .hotw-whats-on-calendar__month-title {
         font-size: var(--font-size-xl);
     }
 
-    .oven-whats-on-calendar__weekday {
+    .hotw-whats-on-calendar__weekday {
         font-size: 10px;
         padding: 2px;
     }
 
-    .oven-whats-on-calendar__cell {
+    .hotw-whats-on-calendar__cell {
         min-height: 2.5rem;
         padding: 2px 4px;
     }
 
-    .oven-whats-on-calendar__daynum {
+    .hotw-whats-on-calendar__daynum {
         font-size: var(--font-size-xs);
     }
 
-    .oven-whats-on-toggle__btn {
+    .hotw-whats-on-toggle__btn {
         font-size: var(--font-size-xs);
         letter-spacing: 0.1em;
-    }.oven-footer__logo img {
+    }.hotw-footer__logo img {
     width: 160px;
 }
 
-.oven-footer__mission p {
+.hotw-footer__mission p {
     font-size: 14px;
 }
 
-.oven-footer__nav .oven-footer__menu, .oven-footer__nav ul {
+.hotw-footer__nav .hotw-footer__menu, .hotw-footer__nav ul {
     justify-content: center;
     margin-bottom: 25px;
 }
 
-.copyright {font-size: 14px;}.oven-faq .accordion-item:has(.accordion-button:not(.collapsed)), .oven-faq .accordion-item:has(.accordion-button) {
+.copyright {font-size: 14px;}.hotw-faq .accordion-item:has(.accordion-button:not(.collapsed)), .hotw-faq .accordion-item:has(.accordion-button) {
     background-size: auto 100%;
     background-position: center;
 }
@@ -485,61 +485,61 @@
     grid-column: 1/2;
 }
 
-    .oven-title {
+    .hotw-title {
         hyphens: auto;
         letter-spacing: -1px;
         line-height: 1;
-    }h2.oven-title {
+    }h2.hotw-title {
         letter-spacing: -1px;
-    }.oven-kicker {
+    }.hotw-kicker {
         font-size: 20px;
     }
 
-    .oven-hero {
+    .hotw-hero {
         padding-top: var(--spacing-3xl);
     }
 
-    .oven-gallery-swiper .swiper-slide img {
+    .hotw-gallery-swiper .swiper-slide img {
         height: 200px;
     }
 
-    .oven-hero {
+    .hotw-hero {
         aspect-ratio: unset;
     }
 
-    a.oven-header__brand img {
+    a.hotw-header__brand img {
         max-width: 95px;
         height: auto;
     }
 
 
-    .oven-hero .oven-title strong,
-    .oven-section header .oven-title strong {
+    .hotw-hero .hotw-title strong,
+    .hotw-section header .hotw-title strong {
         margin: 0;
         line-height: 1;
         text-align: left;
     }
 
-    .oven-hero .oven-prose p {
+    .hotw-hero .hotw-prose p {
         margin: 0;
         max-width: 100%;
     }
 
     h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong, section#experience h2 strong {
         font-size: 55px;
-    }.oven-checklist li {
+    }.hotw-checklist li {
     margin-left: 25px;
 }
 section#experience h2 strong{
     margin: 0;
     display: block;
 }
-    .oven-home .oven-hero, .page-template-story-page .oven-hero, .page-template-menu-page .oven-hero {
+    .hotw-home .hotw-hero, .page-template-story-page .hotw-hero, .page-template-menu-page .hotw-hero {
         padding-top: 130px;
         padding-bottom: 100px;
     }section#about {
     padding-bottom: 15px;
-}.oven-wood-board {
+}.hotw-wood-board {
     aspect-ratio: unset;
     background-size: 200% 100%;
     padding: 50px 0 70px;
@@ -570,15 +570,15 @@ h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
         --font-size-xl: 16px;
     }
 
-    .oven-cta-banner__title {
+    .hotw-cta-banner__title {
         font-size: var(--font-size-3xl);
     }
 
-    .oven-cta-banner__script {
+    .hotw-cta-banner__script {
         font-size: var(--font-size-30);
     }
 
-    .oven-btn-order--sm {
+    .hotw-btn-order--sm {
         padding: 0.3rem 0.65rem;
         font-size: var(--font-size-xs);
     }

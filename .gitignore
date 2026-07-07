@@ -35,6 +35,9 @@ wp-config.php
 # htaccess
 /.htaccess
 
+# Codebase Memory MCP local cache (optional: commit .codebase-memory/graph.db.zst for team sharing)
+.codebase-memory/
+
 # All plugins
 #
 # Note: If you wish to whitelist plugins,

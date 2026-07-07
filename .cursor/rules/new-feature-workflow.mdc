@@ -1,0 +1,52 @@
+---
+description: Checklist for adding new theme features
+alwaysApply: true
+---
+
+# New Feature Workflow
+
+## New page template
+
+1. Create `{name}-page.php` with `Template Name:` header
+2. `get_header()` → `<main id="primary">` → sections → `get_footer()`
+3. Register in README.md
+4. Add body class filter in `functions.php` if needed
+
+## New section template part
+
+1. Create `template-parts/{area}/section-{name}.php`
+2. Define `$defaults` array + `wp_parse_args()` merge
+3. Add component CSS to `common.css` (`.hotw-{section}`)
+4. Add responsive tweaks to existing `@media` blocks in `responsive.css`
+5. Load via `get_template_part()` from page template
+
+## New custom post type
+
+1. Create `inc/post-type-{slug}.php`
+2. `require_once` from `functions.php`
+3. Prefix functions `hotw_register_{slug}_post_type`
+4. Flush rewrites on `after_switch_theme`
+5. Add single/archive templates when UI is needed
+
+## New CSS
+
+1. Tokens first in `variables.css`
+2. Component rules in `common.css`
+3. Breakpoints only in `responsive.css`
+
+## New JavaScript
+
+1. Add `initHotw{Feature}()` to `main.js`
+2. Call from `DOMContentLoaded`
+3. Guard selectors and library availability
+
+## New images
+
+Place in `assets/images/` with semantic names. Reference via `get_template_directory_uri()`.
+
+## Before finishing
+
+- Escape all output
+- Use `heros-on-the-water` text domain for translatable strings
+- No debug code, console.log, or hardcoded localhost URLs
+- Update README if structure changes

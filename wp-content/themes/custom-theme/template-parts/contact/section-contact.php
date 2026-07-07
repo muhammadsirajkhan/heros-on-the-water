@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 /**
  * Contact page: intro, details grid, social, map, CF7 form card.
  *
  * Pass `cf7_shortcode` from contact-page.php (from WP: Contact → Contact Forms → copy shortcode).
  * Optional wrapper: array( 'contact_defaults' => array(...) ).
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 if (!defined('ABSPATH')) {
@@ -16,69 +16,69 @@ $t_uri = get_template_directory_uri();
 
 $contact_default_args = array(
     'section_id'          => 'contact-main',
-    'section_class'       => 'oven-section oven-section--cream oven-contact',
-    'eyebrow'             => __('Black Dog Oven', 'the-black-door-oven'),
-    'title'               => __('Get In Touch With Black', 'the-black-door-oven'),
-    'title_script'        => __('Dog Oven', 'the-black-door-oven'),
-    'intro'               => __('Planning a visit, a private event, or just want to say hello? Drop us a line — we read every message and usually reply within one business day.', 'the-black-door-oven'),
-    'details_heading'     => __('Contact details:', 'the-black-door-oven'),
+    'section_class'       => 'hotw-section hotw-section--cream hotw-contact',
+    'eyebrow'             => __('Heroes on the Water', 'heros-on-the-water'),
+    'title'               => __('Get In Touch With Black', 'heros-on-the-water'),
+    'title_script'        => __('Dog Oven', 'heros-on-the-water'),
+    'intro'               => __('Planning a visit, a private event, or just want to say hello? Drop us a line — we read every message and usually reply within one business day.', 'heros-on-the-water'),
+    'details_heading'     => __('Contact details:', 'heros-on-the-water'),
     'details'             => array(
         array(
-            'label'   => __('Call us now', 'the-black-door-oven'),
+            'label'   => __('Call us now', 'heros-on-the-water'),
             'value'   => '+44 7624 230209',
             'href'    => 'tel:+447624230209',
             'icon'    => 'phone',
             'variant' => 'red',
         ),
         array(
-            'label'   => __('Address', 'the-black-door-oven'),
+            'label'   => __('Address', 'heros-on-the-water'),
             'value'   => 'E Quay, Peel, Isle of Man IM5 1AR, Isle of Man',
             'href'    => 'https://maps.google.com/?q=E+Quay+Peel+Isle+of+Man',
             'icon'    => 'location',
             'variant' => 'orange',
         ),
         array(
-            'label'   => __('Email us on', 'the-black-door-oven'),
+            'label'   => __('Email us on', 'heros-on-the-water'),
             'value'   => 'Info@BDO.com',
             'href'    => 'mailto:Info@BDO.com',
             'icon'    => 'mail',
             'variant' => 'red',
         ),
         array(
-            'label'   => __('Timing', 'the-black-door-oven'),
-            'value'   => __('08:00 AM - to - 06:00 PM', 'the-black-door-oven'),
+            'label'   => __('Timing', 'heros-on-the-water'),
+            'value'   => __('08:00 AM - to - 06:00 PM', 'heros-on-the-water'),
             'href'    => '',
             'icon'    => 'clock',
             'variant' => 'orange',
         ),
     ),
-    'social_heading'      => __('Follow us on:', 'the-black-door-oven'),
+    'social_heading'      => __('Follow us on:', 'heros-on-the-water'),
     'social_links'        => array(
         array(
-            'label' => __('Facebook', 'the-black-door-oven'),
+            'label' => __('Facebook', 'heros-on-the-water'),
             'url'   => 'https://www.facebook.com/',
             'img'   => $t_uri . '/assets/images/fb.png',
         ),
         array(
-            'label' => __('Instagram', 'the-black-door-oven'),
+            'label' => __('Instagram', 'heros-on-the-water'),
             'url'   => 'https://www.instagram.com/',
             'img'   => $t_uri . '/assets/images/insta.png',
         ),
         array(
-            'label' => __('YouTube', 'the-black-door-oven'),
+            'label' => __('YouTube', 'heros-on-the-water'),
             'url'   => 'https://www.youtube.com/',
             'img'   => $t_uri . '/assets/images/youtube.png',
         ),
     ),
-    'map_heading'         => __('Location in map:', 'the-black-door-oven'),
+    'map_heading'         => __('Location in map:', 'heros-on-the-water'),
     'map_image'           => $t_uri . '/assets/images/third-1.png',
-    'map_image_alt'       => __('Map showing Black Dog Oven location', 'the-black-door-oven'),
+    'map_image_alt'       => __('Map showing Heroes on the Water location', 'heros-on-the-water'),
     'map_link'            => 'https://maps.google.com/?q=E+Quay+Peel+Isle+of+Man+IM5+1AR',
-    'form_eyebrow'        => __('Black Dog Oven', 'the-black-door-oven'),
-    'form_title'          => __('Fill your details', 'the-black-door-oven'),
+    'form_eyebrow'        => __('Heroes on the Water', 'heros-on-the-water'),
+    'form_title'          => __('Fill your details', 'heros-on-the-water'),
     'logo_src'            => $t_uri . '/assets/images/header-logo.png',
-    'logo_alt'            => __('Black Dog Oven', 'the-black-door-oven'),
-    'cf7_shortcode'       => '',
+    'logo_alt'            => __('Heroes on the Water', 'heros-on-the-water'),
+    'cf7_shortcode'       => '[contact-form-7 id="71bce2e" title="Contact form Page" html_class="hotw-cf7"]',
 );
 
 $passed = array();
@@ -109,25 +109,25 @@ $icon_svgs = array(
 <section class="<?php echo esc_attr($c['section_class']); ?>" id="<?php echo esc_attr($c['section_id']); ?>"
     aria-labelledby="<?php echo esc_attr($c['section_id']); ?>-title">
     <div class="container py-lg-2">
-        <header class="oven-contact__head text-center mx-auto mb-4 mb-lg-5">
-            <p class="oven-contact__eyebrow"><?php echo esc_html($c['eyebrow']); ?></p>
-            <h1 class="oven-title oven-contact__title mb-0" id="<?php echo esc_attr($c['section_id']); ?>-title">
+        <header class="hotw-contact__head text-center mx-auto mb-4 mb-lg-5">
+            <p class="hotw-contact__eyebrow"><?php echo esc_html($c['eyebrow']); ?></p>
+            <h1 class="hotw-title hotw-contact__title mb-0" id="<?php echo esc_attr($c['section_id']); ?>-title">
                 <?php echo esc_html($c['title']); ?>
             </h1>
-            <span class="oven-script oven-contact__script" aria-hidden="true"><?php echo esc_html($c['title_script']); ?></span>
-            <div class="oven-prose oven-contact__intro mx-auto mt-4">
+            <span class="hotw-script hotw-contact__script" aria-hidden="true"><?php echo esc_html($c['title_script']); ?></span>
+            <div class="hotw-prose hotw-contact__intro mx-auto mt-4">
                 <p><?php echo esc_html($c['intro']); ?></p>
             </div>
         </header>
 
         <div class="row justify-content-between g-4 g-lg-5 align-items-start">
             <div class="col-lg-6">
-                <div class="oven-contact-aside">
-                    <section class="oven-contact-block" aria-labelledby="<?php echo esc_attr($c['section_id']); ?>-details-h">
-                        <h2 class="oven-contact-block__title" id="<?php echo esc_attr($c['section_id']); ?>-details-h">
+                <div class="hotw-contact-aside">
+                    <section class="hotw-contact-block" aria-labelledby="<?php echo esc_attr($c['section_id']); ?>-details-h">
+                        <h2 class="hotw-contact-block__title" id="<?php echo esc_attr($c['section_id']); ?>-details-h">
                             <?php echo esc_html($c['details_heading']); ?>
                         </h2>
-                        <ul class="oven-contact-details list-unstyled mb-0">
+                        <ul class="hotw-contact-details list-unstyled mb-0">
                             <?php foreach ($c['details'] as $row) : ?>
                                 <?php
                                 $icon = isset($row['icon']) ? (string) $row['icon'] : 'phone';
@@ -136,24 +136,24 @@ $icon_svgs = array(
                                 $href = isset($row['href']) ? (string) $row['href'] : '';
                                 $tag  = $href !== '' ? 'a' : 'div';
                                 ?>
-                                <li class="oven-contact-details__item">
+                                <li class="hotw-contact-details__item">
                                     <?php if ($tag === 'a') : ?>
-                                        <a class="oven-contact-details__link" href="<?php echo esc_url($href); ?>"
+                                        <a class="hotw-contact-details__link" href="<?php echo esc_url($href); ?>"
                                             <?php echo preg_match('#^https?://#i', $href) ? 'rel="noopener noreferrer" target="_blank"' : ''; ?>>
-                                            <span class="oven-contact-details__icon oven-contact-details__icon--<?php echo esc_attr($var); ?>"
+                                            <span class="hotw-contact-details__icon hotw-contact-details__icon--<?php echo esc_attr($var); ?>"
                                                 aria-hidden="true"><?php echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- inline SVG icons. ?></span>
-                                            <span class="oven-contact-details__body">
-                                                <span class="oven-contact-details__label"><?php echo esc_html($row['label'] ?? ''); ?></span>
-                                                <span class="oven-contact-details__value"><?php echo esc_html($row['value'] ?? ''); ?></span>
+                                            <span class="hotw-contact-details__body">
+                                                <span class="hotw-contact-details__label"><?php echo esc_html($row['label'] ?? ''); ?></span>
+                                                <span class="hotw-contact-details__value"><?php echo esc_html($row['value'] ?? ''); ?></span>
                                             </span>
                                         </a>
                                     <?php else : ?>
-                                        <div class="oven-contact-details__link">
-                                            <span class="oven-contact-details__icon oven-contact-details__icon--<?php echo esc_attr($var); ?>"
+                                        <div class="hotw-contact-details__link">
+                                            <span class="hotw-contact-details__icon hotw-contact-details__icon--<?php echo esc_attr($var); ?>"
                                                 aria-hidden="true"><?php echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- inline SVG icons. ?></span>
-                                            <span class="oven-contact-details__body">
-                                                <span class="oven-contact-details__label"><?php echo esc_html($row['label'] ?? ''); ?></span>
-                                                <span class="oven-contact-details__value"><?php echo esc_html($row['value'] ?? ''); ?></span>
+                                            <span class="hotw-contact-details__body">
+                                                <span class="hotw-contact-details__label"><?php echo esc_html($row['label'] ?? ''); ?></span>
+                                                <span class="hotw-contact-details__value"><?php echo esc_html($row['value'] ?? ''); ?></span>
                                             </span>
                                         </div>
                                     <?php endif; ?>
@@ -162,28 +162,28 @@ $icon_svgs = array(
                         </ul>
                     </section>
 
-                    <section class="oven-contact-block" aria-labelledby="<?php echo esc_attr($c['section_id']); ?>-social-h">
-                        <h2 class="oven-contact-block__title" id="<?php echo esc_attr($c['section_id']); ?>-social-h">
+                    <section class="hotw-contact-block" aria-labelledby="<?php echo esc_attr($c['section_id']); ?>-social-h">
+                        <h2 class="hotw-contact-block__title" id="<?php echo esc_attr($c['section_id']); ?>-social-h">
                             <?php echo esc_html($c['social_heading']); ?>
                         </h2>
-                        <ul class="oven-contact-social list-unstyled d-flex flex-wrap gap-3 mb-0">
+                        <ul class="hotw-contact-social list-unstyled d-flex flex-wrap gap-3 mb-0">
                             <?php foreach ($c['social_links'] as $soc) : ?>
                                 <li>
-                                    <a class="oven-contact-social__link" href="<?php echo esc_url($soc['url'] ?? '#'); ?>"
+                                    <a class="hotw-contact-social__link" href="<?php echo esc_url($soc['url'] ?? '#'); ?>"
                                         rel="noopener noreferrer" target="_blank">
-                                        <span class="oven-contact-social__img-wrap">
+                                        <span class="hotw-contact-social__img-wrap">
                                             <img src="<?php echo esc_url($soc['img'] ?? ''); ?>"
                                                 alt="" width="40" height="40" loading="lazy" decoding="async">
                                         </span>
-                                        <span class="oven-contact-social__label"><?php echo esc_html($soc['label'] ?? ''); ?></span>
+                                        <span class="hotw-contact-social__label"><?php echo esc_html($soc['label'] ?? ''); ?></span>
                                     </a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
                     </section>
 
-                    <section class="oven-contact-block oven-contact-block--last" aria-labelledby="<?php echo esc_attr($c['section_id']); ?>-map-h">
-                        <h2 class="oven-contact-block__title" id="<?php echo esc_attr($c['section_id']); ?>-map-h">
+                    <section class="hotw-contact-block hotw-contact-block--last" aria-labelledby="<?php echo esc_attr($c['section_id']); ?>-map-h">
+                        <h2 class="hotw-contact-block__title" id="<?php echo esc_attr($c['section_id']); ?>-map-h">
                             <?php echo esc_html($c['map_heading']); ?>
                         </h2>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2332.5416318543184!2d-4.697592900000001!3d54.2236021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48639364f5597bbf%3A0xbe2069d935277901!2sBlack%20Dog%20Oven!5e0!3m2!1sen!2s!4v1777360960863!5m2!1sen!2s" width="100%" height="264" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -192,18 +192,23 @@ $icon_svgs = array(
             </div>
 
             <div class="col-lg-5 col-12">
-                <div class="oven-contact-form-card"style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/form-background.png');">
-                    <div class="oven-contact-form-card__cap" aria-hidden="true"></div>
-                    <div class="oven-contact-form-card__logo-wrap">
-                        <img class="oven-contact-form-card__logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/form-logo.png"
+                <div class="hotw-contact-form-card"style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/form-background.png');">
+                    <div class="hotw-contact-form-card__cap" aria-hidden="true"></div>
+                    <div class="hotw-contact-form-card__logo-wrap">
+                        <img class="hotw-contact-form-card__logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/form-logo.png"
                             alt="<?php echo esc_attr($c['logo_alt']); ?>" width="96" height="96" loading="lazy" decoding="async">
                     </div>
-                    <div class="oven-contact-form-card__inner">
-                        <h2 class="oven-contact-form-card__title"><?php echo esc_html($c['form_title']); ?></h2>
-                        <p class="oven-contact-form-card__eyebrow"><?php echo esc_html($c['form_eyebrow']); ?></p>
+                    <div class="hotw-contact-form-card__inner">
+                        <h2 class="hotw-contact-form-card__title"><?php echo esc_html($c['form_title']); ?></h2>
+                        <p class="hotw-contact-form-card__eyebrow"><?php echo esc_html($c['form_eyebrow']); ?></p>
 
-                        <div class="oven-contact-form-card__cf7">
-                            <?php echo do_shortcode('[contact-form-7 id="71bce2e" title="Contact form Page"]'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CF7 shortcode. ?>
+                        <div class="hotw-contact-form-card__cf7">
+                            <?php
+                            $cf7_shortcode = ! empty($c['cf7_shortcode'])
+                                ? (string) $c['cf7_shortcode']
+                                : '[contact-form-7 id="71bce2e" title="Contact form Page" html_class="hotw-cf7"]';
+                            echo do_shortcode($cf7_shortcode); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CF7 shortcode.
+                            ?>
                         
 
                         </div>

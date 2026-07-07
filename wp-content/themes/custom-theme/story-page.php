@@ -1,10 +1,10 @@
-<?php
+﻿<?php
 /**
  * Story page — wood-fired pizza slider and live events layout.
  *
  * Template Name: Story Page
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 defined('ABSPATH') || exit;
@@ -12,20 +12,20 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 
-<main id="primary" class="site-main oven-main oven-story">
+<main id="primary" class="site-main hotw-main hotw-story">
     <?php
 
 //     $story_hero = array(
 //         'section_id' => 'top',
-//         'section_class' => 'oven-hero oven-torn-bottom--white',
-//         'aria_label' => __('Hero', 'the-black-door-oven'),
-//         'eyebrow' => __('Wood-Fired Pizza. Good Music. Great Company.', 'the-black-door-oven'),
+//         'section_class' => 'hotw-hero hotw-torn-bottom--white',
+//         'aria_label' => __('Hero', 'heros-on-the-water'),
+//         'eyebrow' => __('Wood-Fired Pizza. Good Music. Great Company.', 'heros-on-the-water'),
 //         'title' => __('Fresh Pizza
-// Friendly', 'the-black-door-oven'),
-//         'title_strong' => __('Vibes.', 'the-black-door-oven'),
-//         'description' => __('Welcome to Black Dog Oven  a family-run pizza venue where great food, local music, and a warm community.
+// Friendly', 'heros-on-the-water'),
+//         'title_strong' => __('Vibes.', 'heros-on-the-water'),
+//         'description' => __('Welcome to Heroes on the Water  a family-run pizza venue where great food, local music, and a warm community.
 
-//  atmosphere come together.', 'the-black-door-oven'),
+//  atmosphere come together.', 'heros-on-the-water'),
 //         'bg' => array(
 //             'src' => get_template_directory_uri() . '/assets/images/story-banner.png',
 //             'alt' => '',

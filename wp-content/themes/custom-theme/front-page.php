@@ -2,7 +2,7 @@
 /**
  * Front page: static Page uses its assigned template; latest-posts home uses home.php.
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 defined('ABSPATH') || exit;

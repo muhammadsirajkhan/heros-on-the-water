@@ -1,15 +1,15 @@
-<?php
+﻿<?php
 /**
  * Shared site footer and closing HTML.
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 ?>
-<?php if (is_home() || is_front_page() || is_page(30) || is_page(34)): ?>
+<?php if (is_home() || is_front_page() || is_page_template('book-page.php') || is_page_template('contact-page.php')): ?>
 
 <?php else: ?>
     <?php get_template_part('template-parts/home/section', 'cta'); ?>
@@ -17,50 +17,46 @@ if (!defined('ABSPATH')) {
 
 </main>
 
-<footer class="oven-footer" id="contact" role="contentinfo"
+<footer class="hotw-footer" id="contact" role="contentinfo"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/footer-bg.png');">
-    <div class="oven-footer__inner">
+    <div class="hotw-footer__inner">
         <div class="container">
             <?php if (is_active_sidebar('footer-main')): ?>
-                <div class="oven-footer__widgets row justify-content-center mb-4">
+                <div class="hotw-footer__widgets row justify-content-center mb-4">
                     <div class="col-lg-10">
                         <?php dynamic_sidebar('footer-main'); ?>
                     </div>
                 </div>
             <?php endif; ?>
 
-            <div class="oven-footer__logo text-center mb-4">
+            <div class="hotw-footer__logo text-center mb-4">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-logo.png"
-                    alt="The Black Door Oven" class="img-fluid">
+                    alt="Heroes on the Water" class="img-fluid">
             </div>
 
-            <div class="oven-footer__mission text-center oven-prose oven-prose--on-dark mx-auto mb-lg-5 mb-4">
-                <p>At Black Dog Oven, we believe that the best moments in life happen around great food. Our family-run
-                    venue brings together handcrafted wood-fired pizzas, refreshing drinks, and live local music to
-                    create a relaxed and welcoming place for everyone.Whether you're joining us for a casual dinner,
-                    meeting friends for drinks, or enjoying an evening of live music, we aim to make every visit
-                    memorable.</p>
+            <div class="hotw-footer__mission text-center hotw-prose hotw-prose--on-dark mx-auto mb-lg-5 mb-4">
+                <p><?php esc_html_e('Heroes on the Water brings veterans, service members, and their families together through kayak fishing and the healing power of nature. Every outing is a chance to connect, decompress, and build community on the water.', 'heros-on-the-water'); ?></p>
             </div>
 
 
 
             <?php if (is_active_sidebar('footer-bottom')): ?>
-                <div class="oven-footer__widgets-bottom text-center mb-3">
+                <div class="hotw-footer__widgets-bottom text-center mb-3">
                     <?php dynamic_sidebar('footer-bottom'); ?>
                 </div>
             <?php endif; ?>
 
-            <div class="oven-footer__bottom row align-items-center mb-lg-5 mb-4">
+            <div class="hotw-footer__bottom row align-items-center mb-lg-5 mb-4">
                 <div class="col-md-8 text-center text-md-start small">
-                    <nav class="oven-footer__nav"
-                        aria-label="<?php esc_attr_e('Footer menu', 'the-black-door-oven'); ?>">
+                    <nav class="hotw-footer__nav"
+                        aria-label="<?php esc_attr_e('Footer menu', 'heros-on-the-water'); ?>">
                         <?php
                         wp_nav_menu(
                             array(
                                 'theme_location' => 'footer',
                                 'container' => false,
-                                'menu_class' => 'oven-footer__menu',
-                                'fallback_cb' => 'oven_fallback_nav_footer',
+                                'menu_class' => 'hotw-footer__menu',
+                                'fallback_cb' => 'hotw_fallback_nav_footer',
                             )
                         );
                         ?>
@@ -69,26 +65,26 @@ if (!defined('ABSPATH')) {
                 </div>
                 <div class="col-md-4 text-center text-md-end">
                     <div
-                        class="oven-footer__social-icons d-inline-flex align-items-center justify-content-center justify-content-md-end">
-                        <a class="oven-social-icon" href="#"
-                            aria-label="<?php esc_attr_e('Instagram', 'the-black-door-oven'); ?>">
+                        class="hotw-footer__social-icons d-inline-flex align-items-center justify-content-center justify-content-md-end">
+                        <a class="hotw-social-icon" href="#"
+                            aria-label="<?php esc_attr_e('Instagram', 'heros-on-the-water'); ?>">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/f1.png" alt="facebook"
                                 class="img-fluid">
                         </a>
-                        <a class="oven-social-icon" href="#"
-                            aria-label="<?php esc_attr_e('Facebook', 'the-black-door-oven'); ?>">
+                        <a class="hotw-social-icon" href="#"
+                            aria-label="<?php esc_attr_e('Facebook', 'heros-on-the-water'); ?>">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/f2.png" alt="facebook"
                                 class="img-fluid">
 
                         </a>
-                        <a class="oven-social-icon" href="#"
-                            aria-label="<?php esc_attr_e('Facebook', 'the-black-door-oven'); ?>">
+                        <a class="hotw-social-icon" href="#"
+                            aria-label="<?php esc_attr_e('Facebook', 'heros-on-the-water'); ?>">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/f3.png" alt="facebook"
                                 class="img-fluid">
 
                         </a>
-                        <a class="oven-social-icon" href="#"
-                            aria-label="<?php esc_attr_e('Facebook', 'the-black-door-oven'); ?>">
+                        <a class="hotw-social-icon" href="#"
+                            aria-label="<?php esc_attr_e('Facebook', 'heros-on-the-water'); ?>">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/f4.png" alt="facebook"
                                 class="img-fluid">
 
@@ -98,7 +94,7 @@ if (!defined('ABSPATH')) {
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <div class="copyright">© 2026 Black Dog Oven. All Rights Reserved.</div>
+                    <div class="copyright"><?php echo esc_html(sprintf(__('© %s Heroes on the Water. All Rights Reserved.', 'heros-on-the-water'), gmdate('Y'))); ?></div>
                 </div>
             </div>
         </div>

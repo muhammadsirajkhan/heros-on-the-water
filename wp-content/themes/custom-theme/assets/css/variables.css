@@ -1,31 +1,31 @@
-/* Design tokens — The Black Door Oven / pizzeria landing */
+﻿/* Design tokens — Heroes on the Water */
 :root {
     /* Brand colors (design reference) */
-    --oven-forest: #1e392a;
-    --oven-orange: #ff6600;
-    --oven-red: #c00000;
-    --oven-cream: #fff9e2;
-    --oven-white: #ffffff;
-    --oven-black: #111111;
-    --oven-muted: #5c5c5c;
-    --oven-wood: #2a241c;
+    --hotw-forest: #1e392a;
+    --hotw-orange: #ff6600;
+    --hotw-red: #c00000;
+    --hotw-cream: #fff9e2;
+    --hotw-white: #ffffff;
+    --hotw-black: #111111;
+    --hotw-muted: #5c5c5c;
+    --hotw-wood: #2a241c;
 
     /* Semantic aliases */
-    --oven-cta: var(--oven-orange);
-    --primary-color: var(--oven-orange);
-    --secondary-color: var(--oven-forest);
-    --accent-color: var(--oven-orange);
-    --text-light: var(--oven-white);
-    --text-dark: var(--oven-black);
-    --text-muted: var(--oven-muted);
-    --background-dark: var(--oven-forest);
-    --background-light: var(--oven-white);
+    --hotw-cta: var(--hotw-orange);
+    --primary-color: var(--hotw-orange);
+    --secondary-color: var(--hotw-forest);
+    --accent-color: var(--hotw-orange);
+    --text-light: var(--hotw-white);
+    --text-dark: var(--hotw-black);
+    --text-muted: var(--hotw-muted);
+    --background-dark: var(--hotw-forest);
+    --background-light: var(--hotw-white);
     --border-color: rgba(30, 57, 42, 0.12);
     --success-color: #27ae60;
     --warning-color: #ffc107;
     --danger-color: #e74c3c;
-    --brand-teal: var(--oven-forest);
-    --footer-bg: var(--oven-forest);
+    --brand-teal: var(--hotw-forest);
+    --footer-bg: var(--hotw-forest);
 
     /**
      * Typography — local: Bebas Neue + Lil Stuart (see assets/fonts/stylesheet.css).
@@ -107,14 +107,14 @@
     --header-height: 80px;
     --header-bg: transparent;
     --navbar-brand-font-size: var(--font-size-lg);
-    --footer-text: var(--oven-white);
-    --btn-primary-bg: var(--oven-orange);
+    --footer-text: var(--hotw-white);
+    --btn-primary-bg: var(--hotw-orange);
     --btn-primary-hover: #cf6a2e;
     --btn-secondary-bg: transparent;
-    --btn-secondary-border: var(--oven-white);
-    --input-bg: var(--oven-white);
+    --btn-secondary-border: var(--hotw-white);
+    --input-bg: var(--hotw-white);
     --input-border: #404040;
-    --input-focus-border: var(--oven-orange);
+    --input-focus-border: var(--hotw-orange);
     --input-focus-shadow: 0 0 0 0.2rem rgba(232, 125, 62, 0.25);
 }
 

@@ -1,10 +1,10 @@
-<?php
+﻿<?php
 /**
  * Home landing template (static Phase 1; ACF-ready structure).
  *
  * Template Name: Home Page
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  */
 
 defined('ABSPATH') || exit;
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 
-<main id="primary" class="site-main oven-main">
+<main id="primary" class="site-main hotw-main">
 
     <?php get_template_part('template-parts/home/section', 'hero'); ?>
     <?php get_template_part('template-parts/home/section', 'purpose'); ?>

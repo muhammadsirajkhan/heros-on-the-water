@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 /**
  * Story: live events — asymmetric grid + bottom two-column row.
  *
  * Configurable via get_template_part() third argument ($args).
  * Optional wrapper: array( 'events_live_defaults' => $your_array ).
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  *
  * @example Default (story / same as built-in defaults):
  *   get_template_part( 'template-parts/story/section', 'events-live' );
@@ -23,42 +23,42 @@ if (!defined('ABSPATH')) {
 
 $events_live_default_args = array(
     'section_id' => 'story-events',
-    'section_class' => 'oven-section position-relative overflow-hidden',
+    'section_class' => 'hotw-section position-relative overflow-hidden',
     'images_base' => get_template_directory_uri() . '/assets/images/',
     'background_image' => 'event-bg.png',
     'card_bg_featured' => 'left.png',
     'card_bg_stacked' => 'right.png',
     'ribbon_image' => 'ribbon.png',
-    'eyebrow' => __('Live music events', 'the-black-door-oven'),
-    'title' => __("What's on at", 'the-black-door-oven'),
-    'venue_name' => __('Black Dog Oven', 'the-black-door-oven'),
+    'eyebrow' => __('Live music events', 'heros-on-the-water'),
+    'title' => __("What's on at", 'heros-on-the-water'),
+    'venue_name' => __('Heroes on the Water', 'heros-on-the-water'),
     'featured' => array(
-        'title' => __('Acoustic Sessions', 'the-black-door-oven'),
-        'date' => __('24 Aug', 'the-black-door-oven'),
-        'time' => __('Sat · 7:00 PM – 10:00 PM', 'the-black-door-oven'),
-        'excerpt' => __('Local songwriters and stripped-back sets on the terrace — bring a blanket and your favourite slice.', 'the-black-door-oven'),
+        'title' => __('Acoustic Sessions', 'heros-on-the-water'),
+        'date' => __('24 Aug', 'heros-on-the-water'),
+        'time' => __('Sat · 7:00 PM – 10:00 PM', 'heros-on-the-water'),
+        'excerpt' => __('Local songwriters and stripped-back sets on the terrace — bring a blanket and your favourite slice.', 'heros-on-the-water'),
         'seed' => 'event-1.png',
         'more_url' => home_url('/'),
-        'more_label' => __('More info', 'the-black-door-oven'),
+        'more_label' => __('More info', 'heros-on-the-water'),
     ),
     'stacked' => array(
         array(
-            'title' => __('Jazz & Bubbles', 'the-black-door-oven'),
-            'date' => __('12 Sep', 'the-black-door-oven'),
-            'time' => __('Fri · 6:30 PM – 9:00 PM', 'the-black-door-oven'),
-            'excerpt' => __('Brass, bass, and wood-fired aromas under string lights.', 'the-black-door-oven'),
+            'title' => __('Jazz & Bubbles', 'heros-on-the-water'),
+            'date' => __('12 Sep', 'heros-on-the-water'),
+            'time' => __('Fri · 6:30 PM – 9:00 PM', 'heros-on-the-water'),
+            'excerpt' => __('Brass, bass, and wood-fired aromas under string lights.', 'heros-on-the-water'),
             'seed' => 'event-2.png',
         ),
         array(
-            'title' => __('Family Pizza & Vinyl', 'the-black-door-oven'),
-            'date' => __('03 Oct', 'the-black-door-oven'),
-            'time' => __('Sun · 4:00 PM – 7:00 PM', 'the-black-door-oven'),
-            'excerpt' => __('All-ages afternoon: classic pies and crate-digging on the deck.', 'the-black-door-oven'),
+            'title' => __('Family Pizza & Vinyl', 'heros-on-the-water'),
+            'date' => __('03 Oct', 'heros-on-the-water'),
+            'time' => __('Sun · 4:00 PM – 7:00 PM', 'heros-on-the-water'),
+            'excerpt' => __('All-ages afternoon: classic pies and crate-digging on the deck.', 'heros-on-the-water'),
             'seed' => 'event-3.png',
         ),
     ),
-    'footer_paragraph' => __('Follow the oven on socials for line-up drops, ticket links, and one-off collaborations with island artists.', 'the-black-door-oven'),
-    'cta_label' => __('View more events', 'the-black-door-oven'),
+    'footer_paragraph' => __('Follow Heroes on the Water on social media for event updates, volunteer opportunities, and community stories.', 'heros-on-the-water'),
+    'cta_label' => __('View more events', 'heros-on-the-water'),
     'cta_url' => home_url('/'),
 );
 
@@ -107,36 +107,36 @@ $featured_more_label = isset($featured['more_label']) && $featured['more_label']
     id="<?php echo esc_attr($events_live['section_id']); ?>"
     style="background-image: url('<?php echo esc_url_raw($ev_asset_url($events_live['background_image'])); ?>');">
     <div class="container position-relative">
-        <header class="oven-story-head oven-story-head--live text-center mb-4 mb-lg-5">
-            <p class="oven-kicker oven-story-live__eyebrow"><?php echo esc_html($events_live['eyebrow']); ?></p>
-            <h2 class="oven-title oven-story-live__title mb-0">
-                <?php echo esc_html($events_live['title']); ?> <strong>Black Dog Oven</strong>
+        <header class="hotw-story-head hotw-story-head--live text-center mb-4 mb-lg-5">
+            <p class="hotw-kicker hotw-story-live__eyebrow"><?php echo esc_html($events_live['eyebrow']); ?></p>
+            <h2 class="hotw-title hotw-story-live__title mb-0">
+                <?php echo esc_html($events_live['title']); ?> <strong>Heroes on the Water</strong>
             </h2>
-            <!-- <span class="oven-story-live__name"><?php echo esc_html($events_live['venue_name']); ?></span> -->
+            <!-- <span class="hotw-story-live__name"><?php echo esc_html($events_live['venue_name']); ?></span> -->
         </header>
 
         <div class="row g-4 g-lg-4 mb-4 mb-lg-5 align-items-stretch event-row">
             <div class="col-lg-5">
-                <article class="oven-story-event-card oven-story-event-card--featured h-100"
+                <article class="hotw-story-event-card hotw-story-event-card--featured h-100"
                     style="background-image: url('<?php echo esc_url_raw($ev_asset_url($events_live['card_bg_featured'])); ?>');">
-                    <div class="oven-story-event-card__media oven-story-event-card__media--featured">
-                        <div class="oven-story-event-card__circle">
+                    <div class="hotw-story-event-card__media hotw-story-event-card__media--featured">
+                        <div class="hotw-story-event-card__circle">
                             <img src="<?php echo esc_url_raw($ev_asset_url($featured['seed'])); ?>" alt="" width="720" height="720"
                                 loading="lazy" decoding="async">
                         </div>
                     </div>
-                    <div class="oven-story-event-card__ribbon" aria-hidden="true"
+                    <div class="hotw-story-event-card__ribbon" aria-hidden="true"
                         style="background-image: url('<?php echo esc_url_raw($ev_asset_url($events_live['ribbon_image'])); ?>');">
                         <span><?php echo esc_html($featured['date']); ?></span>
                     </div>
-                    <div class="oven-story-event-card__body">
-                        <h3 class="oven-story-event-card__title"><?php echo esc_html($featured['title']); ?></h3>
-                        <p class="oven-story-event-card__time">
-                            <span class="oven-story-event-card__time-icon" aria-hidden="true"></span>
+                    <div class="hotw-story-event-card__body">
+                        <h3 class="hotw-story-event-card__title"><?php echo esc_html($featured['title']); ?></h3>
+                        <p class="hotw-story-event-card__time">
+                            <span class="hotw-story-event-card__time-icon" aria-hidden="true"></span>
                             <span><?php echo esc_html($featured['time']); ?></span>
                         </p>
-                        <p class="oven-story-event-card__excerpt"><?php echo esc_html($featured['excerpt']); ?></p>
-                        <a class="blob-button oven-story-event-card__btn"
+                        <p class="hotw-story-event-card__excerpt"><?php echo esc_html($featured['excerpt']); ?></p>
+                        <a class="blob-button hotw-story-event-card__btn"
                             href="<?php echo esc_url($featured_more_url); ?>"><?php echo esc_html($featured_more_label); ?></a>
                     </div>
                 </article>
@@ -159,27 +159,27 @@ $featured_more_label = isset($featured['more_label']) && $featured['more_label']
                             ? $event['more_label']
                             : $events_live_default_args['featured']['more_label'];
                         ?>
-                    <article class="oven-story-event-card oven-story-event-card--compact flex-grow-1"
+                    <article class="hotw-story-event-card hotw-story-event-card--compact flex-grow-1"
                         style="background-image: url('<?php echo esc_url_raw($ev_asset_url($events_live['card_bg_stacked'])); ?>');">
-                        <div class="oven-story-event-card__ribbon" aria-hidden="true"
+                        <div class="hotw-story-event-card__ribbon" aria-hidden="true"
                             style="background-image: url('<?php echo esc_url_raw($ev_asset_url($events_live['ribbon_image'])); ?>');">
                             <span><?php echo esc_html($event['date']); ?></span>
                         </div>
-                        <div class="oven-story-event-card__compact-inner">
-                            <div class="oven-story-event-card__media oven-story-event-card__media--sm">
-                                <div class="oven-story-event-card__circle">
+                        <div class="hotw-story-event-card__compact-inner">
+                            <div class="hotw-story-event-card__media hotw-story-event-card__media--sm">
+                                <div class="hotw-story-event-card__circle">
                                     <img src="<?php echo esc_url_raw($ev_asset_url($event['seed'])); ?>" alt="" width="400"
                                         height="400" loading="lazy" decoding="async">
                                 </div>
                             </div>
-                            <div class="oven-story-event-card__body">
-                                <h3 class="oven-story-event-card__title"><?php echo esc_html($event['title']); ?></h3>
-                                <p class="oven-story-event-card__time">
-                                    <span class="oven-story-event-card__time-icon" aria-hidden="true"></span>
+                            <div class="hotw-story-event-card__body">
+                                <h3 class="hotw-story-event-card__title"><?php echo esc_html($event['title']); ?></h3>
+                                <p class="hotw-story-event-card__time">
+                                    <span class="hotw-story-event-card__time-icon" aria-hidden="true"></span>
                                     <span><?php echo esc_html($event['time']); ?></span>
                                 </p>
-                                <p class="oven-story-event-card__excerpt"><?php echo esc_html($event['excerpt']); ?></p>
-                                <a class="blob-button oven-story-event-card__btn"
+                                <p class="hotw-story-event-card__excerpt"><?php echo esc_html($event['excerpt']); ?></p>
+                                <a class="blob-button hotw-story-event-card__btn"
                                     href="<?php echo esc_url($stack_more_url); ?>"><?php echo esc_html($stack_more_label); ?></a>
                             </div>
                         </div>
@@ -189,18 +189,18 @@ $featured_more_label = isset($featured['more_label']) && $featured['more_label']
             </div>
         </div>
 
-        <div class="oven-prose text-center mx-auto mt-4 mt-lg-5 oven-story-live__footer-copy">
+        <div class="hotw-prose text-center mx-auto mt-4 mt-lg-5 hotw-story-live__footer-copy">
             <p><?php echo esc_html($events_live['footer_paragraph']); ?></p>
         </div>
         <div class="text-center mt-3">
-            <a class="blob-button oven-story-cta-red"
+            <a class="blob-button hotw-story-cta-red"
                 href="<?php echo esc_url($events_live['cta_url']); ?>"><?php echo esc_html($events_live['cta_label']); ?></a>
         </div>
     </div>
 </section>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const ribbons = document.querySelectorAll(".oven-story-event-card__ribbon span");
+    const ribbons = document.querySelectorAll(".hotw-story-event-card__ribbon span");
 
     ribbons.forEach((el) => {
         const text = el.textContent.trim();

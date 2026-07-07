@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 /**
  * Hero section (configurable via $args from get_template_part third parameter).
  *
- * @package The_Black_Door_Oven
+ * @package Heros_On_The_Water
  *
  * @example Default (home):
  *   get_template_part( 'template-parts/home/section', 'hero' );
@@ -20,12 +20,12 @@ if (!defined('ABSPATH')) {
 
 $hero_default_args = array(
     'section_id' => 'top',
-    'section_class' => 'oven-hero oven-torn-bottom--white',
-    'aria_label' => __('Hero', 'the-black-door-oven'),
-    'eyebrow' => __('Authentic wood fired pizza since 2012', 'the-black-door-oven'),
-    'title' => __('The Beginning of Pizzeria', 'the-black-door-oven'),
-    'title_strong' => __('Journey.', 'the-black-door-oven'),
-    'description' => __('From slow-fermented dough to the last ember in our oven — every night is built on tradition, fire, and the people around our table.', 'the-black-door-oven'),
+    'section_class' => 'hotw-hero hotw-torn-bottom--white',
+    'aria_label' => __('Hero', 'heros-on-the-water'),
+    'eyebrow' => __('Authentic wood fired pizza since 2012', 'heros-on-the-water'),
+    'title' => __('The Beginning of Pizzeria', 'heros-on-the-water'),
+    'title_strong' => __('Journey.', 'heros-on-the-water'),
+    'description' => __('Heroes on the Water connects veterans and families through kayak fishing, community, and time on the water.', 'heros-on-the-water'),
     'bg' => array(
         'src' => get_template_directory_uri() . '/assets/images/hero.png',
         'alt' => '',
@@ -61,17 +61,17 @@ $sub_title = $hero['sub_title'];
 $title = $hero['title'];
 $content = $hero['content'];
 ?>
-<section class="oven-hero oven-torn-bottom--white" id="top">
-    <img class="oven-hero__bg" src="<?php echo esc_url($hero['image']['url']); ?>" class="img-fluid">
-    <div class="oven-hero__overlay" aria-hidden="true"></div>
+<section class="hotw-hero hotw-torn-bottom--white" id="top">
+    <img class="hotw-hero__bg" src="<?php echo esc_url($hero['image']['url']); ?>" class="img-fluid">
+    <div class="hotw-hero__overlay" aria-hidden="true"></div>
     <div class="container py-lg-5">
         <div class="row align-items-center">
             <div class="col-xl-6">
-                <p class="oven-hero__eyebrow"><?php echo $hero['sub_title']; ?></p>
-                <h1 class="oven-title oven-title--white mb-0">
+                <p class="hotw-hero__eyebrow"><?php echo $hero['sub_title']; ?></p>
+                <h1 class="hotw-title hotw-title--white mb-0">
                     <?php echo $hero['title']; ?>
                 </h1>
-                <div class="oven-prose oven-prose--on-dark mt-4">
+                <div class="hotw-prose hotw-prose--on-dark mt-4">
                     <p><?php echo $hero['content']; ?></p>
                 </div>
             </div>
