@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Lil Stuart PERSONAL USE ONLY';
+    src: url('LilStuartPERSONALUSEONLY-Regular.woff2') format('woff2'),
+        url('LilStuartPERSONALUSEONLY-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('BebasNeue-Regular.woff2') format('woff2'),
+        url('BebasNeue-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'dramaturg_scregular';
+    src: url('dramaturgsc-webfont.woff2') format('woff2'),
+        url('dramaturgsc-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;

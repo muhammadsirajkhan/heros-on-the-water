@@ -1,0 +1,208 @@
+/* Not enqueued. Theme styles live in variables.css, common.css, responsive.css. */
+
+
+.oven-hero .oven-prose p {
+    max-width: 350px;
+    margin-top: -90px;
+}
+
+.blob-button {
+    /* Color and Typography */
+    background-color: #FF6A00;
+    /* Vibrant orange from your image */
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+
+    /* Sizing and Spacing */
+    padding: 20px 50px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+
+    /* The "Blob" Magic */
+    /* This creates the slight asymmetry seen in your image */
+    border-radius: 68% 42% 35% 105% / 95% 95% 85% 75%;
+
+    /* Animation for interaction */
+    transition: transform 0.2s ease, background-color 0.2s ease, border-radius 0.4s ease;
+    line-height: 1.2;
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+    font-weight: 400;
+}
+
+/* Hover effect to make it feel alive */
+.blob-button:hover {
+    /* background-color: #e65f00; */
+    /* transform: scale(1.05); */
+    /* border-radius: 68% 42% 35% 105% / 95% 95% 85% 75%; */
+    color: #fff;
+}
+
+/* Active/Click effect */
+.blob-button:active {
+    transform: scale(0.98);
+}
+
+.about-bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    max-width: 1891px;
+}
+
+.cta-wap {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1560/530;
+}
+
+.cta-wap h2.oven-title {
+    font-size: var(--font-size-3xl);
+    color: #fff;
+    margin-bottom: 31px;
+    letter-spacing: -1px;
+}
+
+.cta-wap header {
+    max-width: 550px;
+}
+
+.cta-wap h2.oven-title strong {
+    text-align: left;
+    color: #f7c61e;
+    font-size: var(--font-size-3xl);
+}
+
+.cta-wap header p {
+    color: #fff;
+}
+
+.items-gallery {
+    display: grid;
+    grid-template-columns: 2.1fr 1.1fr 2.1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.item-1,
+.item-3,
+.item-2,
+.item-3 .image-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-1 .image,
+.item-2 .image,
+.item-3 .image {
+    gap: 15px;
+    display: flex;
+    align-items: start;
+}
+
+.item-1 .image-1,
+.item-3 .image-1,
+.item-2 .image-1 {
+    align-items: baseline;
+}
+
+.items-gallery .image img {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+}
+
+.item-3 .image-2>img {
+    width: 61%;
+}
+
+.item-1 .image-1 img:first-child {
+    width: calc(35% - 7px);
+}
+
+.item-1 .image-1 img:last-child {
+    width: calc(65% - 7px);
+}
+
+.item-1 .image-2 img:last-child {
+    width: calc(55% - 7px);
+}
+
+.item-1 .image-2 img:first-child {
+    width: calc(45% - 7px);
+}
+
+.item-2 .image-2 img:first-child {
+    width: calc(50% - 7px);
+}
+
+.item-2 .image-2 img:last-child {
+    width: calc(50% - 7px);
+}
+
+.item-3 .image-1 img:first-child {
+    width: calc(43% - 7px);
+}
+
+.item-3 .image-1 img:last-child {
+    width: calc(57% - 7px);
+}
+
+.item-3 .image-2>img {
+    width: calc(50% - 7px);
+}
+
+.item-3 .image-4 {
+    width: 100%;
+}
+
+.item-3 .image-4 img:first-child {
+    width: calc(44% - 7px);
+}
+
+.item-3 .image-4 img:last-child {
+    width: calc(56% - 7px);
+}
+
+.item-3 .image-3 {
+    width: 50%;
+}
+
+.oven-whats-on-calendar__cell--event {
+    pointer-events: none;
+}
+
+.gallery-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-items:nth-child(6n + 3) {
+    grid-column: 3 / 4;
+    grid-row: span 2;
+}
+
+.gallery-items:nth-child(6n + 4) {
+    grid-column: 1 / 2;
+    grid-row: span 2;
+}
+
+.gallery-items:nth-child(6n + 6) {
+    grid-column: 2 / 4;
+    grid-row: span 1;
+}
+
+a.oven-header__brand img {
+    max-width: 160px;
+    height: auto;
+}

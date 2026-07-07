@@ -1,0 +1,125 @@
+/* Design tokens — The Black Door Oven / pizzeria landing */
+:root {
+    /* Brand colors (design reference) */
+    --oven-forest: #1e392a;
+    --oven-orange: #ff6600;
+    --oven-red: #c00000;
+    --oven-cream: #fff9e2;
+    --oven-white: #ffffff;
+    --oven-black: #111111;
+    --oven-muted: #5c5c5c;
+    --oven-wood: #2a241c;
+
+    /* Semantic aliases */
+    --oven-cta: var(--oven-orange);
+    --primary-color: var(--oven-orange);
+    --secondary-color: var(--oven-forest);
+    --accent-color: var(--oven-orange);
+    --text-light: var(--oven-white);
+    --text-dark: var(--oven-black);
+    --text-muted: var(--oven-muted);
+    --background-dark: var(--oven-forest);
+    --background-light: var(--oven-white);
+    --border-color: rgba(30, 57, 42, 0.12);
+    --success-color: #27ae60;
+    --warning-color: #ffc107;
+    --danger-color: #e74c3c;
+    --brand-teal: var(--oven-forest);
+    --footer-bg: var(--oven-forest);
+
+    /**
+     * Typography — local: Bebas Neue + Lil Stuart (see assets/fonts/stylesheet.css).
+     * Body: Sen from Google Fonts (linked as “San” in project brief; enqueued in functions.php).
+     */
+    --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+    --font-body: "Sen", system-ui, sans-serif;
+    --font-script: "Lil Stuart PERSONAL USE ONLY", cursive;
+    --font-1: var(--font-body);
+    --font-2: var(--font-body);
+    --font-3: var(--font-display);
+    --font-4: var(--font-script);
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 26px;
+    --font-size-28: 28px;
+    --font-size-30: 30px;
+    --font-size-36: 36px;
+    --font-size-3xl: 95px;
+    --font-size-50: 50px;
+    --font-size-4xl: 135px;
+    --font-size-5xl: 160px;
+    --font-size-6xl: 90px;
+    --font-size-7xl: 80px;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --line-height-one: 1;
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 40px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 64px;
+    --spacing-5xl: 80px;
+    --spacing-6xl: 96px;
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+    --border-radius-xl: 0.75rem;
+    --border-radius-2xl: 12px;
+    --border-radius-full: 999px;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --transition-fast: 0.15s;
+    --transition-normal: 0.3s;
+    --transition-slow: 0.5s;
+    --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    --container-sm: 540px;
+    --container-md: 720px;
+    --container-lg: 960px;
+    --container-xl: 1140px;
+    --container-xxl: 1320px;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
+    --header-height: 80px;
+    --header-bg: transparent;
+    --navbar-brand-font-size: var(--font-size-lg);
+    --footer-text: var(--oven-white);
+    --btn-primary-bg: var(--oven-orange);
+    --btn-primary-hover: #cf6a2e;
+    --btn-secondary-bg: transparent;
+    --btn-secondary-border: var(--oven-white);
+    --input-bg: var(--oven-white);
+    --input-border: #404040;
+    --input-focus-border: var(--oven-orange);
+    --input-focus-shadow: 0 0 0 0.2rem rgba(232, 125, 62, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --border-color: rgba(255, 255, 255, 0.12);
+    }
+}
