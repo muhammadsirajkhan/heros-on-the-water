@@ -35,6 +35,7 @@ get_header();
         ?>
         <p class="hotw-prose"><?php esc_html_e('No posts yet.', 'heros-on-the-water'); ?></p>
     <?php endif; ?>
+</main>
 
 <?php
 get_footer();

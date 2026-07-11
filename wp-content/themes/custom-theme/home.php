@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * Home landing template (static Phase 1; ACF-ready structure).
+ * Home landing template — navy/yellow design.
  *
  * Template Name: Home Page
  *
@@ -14,13 +14,13 @@ get_header();
 
 <main id="primary" class="site-main hotw-main">
 
-    <?php get_template_part('template-parts/home/section', 'hero'); ?>
-    <?php get_template_part('template-parts/home/section', 'purpose'); ?>
-    <?php get_template_part('template-parts/home/section', 'wood'); ?>
-    <?php get_template_part('template-parts/home/section', 'vibe'); ?>
-    <?php get_template_part('template-parts/home/section', 'faq'); ?>
-    <?php get_template_part('template-parts/home/section', 'cta'); ?>
-    <?php get_template_part('template-parts/home/section', 'gallery'); ?>
+    <?php get_template_part('template-parts/home/section', 'home-hero'); ?>
+    <?php get_template_part('template-parts/home/section', 'mission'); ?>
+    <?php get_template_part('template-parts/home/section', 'video'); ?>
+    <?php get_template_part('template-parts/home/section', 'visitors'); ?>
+    <?php get_template_part('template-parts/home/section', 'yellow-cta'); ?>
+    <?php get_template_part('template-parts/home/section', 'hours'); ?>
+    <?php get_template_part('template-parts/home/section', 'impact'); ?>
 
 </main>
 

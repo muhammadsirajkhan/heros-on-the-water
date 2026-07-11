@@ -206,6 +206,39 @@
     }h2.hotw-title {
     letter-spacing: -3px;
 }
+
+    .hotw-navbar .container {
+        max-width: 1180px;
+    }
+
+    .hotw-navbar__pill {
+        padding: 10px 28px;
+        column-gap: 12px;
+    }
+
+    .hotw-site-header .hotw-nav-list,
+    .hotw-site-header .hotw-fallback-menu {
+        gap: 8px 22px;
+    }
+
+    .hotw-site-header .hotw-nav-list a,
+    .hotw-site-header .hotw-fallback-menu a {
+        font-size: 15px;
+    }
+
+    .hotw-navbar__logo-plate {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hotw-navbar__logo {
+        width: 134px;
+        height: 134px;
+    }
+
+    .hotw-navbar__brand {
+        margin: -46px 0 -40px;
+    }
 }
 @media only screen and (min-width: 100px) and (max-width: 1199px) {
     .event-right {
@@ -336,6 +369,198 @@
         border-left: 0;
         border-top: 1px dashed rgba(92, 92, 92, 0.35);
     }
+
+    .hotw-navbar__pill {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+        min-height: 60px;
+    }
+
+    .hotw-navbar__brand {
+        margin: -40px 0 -32px;
+        order: 1;
+    }
+
+    .hotw-navbar__logo-plate {
+        width: 112px;
+        height: 112px;
+    }
+
+    .hotw-navbar__logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hotw-site-header .hotw-burger {
+        order: 2;
+        justify-self: unset;
+        grid-column: unset;
+    }
+
+    .hotw-topbar__donate {
+        min-width: 0;
+        padding: 0 14px;
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .hotw-topbar__donate-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .hotw-topbar__inner {
+        padding-left: 16px;
+    }
+
+    .hotw-site-footer__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hotw-site-footer__brand,
+    .hotw-site-footer__col,
+    .hotw-site-footer__newsletter {
+        padding: 0 0 var(--spacing-xl);
+        border-left: 0;
+    }
+
+    .hotw-site-footer__col + .hotw-site-footer__col,
+    .hotw-site-footer__brand + .hotw-site-footer__col {
+        border-left: 0;
+    }
+
+    .hotw-site-footer__mission {
+        max-width: none;
+    }
+
+    .hotw-home-hero__grid,
+    .hotw-mission__grid,
+    .hotw-hours__grid,
+    .hotw-about-info__grid,
+    .hotw-contact-v2__grid,
+    .hotw-donate-impact__grid,
+    .hotw-yellow-cta__grid,
+    .hotw-team-patrons,
+    .hotw-partner-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hotw-donate-card {
+        justify-self: stretch;
+        max-width: none;
+    }
+
+    .hotw-mission__img {
+        aspect-ratio: 16 / 11;
+        border-radius: 20px;
+    }
+
+    .hotw-mission__quote {
+        max-width: none;
+    }
+
+    .hotw-impact__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hotw-impact-card {
+        min-height: 150px;
+        gap: 20px;
+        padding: 18px;
+    }
+
+    .hotw-impact-card__num {
+        font-size: clamp(2.1rem, 5vw, 2.75rem);
+    }
+
+    .hotw-impact__cta {
+        padding: 11px 14px 11px 18px;
+        font-size: 12px;
+    }
+
+    .hotw-events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hotw-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hotw-logo-wall__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hotw-home-hero,
+    .hotw-page-hero {
+        padding-top: 140px;
+        min-height: 480px;
+    }
+
+    .hotw-home-hero {
+        padding-bottom: 0;
+        min-height: 0;
+    }
+
+    .hotw-home-hero__inner {
+        padding-bottom: 80px;
+    }
+
+    .hotw-home-hero__title {
+        max-width: 14ch;
+    }
+
+    .hotw-donate-card {
+        max-width: 420px;
+    }
+
+    .hotw-yellow-cta-wrap > .container {
+        margin-top: -80px;
+    }
+
+    .hotw-yellow-cta__aside {
+        align-items: flex-start;
+        justify-self: stretch;
+    }
+
+    .hotw-yellow-cta__actions {
+        justify-content: flex-start;
+    }
+
+    .hotw-yellow-cta__rating {
+        justify-content: flex-start;
+    }
+
+    .hotw-yellow-cta__title {
+        max-width: none;
+    }
+
+    .hotw-hours__title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    .hotw-about-info__map {
+        aspect-ratio: 4 / 3;
+        border-radius: 22px;
+        border-width: 5px;
+        max-width: 560px;
+        justify-self: center;
+        width: 100%;
+    }
+
+    .hotw-about-info__item {
+        grid-template-columns: 56px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .hotw-about-info__icon {
+        width: 46px;
+    }
+
+    .hotw-about-info__item-text {
+        max-width: none;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 767px) {
@@ -451,6 +676,174 @@
     background-size: auto 100%;
     background-position: center;
 }
+
+    .hotw-topbar__tagline,
+    .hotw-topbar__divider {
+        display: none;
+    }
+
+    .hotw-topbar__donate-text {
+        font-size: 10px;
+    }
+
+    .hotw-events-grid,
+    .hotw-impact__grid,
+    .hotw-team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hotw-impact__actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .hotw-impact__cta {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .hotw-impact__ribbon {
+        padding: 7px 28px;
+        font-size: 10px;
+    }
+
+    .hotw-impact__desc {
+        font-size: 14px;
+    }
+
+    .hotw-site-footer__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hotw-partner-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hotw-partner-card__logo {
+        margin: 0 auto;
+    }
+
+    .hotw-donate-card {
+        max-width: none;
+    }
+
+    .hotw-home-hero__actions .hotw-btn {
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+
+    .hotw-video-band {
+        padding: 48px 0;
+    }
+
+    .hotw-video-band__card {
+        border-radius: 16px;
+    }
+
+    .hotw-video-band__label {
+        top: 16px;
+        left: 18px;
+        font-size: 14px;
+    }
+
+    .hotw-visitors-card {
+        padding: 10px 10px 12px;
+        border-radius: 16px;
+    }
+
+    .hotw-visitors-card__media,
+    .hotw-visitors-card__img {
+        border-radius: 12px;
+    }
+
+    .hotw-visitors-card__meta {
+        padding: 12px 2px 0;
+        gap: 10px;
+    }
+
+    .hotw-visitors-card__btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hotw-visitors-swiper-root {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hotw-visitors__controls {
+        margin-top: 20px;
+    }
+
+    .hotw-yellow-cta-wrap {
+        padding-bottom: var(--spacing-3xl);
+    }
+
+    .hotw-yellow-cta-wrap > .container {
+        margin-top: -56px;
+    }
+
+    .hotw-yellow-cta {
+        border-radius: 20px;
+        padding: 24px 20px;
+        box-shadow: 0 8px 24px rgba(0, 11, 38, 0.1);
+    }
+
+    .hotw-yellow-cta__title {
+        font-size: clamp(1.35rem, 6vw, 1.75rem);
+        margin-bottom: 10px;
+    }
+
+    .hotw-yellow-cta__desc {
+        font-size: 14px;
+    }
+
+    .hotw-yellow-cta__actions .hotw-btn {
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+
+    .hotw-yellow-cta__rating-text {
+        white-space: normal;
+    }
+
+    .hotw-hours__desc {
+        max-width: none;
+        font-size: 14px;
+    }
+
+    .hotw-hours__row {
+        padding: 12px 0;
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .hotw-hours__day,
+    .hotw-hours__time {
+        gap: 8px;
+    }
+
+    .hotw-hours__icon svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    .hotw-about-info__list {
+        gap: var(--spacing-lg);
+    }
+
+    .hotw-about-info__map {
+        aspect-ratio: 1 / 1;
+        border-radius: 18px;
+        border-width: 4px;
+    }
+
+    .hotw-about-info__subtitle {
+        margin-bottom: var(--spacing-xl);
+        font-size: 0.95rem;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 599px) {
@@ -551,7 +944,89 @@ h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
     text-align: left;
 }
 
+    .hotw-logo-wall__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
+    .hotw-navbar {
+        margin-top: 0;
+        padding-top: 12px;
+    }
+
+    .hotw-navbar__logo-plate {
+        width: 92px;
+        height: 92px;
+    }
+
+    .hotw-navbar__logo {
+        width: 82px;
+        height: 82px;
+    }
+
+    .hotw-navbar__brand {
+        margin: -32px 0 -24px;
+    }
+
+    .hotw-home-hero,
+    .hotw-page-hero {
+        margin-top: -72px;
+        padding-top: 100px;
+        padding-bottom: 0;
+    }
+
+    .hotw-home-hero__inner {
+        padding-bottom: 72px;
+    }
+
+    .hotw-home-hero__scroll {
+        bottom: 64px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .hotw-home-hero__tag {
+        padding: 6px 14px;
+        font-size: 11px;
+    }
+
+    .hotw-donate-card__amount {
+        min-height: 70px;
+        padding: 12px 10px;
+    }
+
+    .hotw-donate-card__amount-label {
+        font-size: 16px;
+    }
+
+    .hotw-section-title {
+        font-size: 1.75rem;
+    }
+
+    .hotw-ticker {
+        padding: 12px 0;
+    }
+
+    .hotw-ticker__item {
+        font-size: 11px;
+    }
+
+    .hotw-video-band {
+        padding: 40px 0;
+    }
+
+    .hotw-video-band__card {
+        border-radius: 14px;
+    }
+
+    .hotw-video-band__label {
+        top: 14px;
+        left: 14px;
+        font-size: 13px;
+    }
+
+    .hotw-video-band__play-icon {
+        width: 56px;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 399px) {

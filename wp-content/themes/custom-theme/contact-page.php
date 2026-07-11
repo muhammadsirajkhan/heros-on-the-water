@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * Contact page — details, map, social, Contact Form 7.
+ * Contact Us page — redesigned to match mockup.
  *
  * Template Name: Contact Page
  *
@@ -11,27 +11,40 @@ defined('ABSPATH') || exit;
 
 get_header();
 
-/**
- * Paste your shortcode from WP Admin → Contact → Contact Forms.
- * Include html_class="hotw-cf7" so theme styles apply.
- *
- * Example: '[contact-form-7 id="123" title="Contact" html_class="hotw-cf7"]'
- */
-$contact_page_args = array(
+$uri = get_template_directory_uri();
+$contact_args = array(
     'cf7_shortcode' => '',
 );
 ?>
 
 <main id="primary" class="site-main hotw-main hotw-contact-page">
-    <?php get_template_part('template-parts/contact/section', 'contact', $contact_page_args); ?>
-     <?php get_template_part('template-parts/home/section', 'cta'); ?>
-    <?php get_template_part('template-parts/home/section', 'faq'); ?>
-        <style>
-            .hotw-faq .accordion-item:has(.accordion-button) {
-                background-image: url(<?php echo get_template_directory_uri(); ?>/assets/images/book/faq-book.png);
-                background-size: 100% 100%;
-            }
-        </style>
+
+    <?php
+    get_template_part(
+        'template-parts/shared/section',
+        'hero-interior',
+        array(
+            'badge'       => __('CONTACT US', 'heros-on-the-water'),
+            'title'       => __('WE\'RE HERE WHEN YOU NEED US.', 'heros-on-the-water'),
+            'description' => __('Whether you\'re interested in joining one of our activities, volunteering your time, supporting the charity, or simply have a question, we\'d love to hear from you.', 'heros-on-the-water'),
+            'bg'          => array(
+                'src' => $uri . '/assets/images/sub-banner.png',
+                'alt' => __('Contact Heroes on the Water', 'heros-on-the-water'),
+            ),
+        )
+    );
+    get_template_part('template-parts/shared/section', 'ticker');
+    get_template_part('template-parts/contact/section', 'contact-v2', $contact_args);
+    get_template_part(
+        'template-parts/shared/section',
+        'group-photo',
+        array(
+            'src' => $uri . '/assets/images/g1.png',
+            'alt' => __('Community group at Heroes on the Water', 'heros-on-the-water'),
+        )
+    );
+    ?>
+
 </main>
 
 <?php

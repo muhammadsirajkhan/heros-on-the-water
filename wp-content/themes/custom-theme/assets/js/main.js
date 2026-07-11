@@ -1,10 +1,14 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
+  initHotwTickerSwiper();
   initMobileMenu();
   initHotwPolaroidSwiper();
   initHotwGallerySwiper();
   initHotwWhatsOnViewToggle();
   initHotwVibeYoutubeModal();
   initHotwStoryPizzaSwiper();
+  initHotwVisitorsSwiper();
+  initHotwTimelineSwiper();
+  initHotwDonateWidget();
 });
 
 /**
@@ -178,31 +182,41 @@ function initHotwWhatsOnViewToggle() {
 }
 
 /**
- * Vibe section: load YouTube embed with autoplay when modal opens; clear src on close to stop playback.
+ * YouTube modals: autoplay on open; clear iframe src on close to stop/reset.
+ * Works for any .modal[data-youtube-id] with an iframe inside (home video, vibe, etc.).
  */
 function initHotwVibeYoutubeModal() {
-  const modalEl = document.getElementById("hotwVibeYoutubeModal");
-  const iframe = document.getElementById("hotwVibeYoutubeIframe");
-  if (!modalEl || !iframe) {
+  const modals = document.querySelectorAll(".modal[data-youtube-id]");
+  if (!modals.length) {
     return;
   }
 
-  const videoId = modalEl.getAttribute("data-youtube-id");
-  if (!videoId) {
-    return;
-  }
+  modals.forEach(function (modalEl) {
+    const iframe =
+      modalEl.querySelector("iframe.hotw-youtube-modal__iframe") ||
+      modalEl.querySelector("iframe");
+    if (!iframe) {
+      return;
+    }
 
-  const embedBase = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}`;
+    const videoId = modalEl.getAttribute("data-youtube-id");
+    if (!videoId) {
+      return;
+    }
 
-  modalEl.addEventListener("shown.bs.modal", function () {
-    iframe.setAttribute(
-      "src",
-      `${embedBase}?autoplay=1&rel=0&modestbranding=1`,
-    );
-  });
+    const embedBase =
+      "https://www.youtube.com/embed/" + encodeURIComponent(videoId);
 
-  modalEl.addEventListener("hidden.bs.modal", function () {
-    iframe.setAttribute("src", "");
+    modalEl.addEventListener("shown.bs.modal", function () {
+      iframe.setAttribute(
+        "src",
+        embedBase + "?autoplay=1&rel=0&modestbranding=1",
+      );
+    });
+
+    modalEl.addEventListener("hidden.bs.modal", function () {
+      iframe.setAttribute("src", "");
+    });
   });
 }
 
@@ -248,5 +262,194 @@ function initHotwStoryPizzaSwiper() {
         spaceBetween: 28,
       },
     },
+  });
+}
+
+/**
+ * Home visitors carousel — freeMode + draggable Swiper scrollbar.
+ */
+function initHotwVisitorsSwiper() {
+  const root = document.querySelector(".hotw-visitors-swiper-root");
+  if (!root || typeof window.Swiper === "undefined") {
+    return;
+  }
+
+  if (root.swiper) {
+    return;
+  }
+
+  const scrollbar = root.querySelector(".hotw-visitors__scrollbar");
+  const prev = root.querySelector(".hotw-visitors__nav--prev");
+  const next = root.querySelector(".hotw-visitors__nav--next");
+
+  new window.Swiper(root, {
+    slidesPerView: 1.25,
+    spaceBetween: 20,
+    grabCursor: true,
+    watchOverflow: false,
+    // freeMode + no loop = reliable scrollbar dragging
+    freeMode: {
+      enabled: true,
+      momentum: true,
+      momentumRatio: 0.85,
+      sticky: false,
+    },
+    scrollbar: {
+      el: scrollbar,
+      draggable: true,
+      hide: false,
+      snapOnRelease: false,
+    },
+    navigation: {
+      prevEl: prev,
+      nextEl: next,
+    },
+    breakpoints: {
+      576: { slidesPerView: 1.7, spaceBetween: 22 },
+      768: { slidesPerView: 2.2, spaceBetween: 24 },
+      992: { slidesPerView: 2.7, spaceBetween: 26 },
+      1200: { slidesPerView: 3.2, spaceBetween: 28 },
+      1400: { slidesPerView: 3.45, spaceBetween: 30 },
+    },
+  });
+}
+
+/**
+ * Journey timeline carousel with custom prev/next.
+ */
+function initHotwTimelineSwiper() {
+  const root = document.querySelector(".hotw-timeline-swiper-root");
+  if (!root || typeof Swiper === "undefined") {
+    return;
+  }
+
+  const section = root.closest(".hotw-journey-timeline");
+  const prev = section
+    ? section.querySelector(".hotw-timeline-nav__btn--prev")
+    : null;
+  const next = section
+    ? section.querySelector(".hotw-timeline-nav__btn--next")
+    : null;
+
+  new Swiper(root, {
+    slidesPerView: 1.1,
+    spaceBetween: 18,
+    grabCursor: true,
+    pagination: {
+      el: root.querySelector(".swiper-pagination"),
+      type: "progressbar",
+    },
+    navigation: {
+      prevEl: prev,
+      nextEl: next,
+    },
+    breakpoints: {
+      768: { slidesPerView: 2, spaceBetween: 22 },
+      1200: { slidesPerView: 3, spaceBetween: 28 },
+    },
+  });
+}
+
+/**
+ * Home donate widget amount / tab toggles (static UI).
+ */
+function initHotwDonateWidget() {
+  const root = document.querySelector("[data-hotw-donate-widget]");
+  if (!root) {
+    return;
+  }
+
+  const tabs = root.querySelectorAll(".hotw-donate-card__tab");
+  const amounts = root.querySelectorAll(".hotw-donate-card__amount");
+
+  const syncAmountSuffix = (mode) => {
+    amounts.forEach((btn) => {
+      const label = btn.querySelector(".hotw-donate-card__amount-label");
+      if (!label || btn.getAttribute("data-amount") === "other") {
+        return;
+      }
+      const value = btn.getAttribute("data-amount");
+      if (!value) {
+        return;
+      }
+      label.textContent =
+        mode === "once" ? "£" + value : "£" + value + "/mo";
+    });
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      tabs.forEach((t) => {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+      });
+      this.classList.add("is-active");
+      this.setAttribute("aria-selected", "true");
+      syncAmountSuffix(this.getAttribute("data-mode") || "monthly");
+    });
+  });
+
+  amounts.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      amounts.forEach((a) => a.classList.remove("is-active"));
+      this.classList.add("is-active");
+    });
+  });
+}
+
+/**
+ * Values ticker — Swiper continuous linear marquee.
+ * Always initializes (adds .swiper-initialized). Decorative; aria-hidden on root.
+ */
+function initHotwTickerSwiper() {
+  const roots = document.querySelectorAll(".hotw-ticker-swiper");
+  if (!roots.length) {
+    return;
+  }
+
+  const SwiperLib = typeof window.Swiper !== "undefined" ? window.Swiper : null;
+  if (!SwiperLib) {
+    return;
+  }
+
+  roots.forEach(function (el) {
+    if (el.swiper || el.classList.contains("swiper-initialized")) {
+      return;
+    }
+
+    const swiper = new SwiperLib(el, {
+      slidesPerView: "auto",
+      spaceBetween: 0,
+      loop: true,
+      loopAdditionalSlides: 6,
+      speed: 6000,
+      allowTouchMove: false,
+      grabCursor: false,
+      watchOverflow: false,
+      autoplay: {
+        enabled: true,
+        delay: 1,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false,
+      },
+      on: {
+        init: function (instance) {
+          if (instance.wrapperEl) {
+            instance.wrapperEl.style.transitionTimingFunction = "linear";
+          }
+          if (instance.autoplay && typeof instance.autoplay.start === "function") {
+            instance.autoplay.start();
+          }
+        },
+        setTransition: function (instance, duration) {
+          if (instance.wrapperEl && duration > 0) {
+            instance.wrapperEl.style.transitionTimingFunction = "linear";
+          }
+        },
+      },
+    });
+
+    el.classList.add("hotw-ticker-swiper--ready");
+    return swiper;
   });
 }

@@ -36,8 +36,8 @@ function hotw_enqueue_assets() {
     );
 
     wp_enqueue_style(
-        'hotw-fonts-sen',
-        'https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap',
+        'hotw-fonts-anton',
+        'https://fonts.googleapis.com/css2?family=Anton&display=swap',
         array(),
         null
     );
@@ -59,7 +59,7 @@ function hotw_enqueue_assets() {
     wp_enqueue_style(
         'hotw-variables',
         $uri . '/assets/css/variables.css',
-        array('bootstrap', 'swiper', 'hotw-fonts-local', 'hotw-fonts-sen'),
+        array('bootstrap', 'swiper', 'hotw-fonts-local', 'hotw-fonts-anton'),
         $css_ver
     );
 
@@ -237,9 +237,9 @@ add_filter('body_class', 'hotw_body_class_whats_on');
  */
 function hotw_fallback_nav_primary($args) {
     $items = array(
-        array(__('Home', 'heros-on-the-water'), home_url('/')),
-        array(__('Our Story', 'heros-on-the-water'), home_url('/our-story/')),
-        array(__('Events', 'heros-on-the-water'), home_url('/whats-on/')),
+        array(__('About Us', 'heros-on-the-water'), home_url('/about-us/')),
+        array(__('Our Journey', 'heros-on-the-water'), home_url('/our-journey/')),
+        array(__('Meet Team', 'heros-on-the-water'), home_url('/meet-the-team/')),
     );
     hotw_fallback_nav_list($items, isset($args['menu_class']) ? (string) $args['menu_class'] : '');
 }
@@ -249,9 +249,9 @@ function hotw_fallback_nav_primary($args) {
  */
 function hotw_fallback_nav_utility($args) {
     $items = array(
-        array(__('Gallery', 'heros-on-the-water'), home_url('/gallery/')),
-        array(__('Contact', 'heros-on-the-water'), home_url('/contact/')),
-        array(__('Get Involved', 'heros-on-the-water'), home_url('/book/')),
+        array(__('Partners', 'heros-on-the-water'), home_url('/partners/')),
+        array(__('Events', 'heros-on-the-water'), home_url('/events/')),
+        array(__('Contact Us', 'heros-on-the-water'), home_url('/contact/')),
     );
     hotw_fallback_nav_list($items, isset($args['menu_class']) ? (string) $args['menu_class'] : '');
 }
@@ -264,9 +264,10 @@ function hotw_fallback_nav_utility($args) {
 function hotw_fallback_nav_footer($args) {
     $items = array(
         array(__('Home', 'heros-on-the-water'), home_url('/')),
-        array(__('Our Story', 'heros-on-the-water'), home_url('/our-story/')),
-        array(__('Events', 'heros-on-the-water'), home_url('/whats-on/')),
-        array(__('Gallery', 'heros-on-the-water'), home_url('/gallery/')),
+        array(__('About Us', 'heros-on-the-water'), home_url('/about-us/')),
+        array(__('Events', 'heros-on-the-water'), home_url('/events/')),
+        array(__('Donate', 'heros-on-the-water'), home_url('/donate/')),
+        array(__('Partners', 'heros-on-the-water'), home_url('/partners/')),
         array(__('Contact', 'heros-on-the-water'), home_url('/contact/')),
     );
     hotw_fallback_nav_list($items, isset($args['menu_class']) ? (string) $args['menu_class'] : '');

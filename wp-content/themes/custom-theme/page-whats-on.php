@@ -72,6 +72,7 @@ $upcoming_posts = hotw_whats_on_get_upcoming_events();
         require get_template_directory() . '/template-parts/whats-on/section-upcoming.php';
         ?>
     </div>
+</main>
 
     <?php
     get_footer();

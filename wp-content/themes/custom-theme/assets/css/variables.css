@@ -1,38 +1,49 @@
-﻿/* Design tokens — Heroes on the Water */
+﻿/* Design tokens — Heroes on the Water (navy / yellow design system) */
 :root {
     /* Brand colors (design reference) */
-    --hotw-forest: #1e392a;
-    --hotw-orange: #ff6600;
-    --hotw-red: #c00000;
-    --hotw-cream: #fff9e2;
+    --hotw-navy: #000b26;
+    --hotw-navy-deep: #0a1128;
+    --hotw-yellow: #ffd700;
+    --hotw-yellow-alt: #ffc107;
+    --hotw-blue: #0047ab;
+    --hotw-blue-badge: #0d2b6b;
+    --hotw-red: #d32f2f;
     --hotw-white: #ffffff;
-    --hotw-black: #111111;
+    --hotw-black: #0a0d14;
     --hotw-muted: #5c5c5c;
-    --hotw-wood: #2a241c;
+    --hotw-gray: #f4f4f4;
+    --hotw-gray-dark: #2a2a2a;
+    --hotw-beige: #f5f0e8;
+
+    /* Legacy aliases (map to new system for older sections) */
+    --hotw-forest: var(--hotw-navy);
+    --hotw-orange: var(--hotw-yellow);
+    --hotw-cream: var(--hotw-gray);
+    --hotw-wood: var(--hotw-navy-deep);
 
     /* Semantic aliases */
-    --hotw-cta: var(--hotw-orange);
-    --primary-color: var(--hotw-orange);
-    --secondary-color: var(--hotw-forest);
-    --accent-color: var(--hotw-orange);
+    --hotw-cta: var(--hotw-yellow);
+    --primary-color: var(--hotw-yellow);
+    --secondary-color: var(--hotw-navy);
+    --accent-color: var(--hotw-yellow);
     --text-light: var(--hotw-white);
     --text-dark: var(--hotw-black);
     --text-muted: var(--hotw-muted);
-    --background-dark: var(--hotw-forest);
+    --background-dark: var(--hotw-navy);
     --background-light: var(--hotw-white);
-    --border-color: rgba(30, 57, 42, 0.12);
+    --border-color: rgba(0, 11, 38, 0.12);
     --success-color: #27ae60;
-    --warning-color: #ffc107;
-    --danger-color: #e74c3c;
-    --brand-teal: var(--hotw-forest);
-    --footer-bg: var(--hotw-forest);
+    --warning-color: var(--hotw-yellow-alt);
+    --danger-color: var(--hotw-red);
+    --brand-teal: var(--hotw-navy);
+    --footer-bg: var(--hotw-navy);
 
     /**
-     * Typography — local: Bebas Neue + Lil Stuart (see assets/fonts/stylesheet.css).
-     * Body: Sen from Google Fonts (linked as “San” in project brief; enqueued in functions.php).
+     * Typography — Display/headings: Anton (Google). Body: Proxima Nova Regular (local).
+     * Local Bebas/Lil Stuart retained for legacy pages only.
      */
-    --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
-    --font-body: "Sen", system-ui, sans-serif;
+    --font-display: "Anton", "Arial Narrow", sans-serif;
+    --font-body: "Proxima Nova Rg", system-ui, sans-serif;
     --font-script: "Lil Stuart PERSONAL USE ONLY", cursive;
     --font-1: var(--font-body);
     --font-2: var(--font-body);
@@ -47,19 +58,21 @@
     --font-size-28: 28px;
     --font-size-30: 30px;
     --font-size-36: 36px;
-    --font-size-3xl: 95px;
+    --font-size-3xl: 48px;
     --font-size-50: 50px;
-    --font-size-4xl: 135px;
-    --font-size-5xl: 160px;
-    --font-size-6xl: 90px;
-    --font-size-7xl: 80px;
+    --font-size-4xl: 64px;
+    --font-size-5xl: 72px;
+    --font-size-6xl: 56px;
+    --font-size-7xl: 42px;
     --font-weight-light: 300;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
     --line-height-one: 1;
-    --line-height-tight: 1.2;
+    --line-height-tight: 1.15;
     --line-height-normal: 1.5;
     --line-height-relaxed: 1.75;
     --spacing-xs: 4px;
@@ -73,15 +86,16 @@
     --spacing-5xl: 80px;
     --spacing-6xl: 96px;
     --border-radius-sm: 4px;
-    --border-radius-md: 6px;
-    --border-radius-lg: 8px;
-    --border-radius-xl: 0.75rem;
-    --border-radius-2xl: 12px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    --border-radius-2xl: 20px;
+    --border-radius-pill: 999px;
     --border-radius-full: 999px;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 16px rgba(0, 11, 38, 0.08);
+    --shadow-lg: 0 10px 30px rgba(0, 11, 38, 0.12);
+    --shadow-xl: 0 20px 40px rgba(0, 11, 38, 0.16);
     --transition-fast: 0.15s;
     --transition-normal: 0.3s;
     --transition-slow: 0.5s;
@@ -104,22 +118,16 @@
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
     --breakpoint-xxl: 1400px;
-    --header-height: 80px;
+    --header-height: 140px;
     --header-bg: transparent;
     --navbar-brand-font-size: var(--font-size-lg);
     --footer-text: var(--hotw-white);
-    --btn-primary-bg: var(--hotw-orange);
-    --btn-primary-hover: #cf6a2e;
-    --btn-secondary-bg: transparent;
-    --btn-secondary-border: var(--hotw-white);
+    --btn-primary-bg: var(--hotw-yellow);
+    --btn-primary-hover: #e6c200;
+    --btn-secondary-bg: var(--hotw-navy);
+    --btn-secondary-border: var(--hotw-navy);
     --input-bg: var(--hotw-white);
-    --input-border: #404040;
-    --input-focus-border: var(--hotw-orange);
-    --input-focus-shadow: 0 0 0 0.2rem rgba(232, 125, 62, 0.25);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --border-color: rgba(255, 255, 255, 0.12);
-    }
+    --input-border: #d0d0d0;
+    --input-focus-border: var(--hotw-blue);
+    --input-focus-shadow: 0 0 0 0.2rem rgba(0, 71, 171, 0.2);
 }
