@@ -183,13 +183,28 @@ function initHotwWhatsOnViewToggle() {
 
 /**
  * YouTube modals: autoplay on open; clear iframe src on close to stop/reset.
- * Works for any .modal[data-youtube-id] with an iframe inside (home video, vibe, etc.).
+ * Works for any .modal[data-youtube-id] with an iframe inside (home video, vibe, journey, etc.).
+ * Triggers with [data-youtube-id] can update the shared modal video before open.
  */
 function initHotwVibeYoutubeModal() {
   const modals = document.querySelectorAll(".modal[data-youtube-id]");
   if (!modals.length) {
     return;
   }
+
+  document.querySelectorAll('[data-bs-toggle="modal"][data-youtube-id]').forEach(function (trigger) {
+    trigger.addEventListener("click", function () {
+      const targetSel = trigger.getAttribute("data-bs-target");
+      const videoId = trigger.getAttribute("data-youtube-id");
+      if (!targetSel || !videoId) {
+        return;
+      }
+      const modalEl = document.querySelector(targetSel);
+      if (modalEl) {
+        modalEl.setAttribute("data-youtube-id", videoId);
+      }
+    });
+  });
 
   modals.forEach(function (modalEl) {
     const iframe =
@@ -199,18 +214,16 @@ function initHotwVibeYoutubeModal() {
       return;
     }
 
-    const videoId = modalEl.getAttribute("data-youtube-id");
-    if (!videoId) {
-      return;
-    }
-
-    const embedBase =
-      "https://www.youtube.com/embed/" + encodeURIComponent(videoId);
-
     modalEl.addEventListener("shown.bs.modal", function () {
+      const videoId = modalEl.getAttribute("data-youtube-id");
+      if (!videoId) {
+        return;
+      }
       iframe.setAttribute(
         "src",
-        embedBase + "?autoplay=1&rel=0&modestbranding=1",
+        "https://www.youtube.com/embed/" +
+          encodeURIComponent(videoId) +
+          "?autoplay=1&rel=0&modestbranding=1",
       );
     });
 
@@ -315,7 +328,8 @@ function initHotwVisitorsSwiper() {
 }
 
 /**
- * Journey timeline carousel with custom prev/next.
+ * Journey timeline carousel with custom prev/next (no bottom scroller).
+ * Keeps slide position stable when opening/closing the YouTube modal.
  */
 function initHotwTimelineSwiper() {
   const root = document.querySelector(".hotw-timeline-swiper-root");
@@ -331,22 +345,70 @@ function initHotwTimelineSwiper() {
     ? section.querySelector(".hotw-timeline-nav__btn--next")
     : null;
 
-  new Swiper(root, {
-    slidesPerView: 1.1,
-    spaceBetween: 18,
+  const swiper = new Swiper(root, {
+    slidesPerView: 1.15,
+    spaceBetween: 20,
     grabCursor: true,
-    pagination: {
-      el: root.querySelector(".swiper-pagination"),
-      type: "progressbar",
-    },
+    watchOverflow: true,
+    threshold: 10,
+    preventClicks: true,
+    preventClicksPropagation: true,
+    noSwipingSelector: ".hotw-timeline-card__media, .hotw-timeline-card__play",
     navigation: {
       prevEl: prev,
       nextEl: next,
     },
     breakpoints: {
-      768: { slidesPerView: 2, spaceBetween: 22 },
+      768: { slidesPerView: 2, spaceBetween: 24 },
       1200: { slidesPerView: 3, spaceBetween: 28 },
     },
+  });
+
+  let lockedIndex = 0;
+
+  const restoreSlide = function () {
+    if (!swiper || swiper.destroyed) {
+      return;
+    }
+    swiper.allowTouchMove = true;
+    swiper.slideTo(lockedIndex, 0, false);
+  };
+
+  root.querySelectorAll(".hotw-timeline-card__media").forEach(function (btn) {
+    btn.addEventListener(
+      "pointerdown",
+      function (event) {
+        event.stopPropagation();
+      },
+      true,
+    );
+  });
+
+  const modal = document.getElementById("hotwJourneyYoutubeModal");
+  if (!modal) {
+    return;
+  }
+
+  modal.addEventListener("show.bs.modal", function () {
+    lockedIndex = swiper.activeIndex;
+    swiper.allowTouchMove = false;
+  });
+
+  modal.addEventListener("shown.bs.modal", function () {
+    lockedIndex = swiper.activeIndex;
+    swiper.slideTo(lockedIndex, 0, false);
+  });
+
+  modal.addEventListener("hide.bs.modal", function () {
+    lockedIndex = swiper.activeIndex;
+    swiper.allowTouchMove = false;
+  });
+
+  modal.addEventListener("hidden.bs.modal", function () {
+    window.requestAnimationFrame(function () {
+      restoreSlide();
+      window.setTimeout(restoreSlide, 50);
+    });
   });
 }
 
@@ -421,32 +483,32 @@ function initHotwTickerSwiper() {
       slidesPerView: "auto",
       spaceBetween: 0,
       loop: true,
-      loopAdditionalSlides: 6,
-      speed: 6000,
+      // loopAdditionalSlides: 6,
+      // speed: 3000,
       allowTouchMove: false,
       grabCursor: false,
       watchOverflow: false,
       autoplay: {
         enabled: true,
-        delay: 1,
+        delay: 1000,
         disableOnInteraction: false,
         pauseOnMouseEnter: false,
       },
-      on: {
-        init: function (instance) {
-          if (instance.wrapperEl) {
-            instance.wrapperEl.style.transitionTimingFunction = "linear";
-          }
-          if (instance.autoplay && typeof instance.autoplay.start === "function") {
-            instance.autoplay.start();
-          }
-        },
-        setTransition: function (instance, duration) {
-          if (instance.wrapperEl && duration > 0) {
-            instance.wrapperEl.style.transitionTimingFunction = "linear";
-          }
-        },
-      },
+      // on: {
+      //   init: function (instance) {
+      //     if (instance.wrapperEl) {
+      //       instance.wrapperEl.style.transitionTimingFunction = "linear";
+      //     }
+      //     if (instance.autoplay && typeof instance.autoplay.start === "function") {
+      //       instance.autoplay.start();
+      //     }
+      //   },
+      //   setTransition: function (instance, duration) {
+      //     if (instance.wrapperEl && duration > 0) {
+      //       instance.wrapperEl.style.transitionTimingFunction = "linear";
+      //     }
+      //   },
+      // },
     });
 
     el.classList.add("hotw-ticker-swiper--ready");

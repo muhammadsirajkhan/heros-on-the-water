@@ -23,10 +23,10 @@ $uri = get_template_directory_uri();
         array(
             'badge'       => __('OUR JOURNEY', 'heros-on-the-water'),
             'title'       => __('OUR JOURNEY SO FAR', 'heros-on-the-water'),
-            'description' => __('From the first clean-up to a thriving base at Port Soderick — follow the milestones that built Heroes on the Water Isle of Man.', 'heros-on-the-water'),
+            'description' => __('Heroes On The Water was founded with a simple but powerful belief: time spent on the water can help change lives. By combining the calming effects of nature.', 'heros-on-the-water'),
             'show_scroll' => true,
             'bg'          => array(
-                'src' => $uri . '/assets/images/fifth-1.png',
+                'src' => $uri . '/assets/images/our-journey/hero.webp',
                 'alt' => __('Heroes on the Water journey', 'heros-on-the-water'),
             ),
         )
@@ -37,7 +37,7 @@ $uri = get_template_directory_uri();
         'template-parts/shared/section',
         'group-photo',
         array(
-            'src' => $uri . '/assets/images/g1.png',
+            'src' => $uri . '/assets/images/home/help-more.webp',
             'alt' => __('Community group at Heroes on the Water', 'heros-on-the-water'),
         )
     );
