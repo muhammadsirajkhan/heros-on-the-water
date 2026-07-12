@@ -14,7 +14,7 @@ Section-based WordPress theme for the Heroes on the Water project (Isle of Man).
 | [`about-page.php`](about-page.php) | About Us |
 | [`contact-page.php`](contact-page.php) | Contact Us |
 | [`donate-page.php`](donate-page.php) | Donate Us |
-| [`events-page.php`](events-page.php) | Events (static card grid) |
+| [`events-page.php`](events-page.php) | Events (CPT cards + Location/Time meta) |
 | [`team-page.php`](team-page.php) | Meet the Team |
 | [`journey-page.php`](journey-page.php) | Our Journey |
 | [`partners-page.php`](partners-page.php) | Our Partners |
