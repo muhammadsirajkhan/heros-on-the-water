@@ -25,23 +25,26 @@ $uri = get_template_directory_uri();
             'title'       => __('STANDING BESIDE THOSE WHO SERVED', 'heros-on-the-water'),
             'description' => __('We are grateful to the companies, charities, and community organisations who help us deliver free experiences for veterans and families.', 'heros-on-the-water'),
             'bg'          => array(
-                'src' => $uri . '/assets/images/g6.png',
+                'src' => $uri . '/assets/images/partners/hero.webp',
                 'alt' => __('Fishing with Heroes on the Water', 'heros-on-the-water'),
             ),
         )
     );
-    get_template_part('template-parts/shared/section', 'ticker');
+    get_template_part('template-parts/shared/section', 'ticker'); ?>
+    <div class="wrapper" style="background-image: url('<?php echo esc_url($uri . '/assets/images/about/about-bg.webp'); ?>');">
+    <?php
     get_template_part('template-parts/partners/section', 'supporters');
     get_template_part('template-parts/partners/section', 'partners');
     get_template_part(
         'template-parts/shared/section',
         'group-photo',
         array(
-            'src' => $uri . '/assets/images/g1.png',
+            'src' => $uri . '/assets/images/home/help-more.webp',
             'alt' => __('Community group at Heroes on the Water', 'heros-on-the-water'),
         )
     );
     ?>
+    </div>
 
 </main>
 
