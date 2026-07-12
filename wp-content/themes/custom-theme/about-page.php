@@ -30,17 +30,20 @@ $uri = get_template_directory_uri();
             ),
         )
     );
-    get_template_part('template-parts/shared/section', 'ticker');
+    get_template_part('template-parts/shared/section', 'ticker'); ?>
+    <div class="wrapper" style="background-image: url('<?php echo $uri; ?>/assets/images/about/about-bg.webp');">
+    <?php
     get_template_part('template-parts/about/section', 'info');
     get_template_part(
         'template-parts/shared/section',
         'group-photo',
         array(
-            'src' => $uri . '/assets/images/g1.png',
+            'src' => $uri . '/assets/images/home/help-more.webp',
             'alt' => __('Community group at Heroes on the Water', 'heros-on-the-water'),
         )
     );
     ?>
+    </div>
 
 </main>
 

@@ -18,6 +18,13 @@ $defaults = array(
         __('CREATING LASTING CONNECTIONS', 'heros-on-the-water'),
         __('MAKING A MEASURABLE IMPACT', 'heros-on-the-water'),
         __('HOPE BEYOND SERVICE', 'heros-on-the-water'),
+        __('FREE FOR VETERANS', 'heros-on-the-water'),
+        __('VOLUNTEER-LED CHARITY', 'heros-on-the-water'),
+        __('BUILDING STRONGER COMMUNITIES', 'heros-on-the-water'),
+        __('SAFE & INCLUSIVE ENVIRONMENT', 'heros-on-the-water'),
+        __('CREATING LASTING CONNECTIONS', 'heros-on-the-water'),
+        __('MAKING A MEASURABLE IMPACT', 'heros-on-the-water'),
+        __('HOPE BEYOND SERVICE', 'heros-on-the-water'),
     ),
 );
 

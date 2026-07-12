@@ -13,7 +13,7 @@ $uri = get_template_directory_uri();
 $defaults = array(
     'badge'    => __('HEROES ON THE WATER', 'heros-on-the-water'),
     'title'    => __('ABOUT US', 'heros-on-the-water'),
-    'subtitle' => __('MAP ★ PARKING ★ CLEAN GREEN', 'heros-on-the-water'),
+    'subtitle' => __('MAP * PARKING * CLEAN GREEN', 'heros-on-the-water'),
     'items'    => array(
         array(
             'icon'  => $uri . '/assets/images/about/1.webp',
