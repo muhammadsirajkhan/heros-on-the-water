@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Story: live events — asymmetric grid + bottom two-column row.
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Contact page: intro, details grid, social, map, CF7 form card.
  *

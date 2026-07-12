@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Menu: classic pizzas grid (cream section, optional featured card).
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * What's On page — CPT slug and ACF/meta key (change here to match your ACF/CPT UI).
  *

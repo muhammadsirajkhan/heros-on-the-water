@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Front page: static Page uses its assigned template; latest-posts home uses home.php.
  *

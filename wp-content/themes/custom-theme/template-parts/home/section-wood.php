@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Wood-fired feature section.
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Hero section (configurable via $args from get_template_part third parameter).
  *

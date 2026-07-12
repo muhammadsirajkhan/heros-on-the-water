@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Story page — wood-fired pizza slider and live events layout.
  *

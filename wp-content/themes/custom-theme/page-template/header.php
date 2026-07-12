@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Shared HTML header and site masthead (navy/yellow design).
  *

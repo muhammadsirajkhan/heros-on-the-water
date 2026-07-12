@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Menu page — classic grid + signature pizzas (data-driven sections).
  *

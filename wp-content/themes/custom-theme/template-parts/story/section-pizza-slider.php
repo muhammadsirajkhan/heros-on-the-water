@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Story: centered heading + pizza Swiper (wood-fired showcase).
  *

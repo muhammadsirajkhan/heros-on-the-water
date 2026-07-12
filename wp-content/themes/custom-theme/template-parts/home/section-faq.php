@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * FAQ accordion section.
  *

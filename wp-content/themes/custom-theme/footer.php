@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * WordPress entry: delegates to shared partial.
  *

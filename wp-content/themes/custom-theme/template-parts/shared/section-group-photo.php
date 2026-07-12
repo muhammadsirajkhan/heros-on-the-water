@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 $defaults = array(
-    'src' => get_template_directory_uri() . '/assets/images/g1.png',
+    'src' => get_template_directory_uri() . '/assets/images/home/help-more.webp',
     'alt' => __('Heroes on the Water community at Port Soderick', 'heros-on-the-water'),
 );
 

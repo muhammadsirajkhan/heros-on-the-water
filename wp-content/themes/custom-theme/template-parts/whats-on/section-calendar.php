@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * What's On — two-month calendar (current + next).
  *

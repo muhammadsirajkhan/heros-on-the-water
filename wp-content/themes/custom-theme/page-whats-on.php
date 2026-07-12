@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * What's On — dual month calendar + upcoming events.
  *

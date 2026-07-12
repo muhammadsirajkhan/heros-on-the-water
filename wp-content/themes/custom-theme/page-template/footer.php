@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Shared site footer and closing HTML (navy/yellow design).
  *

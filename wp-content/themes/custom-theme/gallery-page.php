@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Home landing template (static Phase 1; ACF-ready structure).
  *

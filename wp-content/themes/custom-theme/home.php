@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Home landing template — navy/yellow design.
  *

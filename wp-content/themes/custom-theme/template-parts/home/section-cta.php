@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * CTA banner section.
  *

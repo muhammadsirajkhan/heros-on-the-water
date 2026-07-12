@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * What's On — queries and date helpers for the calendar and upcoming list.
  *

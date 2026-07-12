@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Blog posts index (when the front page shows latest posts).
  *

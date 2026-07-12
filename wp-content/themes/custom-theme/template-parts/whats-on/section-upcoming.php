@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * What's On — upcoming events card grid.
  *

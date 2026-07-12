@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Menu: signature pizzas — dark hero-style band, image row, optional featured card.
  *

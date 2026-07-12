@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Contact page — details, map, social, Contact Form 7.
  *
