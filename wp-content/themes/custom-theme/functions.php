@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * WordPress theme setup and asset loading.
  *
@@ -293,3 +293,30 @@ add_action('acf/init', function() {
 
   }
 });
+/**
+ * Contact Form 7 — require truck selection for Get In Touch human check.
+ *
+ * @param WPCF7_Validation $result Validation result.
+ * @param WPCF7_FormTag    $tag    Form tag.
+ * @return WPCF7_Validation
+ */
+function hotw_cf7_validate_human_truck($result, $tag) {
+    if (!is_object($tag) || !isset($tag->name)) {
+        return $result;
+    }
+
+    // Accept either the recommended name or CF7's default radio-1.
+    if (!in_array($tag->name, array('human_check', 'radio-1'), true)) {
+        return $result;
+    }
+
+    $name  = $tag->name;
+    $value = isset($_POST[$name]) ? sanitize_text_field(wp_unslash($_POST[$name])) : '';
+    if ('truck' !== $value) {
+        $result->invalidate($tag, __('Please select the truck to prove you are human.', 'heros-on-the-water'));
+    }
+
+    return $result;
+}
+add_filter('wpcf7_validate_radio', 'hotw_cf7_validate_human_truck', 20, 2);
+add_filter('wpcf7_validate_radio*', 'hotw_cf7_validate_human_truck', 20, 2);
