@@ -231,6 +231,34 @@ function hotw_body_class_whats_on($classes) {
 add_filter('body_class', 'hotw_body_class_whats_on');
 
 /**
+ * Body class on single Event posts.
+ *
+ * @param string[] $classes Body classes.
+ * @return string[]
+ */
+function hotw_body_class_single_event($classes) {
+    if (is_singular('event')) {
+        $classes[] = 'hotw-single-event-page';
+    }
+    return $classes;
+}
+add_filter('body_class', 'hotw_body_class_single_event');
+
+/**
+ * Body class on Policy Page template.
+ *
+ * @param string[] $classes Body classes.
+ * @return string[]
+ */
+function hotw_body_class_policy($classes) {
+    if (is_page_template('policy-page.php')) {
+        $classes[] = 'hotw-policy-page';
+    }
+    return $classes;
+}
+add_filter('body_class', 'hotw_body_class_policy');
+
+/**
  * Fallback menu markup when no menu is assigned.
  *
  * @param array<string, mixed> $args wp_nav_menu args.
@@ -286,13 +314,96 @@ function hotw_fallback_nav_list(array $items, $menu_class) {
 }
 
 
-add_action('acf/init', function() {
-  if( function_exists('acf_add_options_page') ) {
+add_action('acf/init', 'hotw_register_acf_options_page');
 
-    acf_add_options_page();
+/**
+ * Global Theme Settings options page (header / shared chrome).
+ */
+function hotw_register_acf_options_page() {
+    if (!function_exists('acf_add_options_page')) {
+        return;
+    }
 
-  }
-});
+    acf_add_options_page(
+        array(
+            'page_title' => __('Theme Settings', 'heros-on-the-water'),
+            'menu_title' => __('Theme Settings', 'heros-on-the-water'),
+            'menu_slug'  => 'hotw-theme-settings',
+            'capability' => 'edit_theme_options',
+            'redirect'   => false,
+            'position'   => 59,
+            'icon_url'   => 'dashicons-admin-customizer',
+        )
+    );
+}
+
+/**
+ * Store ACF field groups in the theme for version control.
+ *
+ * @param string $path Default ACF JSON path.
+ * @return string
+ */
+function hotw_acf_json_save_point($path) {
+    return get_template_directory() . '/acf-json';
+}
+add_filter('acf/settings/save_json', 'hotw_acf_json_save_point');
+
+/**
+ * Load ACF field groups from the theme.
+ *
+ * @param array<int, string> $paths Existing JSON paths.
+ * @return array<int, string>
+ */
+function hotw_acf_json_load_point($paths) {
+    unset($paths[0]);
+    $paths[] = get_template_directory() . '/acf-json';
+    return $paths;
+}
+add_filter('acf/settings/load_json', 'hotw_acf_json_load_point');
+
+/**
+ * Label for a social network key.
+ *
+ * @param string $network Network slug.
+ * @return string
+ */
+function hotw_social_network_label($network) {
+    $labels = array(
+        'facebook'  => __('Facebook', 'heros-on-the-water'),
+        'instagram' => __('Instagram', 'heros-on-the-water'),
+        'youtube'   => __('YouTube', 'heros-on-the-water'),
+        'x'         => __('X', 'heros-on-the-water'),
+        'tiktok'    => __('TikTok', 'heros-on-the-water'),
+        'linkedin'  => __('LinkedIn', 'heros-on-the-water'),
+    );
+    $network = (string) $network;
+    return isset($labels[$network]) ? $labels[$network] : $network;
+}
+
+/**
+ * Inline SVG icon for a social network.
+ *
+ * @param string $network Network slug.
+ * @return string HTML (safe static SVG markup).
+ */
+function hotw_social_network_icon($network) {
+    switch ((string) $network) {
+        case 'facebook':
+            return '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>';
+        case 'instagram':
+            return '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>';
+        case 'youtube':
+            return '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186 31.247 31.247 0 0 0 0 12.017a31.25 31.25 0 0 0 .502 5.831 3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136A31.25 31.25 0 0 0 24 12.017a31.247 31.247 0 0 0-.502-5.831zM9.545 15.568V8.466l6.273 3.551-6.273 3.551z"/></svg>';
+        case 'tiktok':
+            return '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.16 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.7a8.2 8.2 0 0 0 4.76 1.52V6.8a4.85 4.85 0 0 1-1.01-.11z"/></svg>';
+        case 'linkedin':
+            return '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>';
+        case 'x':
+        default:
+            return '<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.727-8.829L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+    }
+}
+
 /**
  * Contact Form 7 — require truck selection for Get In Touch human check.
  *

@@ -10,13 +10,117 @@ ACF Pro required. Use `get_field()` only — no `have_rows()` or `the_field()`.
 
 ## Options page
 
+WP admin: **Theme Settings** (`hotw-theme-settings`), registered in `functions.php` on `acf/init`.
+
 Global fields via `get_field('field_name', 'option')`:
 
 ```php
-$phone = get_field('phone', 'option');
+$topbar = get_field('header_topbar', 'option');
 ```
 
-Registered in `functions.php` on `acf/init`.
+### Header / Top Bar (`group_hotw_header.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Top Bar | `header_topbar` | Live — tagline, social_links, donate_button (Link; also mobile menu) |
+| Navbar | `header_navbar` | Live — logo |
+
+Nav menus stay in **Appearance → Menus** (primary + utility), not ACF.
+
+### Footer (`group_hotw_footer.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Brand | `footer_brand` | Live — logo, mission, social_links |
+| Link Columns | `footer_columns` | Live — repeater: heading + links (text, url) |
+| Newsletter | `footer_newsletter` | Live — heading, text, email_placeholder, optional CF7 shortcode |
+| Contact | `footer_contact` | Live — phone, email |
+| Legal | `footer_legal` | Live — copyright (`{year}`), privacy/terms text + url |
+
+## Field group JSON sync
+
+Theme path: `wp-content/themes/custom-theme/acf-json/`
+
+Save/load filters: `hotw_acf_json_save_point` / `hotw_acf_json_load_point` in `functions.php`.
+
+After pulling, sync pending groups in **Custom Fields → Tools** (or Sync notice).
+
+### Home Page (`group_hotw_home.json`)
+
+One field group with **top tabs per section** (Hero, Mission, Video, Visitors, Yellow CTA, Hours, Impact).
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `home_hero` | Live — image, tags, title, description, primary/secondary Link, tagline |
+| Mission | `home_mission` | Live — image, badge, title, subtitle, content, quote, cta (Link) |
+| Video | `home_video` | Live — image, label, youtube_id |
+| Our Visitors | `home_visitors` | Live — badge, title, description, items (image, label, Link) |
+| Help More | `home_yellow_cta` | Live — image, title, description, primary/secondary Link, rating |
+| Port Soderick | `home_hours` | Live — image, badge, title, description, hours (day, time) |
+| Impact Statistics | `home_impact` | Live — background, badge, titles, description, stats, support/donate Link, rating |
+
+### About Us Page (`group_hotw_about.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `about_hero` | Live — image, badge, title, description |
+| About Info | `about_info` | Live — badge, title, subtitle, items (icon, title, text), map_embed |
+| Group Photo | `about_group_photo` | Live — image |
+
+### Donate Page (`group_hotw_donate.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `donate_hero` | Live — image, badge, title, description |
+| Impact | `donate_impact` | Live — badge, title, paragraphs, subtitle, closing, collage images |
+| Group Photo | `donate_group_photo` | Live — image |
+
+### Contact Page (`group_hotw_contact.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `contact_hero` | Live — image, badge, title, description |
+| Contact Info | `contact_info` | Live — headings, phone/email/address, form panel copy, social links |
+| Group Photo | `contact_group_photo` | Live — image |
+
+CF7 form shortcode stays in `contact-page.php` (not ACF).
+
+### Our Journey Page (`group_hotw_journey.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `journey_hero` | Live — image, badge, title, description |
+| Timeline | `journey_timeline` | Live — badge, title, lead, cards (image, step, label, title, youtube_id, text) |
+| Group Photo | `journey_group_photo` | Live — image |
+
+### Meet the Team Page (`group_hotw_team.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `team_hero` | Live — image, badge, title, description |
+| Patrons | `team_patrons` | Live — badge, title, lead, members (image, name, bio, brand, tag, social, cta Link) |
+| Trustees | `team_trustees` | Live — badge, title, lead, members (image, role, name, tag, social, profile Link) |
+| Volunteers | `team_volunteers` | Live — badge, title, members (image, name, tag, social, profile Link) |
+| Group Photo | `team_group_photo` | Live — image |
+
+### Our Partners Page (`group_hotw_partners.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `partners_hero` | Live — image, badge, title, description |
+| Supporters | `partners_supporters` | Live — badge, title, subtitle, caption, logos |
+| Partners | `partners_cards` | Live — badge, title, lead, items (logo, eyebrow, title, text, cta Link) |
+| Group Photo | `partners_group_photo` | Live — image |
+
+### Events Page (`group_hotw_events.json`)
+
+| Tab | ACF group | Status |
+|-----|-----------|--------|
+| Hero | `events_hero` | Live — image, badge, title, description |
+| Upcoming Events | `events_upcoming` | Live — badge, title, subtitle (cards from Event CPT) |
+| Group Photo | `events_group_photo` | Live — image |
+
+Do **not** add Show/Hide toggles or Active flags — hide empty values in the template. First hero tag is highlighted automatically.
 
 ## Shared home content (post ID 10)
 
@@ -34,11 +138,53 @@ Update ID when front page changes on new installs.
 
 | Section | ACF group | Key fields |
 |---------|-----------|------------|
-| Hero | `hero` | image, sub_title, title, content |
+| Home hero | `home_hero` | image, tags, title, description, primary_button (link), secondary_button (link), tagline |
+| Home mission | `home_mission` | image, badge, title, subtitle, content, quote, cta (link) |
+| Home video | `home_video` | image, label, youtube_id |
+| Home visitors | `home_visitors` | badge, title, description, items repeater (image, label, link) |
+| Home help more | `home_yellow_cta` | image, title, description, primary_button (link), secondary_button (link), rating |
+| Home Port Soderick | `home_hours` | image, badge, title, description, hours repeater (day, time) |
+| Home impact | `home_impact` | background, badge, title_line1/prefix/accent, description, stats repeater, support_button/donate_button (link), rating |
+| About hero | `about_hero` | image, badge, title, description |
+| About info | `about_info` | badge, title, subtitle, items (icon, title, text), map_embed |
+| About group photo | `about_group_photo` | image |
+| Donate hero | `donate_hero` | image, badge, title, description |
+| Donate impact | `donate_impact` | badge, title, paragraphs, subtitle, closing, image_main/side_1/side_2 |
+| Donate group photo | `donate_group_photo` | image |
+| Contact hero | `contact_hero` | image, badge, title, description |
+| Contact info | `contact_info` | badge, title, subtitle, info_heading, charity/trustees, phone, email, address, form_title/intro, social_links |
+| Contact group photo | `contact_group_photo` | image |
+| Journey hero | `journey_hero` | image, badge, title, description |
+| Journey timeline | `journey_timeline` | badge, title, lead, cards repeater (image, step, label, title, youtube_id, text) |
+| Journey group photo | `journey_group_photo` | image |
+| Team hero | `team_hero` | image, badge, title, description |
+| Team patrons | `team_patrons` | badge, title, lead, members (image, name, bio, brand, tag, social_links, cta link) |
+| Team trustees | `team_trustees` | badge, title, lead, members (image, role, name, tag, social_links, profile_link) |
+| Team volunteers | `team_volunteers` | badge, title, members (image, name, tag, social_links, profile_link) |
+| Team group photo | `team_group_photo` | image |
+| Partners hero | `partners_hero` | image, badge, title, description |
+| Partners supporters | `partners_supporters` | badge, title, subtitle, caption, logos repeater |
+| Partners cards | `partners_cards` | badge, title, lead, items (logo, eyebrow, title, text, cta link) |
+| Partners group photo | `partners_group_photo` | image |
+| Events hero | `events_hero` | image, badge, title, description |
+| Events upcoming | `events_upcoming` | badge, title, subtitle (cards from Event CPT) |
+| Events group photo | `events_group_photo` | image |
+| Legacy hero | `hero` | image, sub_title, title, content |
 | Purpose | `about` | image, image_bg, sub_title, title, content |
 | Wood | `sub_banner` / `sub_banner_copy` | image, titles, content |
 | Vibe | `good_times` | image, youtube_video, items repeater |
 | Pizza | `pizza` | items repeater |
+
+## Buttons
+
+Use ACF **Link** fields (`return_format: array`). Render `url`, `title`, and `target` — do not split into separate URL + text fields.
+
+## Defaults & fallbacks
+
+- Prefer ACF `default_value` on text/textarea (and link when supported).
+- Do **not** mirror content with PHP `$defaults` / `wp_parse_args` static fallbacks for ACF-driven sections.
+- Do **not** add Show/Hide or Active toggles — omit empty fields in the template.
+- Organize multi-section pages with ACF **Tab** fields (one tab per section).
 
 ## Event CPT fields
 
@@ -55,7 +201,3 @@ echo esc_html($title);
 echo esc_url($link);
 echo wp_kses_post($content); // when HTML is intentional
 ```
-
-## No acf-json sync yet
-
-Field groups are configured in WP admin. Export to `acf-json/` when ready for version control.

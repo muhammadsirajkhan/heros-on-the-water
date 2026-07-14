@@ -9,18 +9,19 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$defaults = array(
-    'src' => get_template_directory_uri() . '/assets/images/home/help-more.webp',
-    'alt' => __('Heroes on the Water community at Port Soderick', 'heros-on-the-water'),
-);
+$args = (isset($args) && is_array($args)) ? $args : array();
+$src  = isset($args['src']) ? (string) $args['src'] : '';
+$alt  = isset($args['alt']) ? (string) $args['alt'] : '';
 
-$args = isset($args) && is_array($args) ? wp_parse_args($args, $defaults) : $defaults;
+if ($src === '') {
+    return;
+}
 ?>
 <section class="hotw-group-photo" aria-label="<?php esc_attr_e('Community photo', 'heros-on-the-water'); ?>">
     <img
         class="hotw-group-photo__img"
-        src="<?php echo esc_url($args['src']); ?>"
-        alt="<?php echo esc_attr($args['alt']); ?>"
+        src="<?php echo esc_url($src); ?>"
+        alt="<?php echo esc_attr($alt); ?>"
         width="1920"
         height="700"
         loading="lazy"

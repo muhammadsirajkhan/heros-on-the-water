@@ -2,6 +2,9 @@
 /**
  * Shared HTML header and site masthead (navy/yellow design).
  *
+ * ACF options: header_topbar, header_navbar (see acf-json/group_hotw_header.json).
+ * Nav menus: Appearance → Menus (primary + utility).
+ *
  * @package Heros_On_The_Water
  */
 
@@ -9,9 +12,27 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$hotw_uri   = get_template_directory_uri();
-$donate_url = home_url('/donate/');
-$logo_src   = $hotw_uri . '/assets/images/home/header-logo.webp';
+$topbar = function_exists('get_field') ? get_field('header_topbar', 'option') : null;
+if (!is_array($topbar)) {
+    $topbar = array();
+}
+
+$navbar = function_exists('get_field') ? get_field('header_navbar', 'option') : null;
+if (!is_array($navbar)) {
+    $navbar = array();
+}
+
+$tagline      = isset($topbar['tagline']) ? (string) $topbar['tagline'] : '';
+$social_links = (!empty($topbar['social_links']) && is_array($topbar['social_links'])) ? $topbar['social_links'] : array();
+$donate       = (isset($topbar['donate_button']) && is_array($topbar['donate_button'])) ? $topbar['donate_button'] : null;
+$logo         = (isset($navbar['logo']) && is_array($navbar['logo'])) ? $navbar['logo'] : null;
+
+$donate_url    = (!empty($donate['url'])) ? $donate['url'] : '';
+$donate_title  = (!empty($donate['title'])) ? $donate['title'] : '';
+$donate_target = (!empty($donate['target'])) ? $donate['target'] : '';
+
+$logo_url = (!empty($logo['url'])) ? $logo['url'] : '';
+$logo_alt = (!empty($logo['alt'])) ? $logo['alt'] : get_bloginfo('name');
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -34,29 +55,51 @@ $logo_src   = $hotw_uri . '/assets/images/home/header-logo.webp';
         <div class="hotw-topbar">
             <div class="hotw-topbar__inner">
                 <div class="hotw-topbar__left">
-                    <div class="hotw-topbar__social">
-                        <a href="#" aria-label="<?php esc_attr_e('Facebook', 'heros-on-the-water'); ?>" class="hotw-topbar__social-link">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                        </a>
-                        <a href="#" aria-label="<?php esc_attr_e('Instagram', 'heros-on-the-water'); ?>" class="hotw-topbar__social-link">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                        </a>
-                        <a href="#" aria-label="<?php esc_attr_e('YouTube', 'heros-on-the-water'); ?>" class="hotw-topbar__social-link">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon fill="#000b26" points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
-                        </a>
-                        <a href="#" aria-label="<?php esc_attr_e('LinkedIn', 'heros-on-the-water'); ?>" class="hotw-topbar__social-link">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                    </div>
-                    <span class="hotw-topbar__divider" aria-hidden="true"></span>
-                    <p class="hotw-topbar__tagline"><?php esc_html_e('EMPOWERMENT PROGRAMS', 'heros-on-the-water'); ?></p>
+                    <?php if ($social_links) : ?>
+                        <div class="hotw-topbar__social">
+                            <?php foreach ($social_links as $item) : ?>
+                                <?php
+                                if (!is_array($item)) {
+                                    continue;
+                                }
+                                $network = isset($item['network']) ? (string) $item['network'] : '';
+                                $url     = isset($item['url']) ? (string) $item['url'] : '';
+                                if ($url === '' || $network === '') {
+                                    continue;
+                                }
+                                ?>
+                                <a
+                                    href="<?php echo esc_url($url); ?>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="<?php echo esc_attr(hotw_social_network_label($network)); ?>"
+                                    class="hotw-topbar__social-link"
+                                >
+                                    <?php echo hotw_social_network_icon($network); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($social_links && $tagline !== '') : ?>
+                        <span class="hotw-topbar__divider" aria-hidden="true"></span>
+                    <?php endif; ?>
+                    <?php if ($tagline !== '') : ?>
+                        <p class="hotw-topbar__tagline"><?php echo esc_html($tagline); ?></p>
+                    <?php endif; ?>
                 </div>
-                <a class="hotw-topbar__donate" href="<?php echo esc_url($donate_url); ?>">
-                    <span class="hotw-topbar__donate-text"><?php esc_html_e('DONATE US NOW!!!', 'heros-on-the-water'); ?></span>
-                    <span class="hotw-topbar__donate-icon" aria-hidden="true">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                    </span>
-                </a>
+                <?php if ($donate_url !== '') : ?>
+                    <a
+                        class="hotw-topbar__donate"
+                        href="<?php echo esc_url($donate_url); ?>"
+                        <?php echo $donate_target ? 'target="' . esc_attr($donate_target) . '"' : ''; ?>
+                        <?php echo $donate_target === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>
+                    >
+                        <span class="hotw-topbar__donate-text"><?php echo esc_html($donate_title !== '' ? $donate_title : __('Donate', 'heros-on-the-water')); ?></span>
+                        <span class="hotw-topbar__donate-icon" aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                        </span>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -78,13 +121,17 @@ $logo_src   = $hotw_uri . '/assets/images/home/header-logo.webp';
 
                     <a class="hotw-navbar__brand" href="<?php echo esc_url(home_url('/')); ?>">
                         <span class="hotw-navbar__logo-plate">
-                            <img
-                                src="<?php echo esc_url($logo_src); ?>"
-                                alt="<?php esc_attr_e('Heroes on the Water', 'heros-on-the-water'); ?>"
-                                class="hotw-navbar__logo"
-                                width="176"
-                                height="176"
-                            >
+                            <?php if ($logo_url !== '') : ?>
+                                <img
+                                    src="<?php echo esc_url($logo_url); ?>"
+                                    alt="<?php echo esc_attr($logo_alt); ?>"
+                                    class="hotw-navbar__logo"
+                                    width="176"
+                                    height="176"
+                                >
+                            <?php else : ?>
+                                <span class="hotw-navbar__logo-text"><?php echo esc_html(get_bloginfo('name')); ?></span>
+                            <?php endif; ?>
                         </span>
                     </a>
 
@@ -134,7 +181,16 @@ $logo_src   = $hotw_uri . '/assets/images/home/header-logo.webp';
                     )
                 );
                 ?>
-                <a class="hotw-btn hotw-btn--yellow mt-4" href="<?php echo esc_url($donate_url); ?>"><?php esc_html_e('Donate Now', 'heros-on-the-water'); ?></a>
+                <?php if ($donate_url !== '') : ?>
+                    <a
+                        class="hotw-btn hotw-btn--yellow mt-4"
+                        href="<?php echo esc_url($donate_url); ?>"
+                        <?php echo $donate_target ? 'target="' . esc_attr($donate_target) . '"' : ''; ?>
+                        <?php echo $donate_target === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>
+                    >
+                        <?php echo esc_html($donate_title !== '' ? $donate_title : __('Donate', 'heros-on-the-water')); ?>
+                    </a>
+                <?php endif; ?>
             </nav>
         </div>
     </header>
