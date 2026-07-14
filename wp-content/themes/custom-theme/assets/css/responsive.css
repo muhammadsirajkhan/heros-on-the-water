@@ -1,40 +1,40 @@
-﻿@media only screen and (min-width: 100px) and (max-width: 1799px) {
+@media only screen and (min-width: 100px) and (max-width: 1799px) {
     :root {
-        /* Font sizes */
+        /* Font sizes — ~95% of 1920 desktop tokens (scale down only) */
         --font-size-xs: 12px;
         --font-size-sm: 14px;
         --font-size-base: 16px;
-        --font-size-lg: 18px;
-        --font-size-xl: 18px;
-        --font-size-2xl: 20px;
-        --font-size-28: 24px;
-        --font-size-30: 26px;
+        --font-size-lg: 17px;
+        --font-size-xl: 19px;
+        --font-size-2xl: 24px;
+        --font-size-28: 26px;
+        --font-size-30: 28px;
         --font-size-36: 34px;
-        --font-size-3xl: 92px;
-        --font-size-50: 45px;
-        --font-size-4xl: 120px;
-        --font-size-5xl: 145px;
-        --font-size-6xl: 90px;
-        --font-size-7xl: 80px;
+        --font-size-3xl: 46px;
+        --font-size-50: 48px;
+        --font-size-4xl: 60px;
+        --font-size-5xl: 68px;
+        --font-size-6xl: 52px;
+        --font-size-7xl: 40px;
 
-        /* Spacing */
-        --spacing-xs: 8px;
-        --spacing-sm: 12px;
-        --spacing-md: 16px;
-        --spacing-lg: 20px;
-        --spacing-xl: 24px;
-        --spacing-2xl: 32px;
-        --spacing-3xl: 40px;
-        --spacing-4xl: 48px;
-        --spacing-5xl: 55px;
-        --spacing-6xl: 65px;
+        /* Spacing — mild trim */
+        --spacing-xs: 4px;
+        --spacing-sm: 8px;
+        --spacing-md: 14px;
+        --spacing-lg: 22px;
+        --spacing-xl: 28px;
+        --spacing-2xl: 36px;
+        --spacing-3xl: 44px;
+        --spacing-4xl: 56px;
+        --spacing-5xl: 72px;
+        --spacing-6xl: 88px;
 
         /* Header */
-        --header-height: 80px;
+        --header-height: 120px;
     }
 
     .hotw-gallery-deco {
-        font-size: clamp(3.5rem, 16vw, 12rem);
+        font-size: clamp(3.5rem, 16vw, 10rem);
     }
 
     h1 strong,
@@ -43,7 +43,7 @@
     h4 strong,
     h5 strong,
     h6 strong {
-        font-size: 85px;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
     }
 
     .hotw-hero .hotw-prose p {
@@ -51,8 +51,7 @@
     }
 
     .hotw-kicker {
-
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .page-template-story-page .hotw-hero .hotw-title strong {
@@ -60,8 +59,53 @@
     }
 
     .hotw-menu-sig-card__frame {
-
         margin-bottom: 40px;
+    }
+
+    /* Charity chrome — laptop soft scale */
+    .hotw-navbar__logo,
+    .hotw-navbar__logo-text {
+        width: 156px;
+        height: 156px;
+    }
+
+    .hotw-page-hero {
+        padding: 420px 0 160px;
+        min-height: 480px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 360px;
+        min-height: 720px;
+    }
+
+    .hotw-section-title {
+        font-size: clamp(2rem, 3.8vw, 4rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(2.4rem, 5.5vw, 4rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(2.1rem, 4.5vw, 3.6rem);
+    }
+
+    .hotw-page-hero__scroll,
+    .hotw-home-hero__scroll {
+        bottom: 56px;
+    }
+
+    .hotw-visitors__controls {
+        margin-top: 56px;
+    }
+
+    .hotw-visitors__scrollbar.swiper-scrollbar {
+        height: 12px;
+    }
+
+    .hotw-timeline-nav__btn {
+        margin-top: 160px;
     }
 }
 
@@ -77,37 +121,41 @@
     }
 
     :root {
-        /* Font sizes */
+        /* Font sizes — ~88% of desktop */
         --font-size-xs: 11px;
         --font-size-sm: 13px;
         --font-size-base: 16px;
-        --font-size-lg: 20px;
-        --font-size-xl: 22px;
-        --font-size-2xl: 21px;
+        --font-size-lg: 16px;
+        --font-size-xl: 18px;
+        --font-size-2xl: 22px;
         --font-size-28: 24px;
         --font-size-30: 26px;
         --font-size-36: 32px;
-        --font-size-3xl: 80px;
-        --font-size-50: 46px;
-        --font-size-4xl: 100px;
-        --font-size-5xl: 138px;
-        --font-size-6xl: 75px;
-        --font-size-7xl: 70px;
+        --font-size-3xl: 42px;
+        --font-size-50: 44px;
+        --font-size-4xl: 56px;
+        --font-size-5xl: 64px;
+        --font-size-6xl: 48px;
+        --font-size-7xl: 38px;
 
-        /* Spacing */
-        --spacing-xs: 6px;
-        --spacing-sm: 10px;
+        /* Spacing — ~85% */
+        --spacing-xs: 4px;
+        --spacing-sm: 7px;
         --spacing-md: 14px;
-        --spacing-lg: 18px;
-        --spacing-xl: 22px;
-        --spacing-2xl: 28px;
-        --spacing-3xl: 35px;
-        --spacing-4xl: 42px;
-        --spacing-5xl: 48px;
-        --spacing-6xl: 55px;
+        --spacing-lg: 20px;
+        --spacing-xl: 26px;
+        --spacing-2xl: 34px;
+        --spacing-3xl: 40px;
+        --spacing-4xl: 52px;
+        --spacing-5xl: 68px;
+        --spacing-6xl: 80px;
 
         /* Header */
-        --header-height: 70px;
+        --header-height: 110px;
+    }
+
+    .hotw-page-hero__img {
+        object-position: center 40px;
     }
 
     .hotw-hero {
@@ -136,8 +184,59 @@
     }
 
     .hotw-story-live__title strong {
-        font-size: 47px;
-        /* color: #012f27; */
+        font-size: 42px;
+    }
+
+    .hotw-navbar__logo,
+    .hotw-navbar__logo-text {
+        width: 146px;
+        height: 146px;
+    }
+
+    .hotw-page-hero {
+        padding: 360px 0 140px;
+        min-height: 440px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 320px;
+        min-height: 640px;
+    }
+
+    .hotw-section-title {
+        font-size: clamp(1.9rem, 3.6vw, 3.5rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(2.2rem, 5.2vw, 3.6rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(2rem, 4.2vw, 3.2rem);
+    }
+
+    .hotw-contact-v2__social-link {
+        width: 42px;
+        height: 42px;
+    }
+
+    .hotw-contact-v2__social-link svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .hotw-visitors__controls {
+        margin-top: 48px;
+    }
+
+    .hotw-timeline-nav__btn {
+        margin-top: 140px;
+    }
+
+    .hotw-impact__title,
+    .hotw-yellow-cta__title,
+    .hotw-contact-v2__title {
+        font-size: clamp(1.75rem, 3.8vw, 3.4rem);
     }
 }
 
@@ -153,37 +252,37 @@
     }
 
     :root {
-        /* Font sizes */
+        /* Font sizes — ~80% of desktop */
         --font-size-xs: 11px;
         --font-size-sm: 13px;
         --font-size-base: 16px;
-        --font-size-lg: 18px;
-        --font-size-xl: 18px;
-        --font-size-2xl: 18px;
+        --font-size-lg: 16px;
+        --font-size-xl: 17px;
+        --font-size-2xl: 20px;
         --font-size-28: 22px;
-        --font-size-30: 25px;
-        --font-size-36: 26px;
-        --font-size-3xl: 79px;
+        --font-size-30: 24px;
+        --font-size-36: 28px;
+        --font-size-3xl: 38px;
         --font-size-50: 40px;
-        --font-size-4xl: 92px;
-        --font-size-5xl: 129px;
-        --font-size-6xl: 62px;
-        --font-size-7xl: 66px;
+        --font-size-4xl: 52px;
+        --font-size-5xl: 58px;
+        --font-size-6xl: 44px;
+        --font-size-7xl: 36px;
 
         /* Spacing */
-        --spacing-xs: 6px;
-        --spacing-sm: 10px;
-        --spacing-md: 14px;
+        --spacing-xs: 4px;
+        --spacing-sm: 6px;
+        --spacing-md: 12px;
         --spacing-lg: 18px;
-        --spacing-xl: 22px;
-        --spacing-2xl: 28px;
-        --spacing-3xl: 35px;
-        --spacing-4xl: 42px;
-        --spacing-5xl: 48px;
-        --spacing-6xl: 55px;
+        --spacing-xl: 24px;
+        --spacing-2xl: 32px;
+        --spacing-3xl: 40px;
+        --spacing-4xl: 48px;
+        --spacing-5xl: 64px;
+        --spacing-6xl: 72px;
 
         /* Header */
-        --header-height: 70px;
+        --header-height: 100px;
     }
 
     .hotw-polaroid--4 {
@@ -195,7 +294,7 @@
     }
 
     .hotw-kicker {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .hotw-checklist li {
@@ -205,19 +304,92 @@
     .page-template-story-page .hotw-hero .hotw-title strong {
         max-width: 540px;
     }
+
+    .hotw-navbar__logo,
+    .hotw-navbar__logo-text {
+        width: 140px;
+        height: 140px;
+    }
+
+    .hotw-page-hero {
+        padding: 300px 0 120px;
+        min-height: 400px;
+        margin-top: -90px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 325px;
+        min-height: 580px;
+    }
+
+    .hotw-section-title {
+        font-size: clamp(1.75rem, 3.4vw, 3.1rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(2.1rem, 5vw, 3.25rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(1.9rem, 4vw, 2.9rem);
+    }
+
+    .hotw-btn {
+        padding: 12px 24px;
+    }
+
+    .hotw-visitors__controls {
+        margin-top: 40px;
+    }
+
+    .hotw-visitors__scrollbar.swiper-scrollbar {
+        height: 10px;
+    }
+
+    .hotw-hours__title {
+        font-size: clamp(1.65rem, 2.6vw, 3.2rem);
+    }
+
+    .hotw-impact__title,
+    .hotw-yellow-cta__title {
+        font-size: clamp(1.65rem, 3.5vw, 3rem);
+    }
+
+    .hotw-contact-v2__title {
+        font-size: clamp(1.85rem, 4.5vw, 3.2rem);
+    }
+
+    .hotw-single-event {
+        padding-top: calc(110px + var(--spacing-3xl));
+    }
+
+    .hotw-single-event__title {
+        font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+    }
+
+    .hotw-timeline-nav__btn {
+        margin-top: 120px;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 1299px) {
     :root {
-        /* Font sizes */
+        /* Font sizes — continue down from ≤1366 */
         --font-size-base: 16px;
+        --font-size-lg: 16px;
+        --font-size-xl: 16px;
+        --font-size-2xl: 19px;
+        --font-size-28: 21px;
         --font-size-30: 22px;
-        --font-size-36: 28px;
-        --font-size-50: 32px;
-        --font-size-4xl: 91px;
-        --font-size-5xl: 128px;
-        --font-size-6xl: 65px;
-        --font-size-7xl: 60px;
+        --font-size-36: 26px;
+        --font-size-3xl: 36px;
+        --font-size-50: 36px;
+        --font-size-4xl: 48px;
+        --font-size-5xl: 54px;
+        --font-size-6xl: 42px;
+        --font-size-7xl: 34px;
+
+        --header-height: 96px;
     }
 
     .hotw-gallery-mosaic {
@@ -253,13 +425,40 @@
         height: 150px;
     }
 
-    .hotw-navbar__logo {
+    .hotw-navbar__logo,
+    .hotw-navbar__logo-text {
         width: 134px;
         height: 134px;
     }
 
     .hotw-navbar__brand {
         margin: -46px 0 -40px;
+    }
+
+    .hotw-page-hero {
+        padding: 260px 0 100px;
+        min-height: 380px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 240px;
+        min-height: 520px;
+    }
+
+    .hotw-section-title {
+        font-size: clamp(1.65rem, 3.2vw, 2.85rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(2rem, 4.8vw, 3rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+    }
+
+    .hotw-site-footer__heading {
+        font-size: 20px;
     }
 }
 
@@ -289,7 +488,6 @@
 
     .hotw-story-live__title strong {
         font-size: 32px;
-        /* color: #012f27; */
     }
 
     .hotw-home .hotw-hero,
@@ -318,21 +516,55 @@
     .about-bg {
         display: none;
     }
+
+    .hotw-page-hero {
+        padding: 220px 0 90px;
+        min-height: 360px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 200px;
+        min-height: 480px;
+    }
+
+    .hotw-section-title {
+        font-size: clamp(1.7rem, 3.5vw, 2.75rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(2rem, 5vw, 2.85rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .hotw-timeline-nav__btn {
+        margin-top: 100px;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 991px) {
     :root {
-        /* Font sizes */
-        --font-size-4xl: 50px;
-        --font-size-5xl: 95px;
-        --font-size-6xl: 55px;
-        --font-size-7xl: 55px;
-        --font-size-50: 36px;
-        --font-size-3xl: 30px;
-        --font-size-36: 28px;
-        --font-size-30: 24px;
-        --font-size-28: 22px;
-        --font-size-2xl: 20px;
+        /* Font sizes — tablet downscale from laptop band */
+        --font-size-base: 16px;
+        --font-size-lg: 16px;
+        --font-size-xl: 16px;
+        --font-size-2xl: 18px;
+        --font-size-28: 20px;
+        --font-size-30: 22px;
+        --font-size-36: 24px;
+        --font-size-3xl: 32px;
+        --font-size-50: 32px;
+        --font-size-4xl: 42px;
+        --font-size-5xl: 48px;
+        --font-size-6xl: 40px;
+        --font-size-7xl: 32px;
+
+        --spacing-4xl: 44px;
+        --spacing-5xl: 56px;
+        --spacing-6xl: 64px;
+        --header-height: 80px;
     }
 
     .hotw-hero {
@@ -668,6 +900,70 @@
     .hotw-contact-v2__cf7 .hotw-cf7-footer .wpcf7-acceptance {
         max-width: none;
     }
+
+    /* Charity type / spacing align at tablet */
+    .hotw-section-title {
+        font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(2rem, 7vw, 2.75rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(1.75rem, 5.5vw, 2.4rem);
+    }
+
+    .hotw-page-hero {
+        padding: 180px 0 80px;
+        min-height: 360px;
+        margin-top: -72px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 180px;
+        min-height: 0;
+    }
+
+    .hotw-mission__title,
+    .hotw-hours__title,
+    .hotw-impact__title,
+    .hotw-yellow-cta__title,
+    .hotw-contact-v2__title,
+    .hotw-donate-impact__copy .hotw-section-title {
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+    }
+
+    .hotw-visitors__controls {
+        margin-top: 28px;
+    }
+
+    .hotw-visitors__scrollbar.swiper-scrollbar {
+        height: 8px;
+    }
+
+    .hotw-contact-v2__social-link {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hotw-single-event {
+        padding-top: calc(100px + var(--spacing-2xl));
+    }
+
+    .hotw-single-event__title {
+        font-size: clamp(1.75rem, 5vw, 2.4rem);
+    }
+
+    .hotw-patron-card__name,
+    .hotw-team-card__name {
+        font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    }
+
+    .hotw-group-photo {
+        padding-top: var(--spacing-3xl);
+        padding-bottom: var(--spacing-3xl);
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 767px) {
@@ -711,18 +1007,19 @@
     }
 
     :root {
-        /* Font sizes */
-        --font-size-7xl: 45px;
-        --font-size-6xl: 44px;
-        --font-size-5xl: 90px;
+        /* Font sizes — mobile, continue down (no upsizing) */
+        --font-size-7xl: 28px;
+        --font-size-6xl: 34px;
+        --font-size-5xl: 42px;
         --font-size-4xl: 36px;
-        --font-size-50: 32px;
+        --font-size-50: 28px;
         --font-size-3xl: 28px;
-        --font-size-36: 26px;
-        --font-size-30: 22px;
-        --font-size-28: 20px;
-        --font-size-2xl: 18px;
-        --font-size-xl: 18px;
+        --font-size-36: 22px;
+        --font-size-30: 20px;
+        --font-size-28: 18px;
+        --font-size-2xl: 17px;
+        --font-size-xl: 16px;
+        --font-size-lg: 15px;
     }
 
     .hotw-cta-banner__ribbon {
@@ -1027,28 +1324,103 @@
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .hotw-section-title {
+        font-size: clamp(1.5rem, 5.5vw, 2.1rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(1.85rem, 8vw, 2.4rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+    }
+
+    .hotw-page-hero {
+        padding: 150px 0 64px;
+        min-height: 320px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 150px;
+    }
+
+    .hotw-mission__bullets li,
+    .hotw-contact-v2__subtitle,
+    .hotw-donate-impact__prose,
+    .hotw-section-subtitle {
+        font-size: 14px;
+    }
+
+    .hotw-impact-card__num {
+        font-size: clamp(1.85rem, 6vw, 2.4rem);
+    }
+
+    .hotw-contact-v2__title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .hotw-contact-v2__social-link {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hotw-contact-v2__social-link svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .hotw-visitors__scrollbar.swiper-scrollbar {
+        height: 6px;
+    }
+
+    .hotw-timeline-nav__btn {
+        margin-top: 0;
+        width: 40px;
+        height: 40px;
+    }
+
+    .hotw-partners-grid,
+    .hotw-supporters-grid {
+        gap: var(--spacing-md);
+    }
+
+    .hotw-site-footer__heading {
+        font-size: 18px;
+    }
+
+    .hotw-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 599px) {
     :root {
-        /* Font sizes */
-        --font-size-2xl: 14px;
-        --font-size-28: 18px;
+        /* Font sizes — small phone, keep body readable and display ≤ previous band */
+        --font-size-base: 15px;
+        --font-size-lg: 15px;
+        --font-size-xl: 15px;
+        --font-size-2xl: 16px;
+        --font-size-28: 17px;
         --font-size-30: 18px;
-        --font-size-36: 22px;
-        --font-size-3xl: 55px;
-        --font-size-50: 28px;
-        --font-size-4xl: 55px;
-        --font-size-5xl: 65px;
-        --font-size-6xl: 34px;
-        --font-size-7xl: 36px;
+        --font-size-36: 20px;
+        --font-size-3xl: 24px;
+        --font-size-50: 24px;
+        --font-size-4xl: 32px;
+        --font-size-5xl: 36px;
+        --font-size-6xl: 30px;
+        --font-size-7xl: 26px;
 
         /* Spacing */
-        --spacing-3xl: 25px;
-        --spacing-6xl: 50px;
+        --spacing-3xl: 28px;
+        --spacing-4xl: 36px;
+        --spacing-5xl: 48px;
+        --spacing-6xl: 52px;
 
         /* Header */
-        --header-height: 60px;
+        --header-height: 64px;
     }
 
     .hotw-partner-card {
@@ -1158,7 +1530,7 @@
     h5 strong,
     h6 strong,
     section#experience h2 strong {
-        font-size: 55px;
+        font-size: clamp(1.75rem, 8vw, 2.75rem);
     }
 
     .hotw-checklist li {
@@ -1228,7 +1600,8 @@
         height: 92px;
     }
 
-    .hotw-navbar__logo {
+    .hotw-navbar__logo,
+    .hotw-navbar__logo-text {
         width: 82px;
         height: 82px;
     }
@@ -1239,9 +1612,15 @@
 
     .hotw-home-hero,
     .hotw-page-hero {
-        margin-top: -72px;
-        padding-top: 100px;
+        margin-top: -64px;
+        padding-top: 130px;
+        padding-bottom: 56px;
+        min-height: 280px;
+    }
+
+    .hotw-home-hero {
         padding-bottom: 0;
+        min-height: 0;
     }
 
     .hotw-home-hero__inner {
@@ -1249,9 +1628,9 @@
     }
 
     .hotw-home-hero__scroll {
-        bottom: 64px;
-        width: 40px;
-        height: 40px;
+        bottom: 48px;
+        width: 38px;
+        height: 38px;
     }
 
     .hotw-home-hero__tag {
@@ -1269,7 +1648,15 @@
     }
 
     .hotw-section-title {
-        font-size: 1.75rem;
+        font-size: clamp(1.45rem, 6vw, 1.85rem);
+    }
+
+    .hotw-home-hero__title {
+        font-size: clamp(1.7rem, 8.5vw, 2.15rem);
+    }
+
+    .hotw-page-hero__title {
+        font-size: clamp(1.5rem, 7vw, 1.9rem);
     }
 
     .hotw-ticker {
@@ -1297,22 +1684,66 @@
     .hotw-video-band__play-icon {
         width: 56px;
     }
+
+    .hotw-page-hero__scroll {
+        bottom: 48px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .hotw-impact__title,
+    .hotw-yellow-cta__title,
+    .hotw-contact-v2__title,
+    .hotw-hours__title {
+        font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+    }
+
+    .hotw-yellow-cta__title {
+        font-size: clamp(1.25rem, 6vw, 1.6rem);
+    }
+
+    .hotw-single-event__title {
+        font-size: clamp(1.5rem, 6.5vw, 2rem);
+    }
+
+    .hotw-contact-v2__head {
+        margin-bottom: 28px;
+    }
+
+    .hotw-donate-card__amount-value {
+        font-size: 1.5rem;
+    }
+
+    .hotw-visitors__controls {
+        margin-top: 16px;
+        gap: 10px;
+    }
+
+    .hotw-btn {
+        padding: 11px 18px;
+        font-size: 13px;
+        min-height: 44px;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 399px) {
     :root {
-        /* Font sizes */
-        --font-size-7xl: 32px;
-        --font-size-6xl: 30px;
-        --font-size-5xl: 58px;
-        --font-size-4xl: 26px;
-        --font-size-50: 24px;
+        /* Font sizes — smallest band */
+        --font-size-base: 15px;
+        --font-size-lg: 14px;
+        --font-size-xl: 14px;
+        --font-size-2xl: 15px;
+        --font-size-28: 16px;
+        --font-size-30: 17px;
+        --font-size-36: 18px;
         --font-size-3xl: 22px;
-        --font-size-36: 20px;
-        --font-size-30: 18px;
-        --font-size-28: 17px;
-        --font-size-2xl: 16px;
-        --font-size-xl: 16px;
+        --font-size-50: 22px;
+        --font-size-4xl: 26px;
+        --font-size-5xl: 30px;
+        --font-size-6xl: 26px;
+        --font-size-7xl: 24px;
+
+        --header-height: 60px;
     }
 
     .hotw-cta-banner__title {
@@ -1326,5 +1757,54 @@
     .hotw-btn-order--sm {
         padding: 0.3rem 0.65rem;
         font-size: var(--font-size-xs);
+    }
+
+    .hotw-section-title {
+        font-size: 1.4rem;
+    }
+
+    .hotw-home-hero__title {
+        font-size: 1.65rem;
+    }
+
+    .hotw-page-hero__title {
+        font-size: 1.45rem;
+    }
+
+    .hotw-page-hero {
+        padding: 120px 0 48px;
+        min-height: 260px;
+    }
+
+    .hotw-home-hero {
+        padding-top: 120px;
+    }
+
+    .hotw-home-hero__actions .hotw-btn {
+        width: 100%;
+    }
+
+    .hotw-contact-v2__panel {
+        padding: 18px 14px;
+    }
+
+    .hotw-impact-card {
+        min-height: 130px;
+        padding: 14px;
+    }
+
+    .hotw-yellow-cta {
+        padding: 20px 16px;
+    }
+
+    .hotw-navbar__logo,
+    .hotw-navbar__logo-text {
+        width: 72px;
+        height: 72px;
+    }
+
+    .hotw-navbar__logo-plate {
+        width: 80px;
+        height: 80px;
     }
 }
