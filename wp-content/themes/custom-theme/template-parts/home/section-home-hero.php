@@ -2,6 +2,8 @@
 /**
  * Home hero with donate widget and values marquee.
  *
+ * ACF group: home_hero under Home Page tabs (see acf-json/group_hotw_home.json).
+ *
  * @package Heros_On_The_Water
  */
 
@@ -9,64 +11,70 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$uri = get_template_directory_uri();
-$defaults = array(
-    'tags'        => array(
-        array('label' => __('PADDLE', 'heros-on-the-water'), 'active' => true),
-        array('label' => __('FISH', 'heros-on-the-water'), 'active' => false),
-        array('label' => __('HEAL', 'heros-on-the-water'), 'active' => false),
-    ),
-    'title'       => __('HEROES ON THE WATER ISLE MAN!', 'heros-on-the-water'),
-    'description' => __('Heroes on the Water Isle of Man is a Charity That Provides Kayak Angling to Our Wounded Military and Uniformed Members of the Public Who Have Carrying Out a Public Duty.', 'heros-on-the-water'),
-    'tagline'     => __('Happy Veterans • Building Friendships • Changing Lives', 'heros-on-the-water'),
-    'donate_url'  => home_url('/donate/'),
-    'events_url'  => home_url('/events/'),
-    'bg'          => array(
-        'src' => $uri . '/assets/images/home/hero.webp',
-        'alt' => __('Veterans kayaking on the water at golden hour', 'heros-on-the-water'),
-    ),
-    'amounts'     => array(
-        array(
-            'value' => '10',
-            'label' => __('£10/mo', 'heros-on-the-water'),
-            'note'  => __('Helps provide refreshments', 'heros-on-the-water'),
-        ),
-        array(
-            'value' => '20',
-            'label' => __('£20/mo', 'heros-on-the-water'),
-            'note'  => __('Helps provide refreshments', 'heros-on-the-water'),
-        ),
-        array(
-            'value' => '50',
-            'label' => __('£50/mo', 'heros-on-the-water'),
-            'note'  => __('Helps provide refreshments', 'heros-on-the-water'),
-            'active'=> true,
-        ),
-        array(
-            'value' => 'other',
-            'label' => __('OTHER AMOUNT', 'heros-on-the-water'),
-            'note'  => '',
-        ),
-    ),
-    'impact'      => __('Your donation helps veterans find healing, friendship, and purpose through paddle and fishing experiences.', 'heros-on-the-water'),
-);
+$hero = function_exists('get_field') ? get_field('home_hero') : null;
+if (!is_array($hero)) {
+    $hero = array();
+}
 
-$args = isset($args) && is_array($args) ? wp_parse_args($args, $defaults) : $defaults;
-$bg   = wp_parse_args(isset($args['bg']) && is_array($args['bg']) ? $args['bg'] : array(), $defaults['bg']);
-$tags = is_array($args['tags']) ? $args['tags'] : $defaults['tags'];
-$amounts = is_array($args['amounts']) ? $args['amounts'] : $defaults['amounts'];
+$image          = (isset($hero['image']) && is_array($hero['image'])) ? $hero['image'] : null;
+$tags           = (!empty($hero['tags']) && is_array($hero['tags'])) ? $hero['tags'] : array();
+$title          = isset($hero['title']) ? (string) $hero['title'] : '';
+$description    = isset($hero['description']) ? (string) $hero['description'] : '';
+$primary_button = (isset($hero['primary_button']) && is_array($hero['primary_button'])) ? $hero['primary_button'] : null;
+$secondary_button = (isset($hero['secondary_button']) && is_array($hero['secondary_button'])) ? $hero['secondary_button'] : null;
+$tagline        = isset($hero['tagline']) ? (string) $hero['tagline'] : '';
+
+$image_url = (!empty($image['url'])) ? $image['url'] : '';
+$image_alt = (!empty($image['alt'])) ? $image['alt'] : '';
+
+$primary_url    = (!empty($primary_button['url'])) ? $primary_button['url'] : '';
+$primary_title  = (!empty($primary_button['title'])) ? $primary_button['title'] : '';
+$primary_target = (!empty($primary_button['target'])) ? $primary_button['target'] : '';
+
+$secondary_url    = (!empty($secondary_button['url'])) ? $secondary_button['url'] : '';
+$secondary_title  = (!empty($secondary_button['title'])) ? $secondary_button['title'] : '';
+$secondary_target = (!empty($secondary_button['target'])) ? $secondary_button['target'] : '';
+
+/* Donate card remains static (not ACF-driven). */
+$donate_url = home_url('/donate/');
+$amounts    = array(
+    array(
+        'value' => '10',
+        'label' => __('£10/mo', 'heros-on-the-water'),
+        'note'  => __('Helps provide refreshments', 'heros-on-the-water'),
+    ),
+    array(
+        'value' => '20',
+        'label' => __('£20/mo', 'heros-on-the-water'),
+        'note'  => __('Helps provide refreshments', 'heros-on-the-water'),
+    ),
+    array(
+        'value'  => '50',
+        'label'  => __('£50/mo', 'heros-on-the-water'),
+        'note'   => __('Helps provide refreshments', 'heros-on-the-water'),
+        'active' => true,
+    ),
+    array(
+        'value' => 'other',
+        'label' => __('OTHER AMOUNT', 'heros-on-the-water'),
+        'note'  => '',
+    ),
+);
+$impact = __('Your donation helps veterans find healing, friendship, and purpose through paddle and fishing experiences.', 'heros-on-the-water');
 ?>
 <section class="hotw-home-hero" aria-label="<?php esc_attr_e('Hero', 'heros-on-the-water'); ?>">
     <div class="hotw-home-hero__media">
-        <img
-            class="hotw-home-hero__img"
-            src="<?php echo esc_url($bg['src']); ?>"
-            alt="<?php echo esc_attr($bg['alt']); ?>"
-            width="1920"
-            height="900"
-            loading="eager"
-            fetchpriority="high"
-        >
+        <?php if ($image_url) : ?>
+            <img
+                class="hotw-home-hero__img"
+                src="<?php echo esc_url($image_url); ?>"
+                alt="<?php echo esc_attr($image_alt); ?>"
+                width="1920"
+                height="900"
+                loading="eager"
+                fetchpriority="high"
+            >
+        <?php endif; ?>
         <div class="hotw-home-hero__overlay" aria-hidden="true"></div>
     </div>
 
@@ -75,37 +83,62 @@ $amounts = is_array($args['amounts']) ? $args['amounts'] : $defaults['amounts'];
             <div class="hotw-home-hero__copy">
                 <?php if ($tags) : ?>
                     <div class="hotw-home-hero__tags" aria-label="<?php esc_attr_e('Focus areas', 'heros-on-the-water'); ?>">
-                        <?php foreach ($tags as $tag) : ?>
-                            <?php
-                            $is_active = !empty($tag['active']);
-                            $tag_class = $is_active ? 'hotw-home-hero__tag is-active' : 'hotw-home-hero__tag';
+                        <?php
+                        $tag_index = 0;
+                        foreach ($tags as $tag) :
+                            $label = isset($tag['label']) ? (string) $tag['label'] : '';
+                            if ($label === '') {
+                                continue;
+                            }
+                            $tag_class = (0 === $tag_index) ? 'hotw-home-hero__tag is-active' : 'hotw-home-hero__tag';
+                            $tag_index++;
                             ?>
-                            <span class="<?php echo esc_attr($tag_class); ?>"><?php echo esc_html($tag['label']); ?></span>
+                            <span class="<?php echo esc_attr($tag_class); ?>"><?php echo esc_html($label); ?></span>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
 
-                <h1 class="hotw-home-hero__title"><?php echo esc_html($args['title']); ?></h1>
+                <?php if ($title !== '') : ?>
+                    <h1 class="hotw-home-hero__title"><?php echo esc_html($title); ?></h1>
+                <?php endif; ?>
 
-                <div class="hotw-home-hero__desc">
-                    <p><?php echo esc_html($args['description']); ?></p>
-                </div>
+                <?php if ($description !== '') : ?>
+                    <div class="hotw-home-hero__desc">
+                        <p><?php echo esc_html($description); ?></p>
+                    </div>
+                <?php endif; ?>
 
-                <div class="hotw-home-hero__actions">
-                    <a class="hotw-btn hotw-btn--yellow" href="<?php echo esc_url($args['donate_url']); ?>">
-                        <?php esc_html_e('DONATE NOW', 'heros-on-the-water'); ?>
-                    </a>
-                    <a class="hotw-btn hotw-btn--ghost-on-dark" href="<?php echo esc_url($args['events_url']); ?>">
-                        <?php esc_html_e('JOIN AN EVENT', 'heros-on-the-water'); ?>
-                    </a>
-                </div>
+                <?php if ($primary_url || $secondary_url) : ?>
+                    <div class="hotw-home-hero__actions">
+                        <?php if ($primary_url) : ?>
+                            <a
+                                class="hotw-btn hotw-btn--yellow"
+                                href="<?php echo esc_url($primary_url); ?>"
+                                <?php echo $primary_target ? 'target="' . esc_attr($primary_target) . '"' : ''; ?>
+                                <?php echo $primary_target === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>
+                            >
+                                <?php echo esc_html($primary_title !== '' ? $primary_title : __('Donate', 'heros-on-the-water')); ?>
+                            </a>
+                        <?php endif; ?>
+                        <?php if ($secondary_url) : ?>
+                            <a
+                                class="hotw-btn hotw-btn--ghost-on-dark"
+                                href="<?php echo esc_url($secondary_url); ?>"
+                                <?php echo $secondary_target ? 'target="' . esc_attr($secondary_target) . '"' : ''; ?>
+                                <?php echo $secondary_target === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>
+                            >
+                                <?php echo esc_html($secondary_title !== '' ? $secondary_title : __('Learn more', 'heros-on-the-water')); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
 
-                <?php if (!empty($args['tagline'])) : ?>
-                    <p class="hotw-home-hero__tagline"><?php echo esc_html($args['tagline']); ?></p>
+                <?php if ($tagline !== '') : ?>
+                    <p class="hotw-home-hero__tagline"><?php echo esc_html($tagline); ?></p>
                 <?php endif; ?>
             </div>
 
-            <aside class="hotw-donate-card" data-hotw-donate-widget aria-label="<?php esc_attr_e('Donation options', 'heros-on-the-water'); ?>">
+            <aside class="hotw-donate-card d-none" data-hotw-donate-widget aria-label="<?php esc_attr_e('Donation options', 'heros-on-the-water'); ?>">
                 <div class="hotw-donate-card__tabs" role="tablist" aria-label="<?php esc_attr_e('Donation frequency', 'heros-on-the-water'); ?>">
                     <button type="button" class="hotw-donate-card__tab is-active" role="tab" aria-selected="true" data-mode="monthly">
                         <?php esc_html_e('MONTHLY SUPPORT', 'heros-on-the-water'); ?>
@@ -138,10 +171,10 @@ $amounts = is_array($args['amounts']) ? $args['amounts'] : $defaults['amounts'];
 
                 <p class="hotw-donate-card__impact">
                     <span class="hotw-donate-card__heart" aria-hidden="true">♥</span>
-                    <span><?php echo esc_html($args['impact']); ?></span>
+                    <span><?php echo esc_html($impact); ?></span>
                 </p>
 
-                <a class="hotw-btn hotw-btn--yellow hotw-donate-card__submit" href="<?php echo esc_url($args['donate_url']); ?>">
+                <a class="hotw-btn hotw-btn--yellow hotw-donate-card__submit" href="<?php echo esc_url($donate_url); ?>">
                     <?php esc_html_e('DONATE NOW', 'heros-on-the-water'); ?>
                 </a>
             </aside>

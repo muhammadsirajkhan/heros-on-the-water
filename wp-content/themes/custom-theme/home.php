@@ -14,9 +14,14 @@ get_header();
 
 <main id="primary" class="site-main hotw-main">
 
-    <?php get_template_part('template-parts/home/section', 'home-hero'); ?>
-    <?php get_template_part('template-parts/home/section', 'mission'); ?>
-    <?php get_template_part('template-parts/home/section', 'video'); ?>
+    <?php
+    $uri = get_template_directory_uri();
+    get_template_part('template-parts/home/section', 'home-hero');
+    ?>
+    <div class="wrapper" style="background-image: url('<?php echo esc_url($uri . '/assets/images/about/about-bg.webp'); ?>');">
+        <?php get_template_part('template-parts/home/section', 'mission'); ?>
+        <?php get_template_part('template-parts/home/section', 'video'); ?>
+    </div>
     <?php get_template_part('template-parts/home/section', 'visitors'); ?>
     <?php get_template_part('template-parts/home/section', 'yellow-cta'); ?>
     <?php get_template_part('template-parts/home/section', 'hours'); ?>
