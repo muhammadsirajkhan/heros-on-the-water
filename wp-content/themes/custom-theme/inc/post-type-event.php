@@ -60,7 +60,7 @@ function hotw_event_post_type_flush_rewrites() {
 add_action('after_switch_theme', 'hotw_event_post_type_flush_rewrites');
 
 /**
- * Register Location + Time text meta for events.
+ * Register Location, Time, and Date meta for events.
  */
 function hotw_register_event_meta() {
     $args = array(
@@ -75,11 +75,12 @@ function hotw_register_event_meta() {
 
     register_post_meta('event', 'event_location', $args);
     register_post_meta('event', 'event_time', $args);
+    register_post_meta('event', 'event_date', $args);
 }
 add_action('init', 'hotw_register_event_meta');
 
 /**
- * Event details meta box (Location + Time text fields).
+ * Event details meta box (Date + Location + Time).
  */
 function hotw_add_event_details_meta_box() {
     add_meta_box(
@@ -94,14 +95,47 @@ function hotw_add_event_details_meta_box() {
 add_action('add_meta_boxes', 'hotw_add_event_details_meta_box');
 
 /**
+ * Format stored event_date (Ymd or Y-m-d) for an HTML date input.
+ *
+ * @param string $raw Meta value.
+ * @return string Y-m-d or empty.
+ */
+function hotw_event_date_for_input($raw) {
+    $raw = trim((string) $raw);
+    if ($raw === '') {
+        return '';
+    }
+    if (preg_match('/^\d{8}$/', $raw)) {
+        return substr($raw, 0, 4) . '-' . substr($raw, 4, 2) . '-' . substr($raw, 6, 2);
+    }
+    if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $raw)) {
+        return $raw;
+    }
+    if (function_exists('hotw_whats_on_normalize_event_date')) {
+        $ymd = hotw_whats_on_normalize_event_date($raw);
+        if ($ymd !== '' && preg_match('/^\d{8}$/', $ymd)) {
+            return substr($ymd, 0, 4) . '-' . substr($ymd, 4, 2) . '-' . substr($ymd, 6, 2);
+        }
+    }
+    return '';
+}
+
+/**
  * @param WP_Post $post Post.
  */
 function hotw_render_event_details_meta_box($post) {
     wp_nonce_field('hotw_save_event_details', 'hotw_event_details_nonce');
 
+    $date_raw = (string) get_post_meta($post->ID, 'event_date', true);
+    $date     = hotw_event_date_for_input($date_raw);
     $location = (string) get_post_meta($post->ID, 'event_location', true);
     $time     = (string) get_post_meta($post->ID, 'event_time', true);
     ?>
+    <p>
+        <label for="hotw_event_date"><strong><?php esc_html_e('Event Date', 'heros-on-the-water'); ?></strong></label><br>
+        <input type="date" class="widefat" id="hotw_event_date" name="hotw_event_date" value="<?php echo esc_attr($date); ?>">
+        <span class="description"><?php esc_html_e('Used on event cards, the single page, and listing order.', 'heros-on-the-water'); ?></span>
+    </p>
     <p>
         <label for="hotw_event_location"><strong><?php esc_html_e('Location', 'heros-on-the-water'); ?></strong></label><br>
         <input type="text" class="widefat" id="hotw_event_location" name="hotw_event_location" value="<?php echo esc_attr($location); ?>" placeholder="<?php esc_attr_e('e.g. Port Soderick', 'heros-on-the-water'); ?>">
@@ -114,7 +148,7 @@ function hotw_render_event_details_meta_box($post) {
 }
 
 /**
- * Save Location + Time meta.
+ * Save Date + Location + Time meta.
  *
  * @param int $post_id Post ID.
  */
@@ -132,6 +166,22 @@ function hotw_save_event_details_meta_box($post_id) {
         return;
     }
 
+    if (isset($_POST['hotw_event_date'])) {
+        $raw = sanitize_text_field(wp_unslash($_POST['hotw_event_date']));
+        $ymd = '';
+        if ($raw !== '') {
+            if (function_exists('hotw_whats_on_normalize_event_date')) {
+                $ymd = hotw_whats_on_normalize_event_date($raw);
+            } elseif (preg_match('/^\d{4}-\d{2}-\d{2}$/', $raw)) {
+                $ymd = str_replace('-', '', $raw);
+            }
+        }
+        if ($ymd !== '') {
+            update_post_meta($post_id, 'event_date', $ymd);
+        } else {
+            delete_post_meta($post_id, 'event_date');
+        }
+    }
     if (isset($_POST['hotw_event_location'])) {
         update_post_meta($post_id, 'event_location', sanitize_text_field(wp_unslash($_POST['hotw_event_location'])));
     }
@@ -174,4 +224,80 @@ function hotw_get_event_time_display($post_id) {
         return hotw_whats_on_get_event_time_label($post_id);
     }
     return '';
+}
+
+/**
+ * Event date as Ymd (Event Date field / ACF / helpers).
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function hotw_get_event_date_ymd($post_id) {
+    $post_id = (int) $post_id;
+    if (function_exists('hotw_whats_on_get_event_date_for_post')) {
+        return hotw_whats_on_get_event_date_for_post($post_id);
+    }
+    $raw = (string) get_post_meta($post_id, 'event_date', true);
+    if (function_exists('hotw_whats_on_normalize_event_date')) {
+        return hotw_whats_on_normalize_event_date($raw);
+    }
+    if (preg_match('/^\d{8}$/', $raw)) {
+        return $raw;
+    }
+    if (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $raw, $m)) {
+        return $m[1] . $m[2] . $m[3];
+    }
+    return '';
+}
+
+/**
+ * Events page listing: all published events with an Event Date, newest date first.
+ *
+ * @return WP_Post[]
+ */
+function hotw_get_events_page_posts() {
+    if (!post_type_exists('event')) {
+        return array();
+    }
+
+    $posts = get_posts(
+        array(
+            'post_type'              => 'event',
+            'post_status'            => 'publish',
+            'posts_per_page'         => -1,
+            'orderby'                => 'date',
+            'order'                  => 'DESC',
+            'no_found_rows'          => true,
+            'update_post_meta_cache' => true,
+        )
+    );
+    if (!is_array($posts) || $posts === array()) {
+        return array();
+    }
+
+    $out = array();
+    foreach ($posts as $post) {
+        if (!$post instanceof WP_Post) {
+            continue;
+        }
+        if (hotw_get_event_date_ymd($post->ID) === '') {
+            continue;
+        }
+        $out[] = $post;
+    }
+
+    usort(
+        $out,
+        static function ($a, $b) {
+            $da = hotw_get_event_date_ymd($a->ID);
+            $db = hotw_get_event_date_ymd($b->ID);
+            $cmp = strcmp($db, $da);
+            if ($cmp !== 0) {
+                return $cmp;
+            }
+            return $b->ID <=> $a->ID;
+        }
+    );
+
+    return $out;
 }
