@@ -4,6 +4,9 @@
  *
  * Template Name: Meet the Team Page
  *
+ * ACF: team_hero, team_patrons, team_trustees, team_volunteers, team_group_photo
+ * (see acf-json/group_hotw_team.json).
+ *
  * @package Heros_On_The_Water
  */
 
@@ -12,6 +15,19 @@ defined('ABSPATH') || exit;
 get_header();
 
 $uri = get_template_directory_uri();
+
+$hero = function_exists('get_field') ? get_field('team_hero') : null;
+if (!is_array($hero)) {
+    $hero = array();
+}
+
+$group_photo = function_exists('get_field') ? get_field('team_group_photo') : null;
+if (!is_array($group_photo)) {
+    $group_photo = array();
+}
+
+$hero_image = (isset($hero['image']) && is_array($hero['image'])) ? $hero['image'] : null;
+$photo      = (isset($group_photo['image']) && is_array($group_photo['image'])) ? $group_photo['image'] : null;
 ?>
 
 <main id="primary" class="site-main hotw-main">
@@ -21,32 +37,33 @@ $uri = get_template_directory_uri();
         'template-parts/shared/section',
         'hero-interior',
         array(
-            'badge'       => __('MEET THE TEAM', 'heros-on-the-water'),
-            'title'       => __('HEALING BEGINS ON THE WATER', 'heros-on-the-water'),
-            'description' => __('Meet the patrons, trustees, and volunteer hosts who make Heroes on the Water possible for veterans and families across the Isle of Man.', 'heros-on-the-water'),
+            'badge'       => isset($hero['badge']) ? (string) $hero['badge'] : '',
+            'title'       => isset($hero['title']) ? (string) $hero['title'] : '',
+            'description' => isset($hero['description']) ? (string) $hero['description'] : '',
             'show_scroll' => true,
             'bg'          => array(
-                'src' => $uri . '/assets/images/meet-the-team/hero.webp',
-                'alt' => __('Heroes on the Water team', 'heros-on-the-water'),
+                'src' => (!empty($hero_image['url'])) ? $hero_image['url'] : '',
+                'alt' => (!empty($hero_image['alt'])) ? $hero_image['alt'] : '',
             ),
         )
     );
     get_template_part('template-parts/shared/section', 'ticker');
     ?>
+
     <div class="wrapper" style="background-image: url('<?php echo esc_url($uri . '/assets/images/about/about-bg.webp'); ?>');">
-    <?php
-    get_template_part('template-parts/team/section', 'patrons');
-    get_template_part('template-parts/team/section', 'trustees');
-    get_template_part('template-parts/team/section', 'volunteers');
-    get_template_part(
-        'template-parts/shared/section',
-        'group-photo',
-        array(
-            'src' => $uri . '/assets/images/home/help-more.webp',
-            'alt' => __('Community group at Heroes on the Water', 'heros-on-the-water'),
-        )
-    );
-    ?>
+        <?php
+        get_template_part('template-parts/team/section', 'patrons');
+        get_template_part('template-parts/team/section', 'trustees');
+        get_template_part('template-parts/team/section', 'volunteers');
+        get_template_part(
+            'template-parts/shared/section',
+            'group-photo',
+            array(
+                'src' => (!empty($photo['url'])) ? $photo['url'] : '',
+                'alt' => (!empty($photo['alt'])) ? $photo['alt'] : '',
+            )
+        );
+        ?>
     </div>
 
 </main>
