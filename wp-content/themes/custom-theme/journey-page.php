@@ -4,6 +4,8 @@
  *
  * Template Name: Our Journey Page
  *
+ * ACF: journey_hero, journey_timeline, journey_group_photo (see acf-json/group_hotw_journey.json).
+ *
  * @package Heros_On_The_Water
  */
 
@@ -11,7 +13,22 @@ defined('ABSPATH') || exit;
 
 get_header();
 
-$uri = get_template_directory_uri();
+$hero = function_exists('get_field') ? get_field('journey_hero') : null;
+if (!is_array($hero)) {
+    $hero = array();
+}
+
+$group_photo = function_exists('get_field') ? get_field('journey_group_photo') : null;
+if (!is_array($group_photo)) {
+    $group_photo = array();
+}
+
+$hero_image = (isset($hero['image']) && is_array($hero['image'])) ? $hero['image'] : null;
+$photo      = (isset($group_photo['image']) && is_array($group_photo['image'])) ? $group_photo['image'] : null;
+$uri        = get_template_directory_uri();
+
+$photo_src = (!empty($photo['url'])) ? $photo['url'] : ($uri . '/assets/images/home/help-more.webp');
+$photo_alt = (!empty($photo['alt'])) ? $photo['alt'] : __('Community group at Heroes on the Water', 'heros-on-the-water');
 ?>
 
 <main id="primary" class="site-main hotw-main">
@@ -21,27 +38,32 @@ $uri = get_template_directory_uri();
         'template-parts/shared/section',
         'hero-interior',
         array(
-            'badge'       => __('OUR JOURNEY', 'heros-on-the-water'),
-            'title'       => __('OUR JOURNEY SO FAR', 'heros-on-the-water'),
-            'description' => __('Heroes On The Water was founded with a simple but powerful belief: time spent on the water can help change lives. By combining the calming effects of nature.', 'heros-on-the-water'),
+            'badge'       => isset($hero['badge']) ? (string) $hero['badge'] : '',
+            'title'       => isset($hero['title']) ? (string) $hero['title'] : '',
+            'description' => isset($hero['description']) ? (string) $hero['description'] : '',
             'show_scroll' => true,
             'bg'          => array(
-                'src' => $uri . '/assets/images/our-journey/hero.webp',
-                'alt' => __('Heroes on the Water journey', 'heros-on-the-water'),
+                'src' => (!empty($hero_image['url'])) ? $hero_image['url'] : '',
+                'alt' => (!empty($hero_image['alt'])) ? $hero_image['alt'] : '',
             ),
         )
     );
     get_template_part('template-parts/shared/section', 'ticker');
-    get_template_part('template-parts/journey/section', 'timeline');
-    get_template_part(
-        'template-parts/shared/section',
-        'group-photo',
-        array(
-            'src' => $uri . '/assets/images/home/help-more.webp',
-            'alt' => __('Community group at Heroes on the Water', 'heros-on-the-water'),
-        )
-    );
     ?>
+
+    <div class="wrapper" style="background-image: url('<?php echo esc_url($uri . '/assets/images/about/about-bg.webp'); ?>');">
+        <?php
+        get_template_part('template-parts/journey/section', 'timeline');
+        get_template_part(
+            'template-parts/shared/section',
+            'group-photo',
+            array(
+                'src' => $photo_src,
+                'alt' => $photo_alt,
+            )
+        );
+        ?>
+    </div>
 
 </main>
 
